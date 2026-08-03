@@ -12,10 +12,11 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <a href="https://github.com/auspicious27" target="_blank" class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></a><button class="menu-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#compiler">Code Compiler</a></li>
                 <li><a href="#assessment">Assessment</a></li>
             </ul>
         </div>
@@ -34,6 +35,8 @@
                 <li><a href="#conditionals">Conditional Statements</a></li>
                 <li><a href="#loops">Loops</a></li>
                 <li><a href="#patterns">Pattern Programs</a></li>
+                <li><a href="#detailed-notes">Important Notes</a></li>
+                <li><a href="#compiler">Code Compiler</a></li>
                 <li><a href="#assessment">Assessment</a></li>
             </ul>
             <div class="navigation-buttons">
@@ -411,6 +414,127 @@ for i in range(1, 11):
 * * 
 * </pre>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="detailed-notes" class="content-section">
+                <h2><i class="fas fa-sticky-note"></i> Important Notes & Key Concepts</h2>
+
+                <div class="topic">
+                    <h3>Operator Cheat Sheet</h3>
+                    <div class="warning-box">
+                        <h4>Most Common Mistakes with Operators:</h4>
+                        <ul>
+                            <li><code>=</code> is ASSIGNMENT, <code>==</code> is COMPARISON — never confuse them!</li>
+                            <li><code>and</code> requires BOTH conditions True, <code>or</code> requires only ONE</li>
+                            <li><code>10 / 3 = 3.333</code> (float division) vs <code>10 // 3 = 3</code> (integer division)</li>
+                            <li>Operator precedence: <code>**</code> > <code>* / // %</code> > <code>+ -</code> > <code>comparisons</code> > <code>not</code> > <code>and</code> > <code>or</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic">
+                    <h3>Conditional Statements — Detailed Flow</h3>
+                    <pre><code class="language-python"># Understanding the flow — ONLY ONE block executes!
+marks = 75
+
+# Python checks from TOP to BOTTOM
+# As soon as ONE condition is True, it runs that block and SKIPS the rest
+
+if marks >= 90:         # Is 75 >= 90? NO → skip
+    print("Grade A+")
+elif marks >= 80:       # Is 75 >= 80? NO → skip
+    print("Grade A")
+elif marks >= 70:       # Is 75 >= 70? YES! → runs THIS block
+    print("Grade B")    # ← This prints
+elif marks >= 60:       # SKIPPED (already found a True condition above)
+    print("Grade C")
+else:                   # SKIPPED
+    print("Grade D")
+
+# Output: Grade B</code></pre>
+
+                    <div class="info-box">
+                        <h4>Key Rules for if-elif-else:</h4>
+                        <ul>
+                            <li><code>if</code> — Always comes first (required)</li>
+                            <li><code>elif</code> — Can have 0 or more (optional, as many as needed)</li>
+                            <li><code>else</code> — Comes last, catches everything else (optional)</li>
+                            <li>Only ONE block executes — first True condition wins</li>
+                            <li>Indentation (4 spaces) defines what's inside each block</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic">
+                    <h3>Loop Control — When to Use What</h3>
+
+                    <table>
+                        <thead><tr><th>Use Case</th><th>Use This</th><th>Example</th></tr></thead>
+                        <tbody>
+                            <tr><td>Known iterations</td><td><code>for</code> loop</td><td>Print 1 to 10</td></tr>
+                            <tr><td>Unknown iterations</td><td><code>while</code> loop</td><td>Ask until valid input</td></tr>
+                            <tr><td>Stop loop early</td><td><code>break</code></td><td>Found the item, stop searching</td></tr>
+                            <tr><td>Skip one iteration</td><td><code>continue</code></td><td>Skip even numbers</td></tr>
+                            <tr><td>Placeholder</td><td><code>pass</code></td><td>TODO: implement later</td></tr>
+                        </tbody>
+                    </table>
+
+                    <pre><code class="language-python"># Real-world example: Password validation
+max_attempts = 3
+correct_password = "python123"
+
+for attempt in range(1, max_attempts + 1):
+    password = input(f"Attempt {attempt}/{max_attempts} - Enter password: ")
+    
+    if password == correct_password:
+        print("Access Granted!")
+        break  # Exit loop — no need to ask again
+    else:
+        remaining = max_attempts - attempt
+        if remaining > 0:
+            print(f"Wrong! {remaining} attempts left.")
+        else:
+            print("Account locked! Too many failed attempts.")
+
+# This shows: for loop + if-else + break + counter</code></pre>
+
+                    <div class="key-points">
+                        <h4>Nested Loops Explained:</h4>
+                        <pre><code class="language-python"># Outer loop runs 3 times
+# For EACH outer iteration, inner loop runs completely (4 times)
+# Total: 3 × 4 = 12 prints
+
+for i in range(3):          # i = 0, 1, 2
+    for j in range(4):      # j = 0, 1, 2, 3
+        print(f"({i},{j})", end=" ")
+    print()  # New line after inner loop completes
+
+# Output:
+# (0,0) (0,1) (0,2) (0,3)
+# (1,0) (1,1) (1,2) (1,3)
+# (2,0) (2,1) (2,2) (2,3)</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="compiler" class="content-section">
+                <h2><i class="fas fa-play-circle"></i> Python Code Compiler</h2>
+                <div class="topic">
+                    <h3><i class="fas fa-terminal"></i> Try It Yourself</h3>
+                    <p>Practice operators, conditionals, and loops. Run code directly in your browser:</p>
+                    <div class="compiler-section">
+                        <iframe class="compiler-frame" src="https://www.programiz.com/python-programming/online-compiler/" loading="lazy" title="Python Compiler"></iframe>
+                    </div>
+                    <div class="info-box">
+                        <p><strong>Try these challenges:</strong></p>
+                        <ul>
+                            <li>Write a program to check if a number is prime</li>
+                            <li>Print multiplication table for any number</li>
+                            <li>Create a number guessing game with while loop</li>
+                            <li>Print a diamond pattern using nested loops</li>
+                        </ul>
                     </div>
                 </div>
             </section>

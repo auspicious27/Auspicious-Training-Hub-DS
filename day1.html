@@ -12,13 +12,15 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
+            <a href="https://github.com/auspicious27" target="_blank" class="logo">
                 <i class="fas fa-brain"></i>
                 <span>Auspicious</span>
-            </div>
+            </a>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#compiler">Code Compiler</a></li>
                 <li><a href="#assessment">Assessment</a></li>
             </ul>
         </div>
@@ -38,6 +40,8 @@
                 <li><a href="#running">Running Python Scripts</a></li>
                 <li><a href="#interpreter">Python Interpreter</a></li>
                 <li><a href="#first-program">First Python Program</a></li>
+                <li><a href="#detailed-notes">Important Notes</a></li>
+                <li><a href="#compiler">Code Compiler</a></li>
                 <li><a href="#assessment">Assessment</a></li>
             </ul>
             <div class="navigation-buttons">
@@ -599,6 +603,93 @@ print("Perimeter:", perimeter)</code></pre>
 fahrenheit = (celsius * 9/5) + 32
 print(f"{celsius}°C = {fahrenheit}°F")</code></pre>
                         </details>
+                    </div>
+                </div>
+            </section>
+
+            <section id="detailed-notes" class="content-section">
+                <h2><i class="fas fa-sticky-note"></i> Important Notes & Key Takeaways</h2>
+
+                <div class="topic">
+                    <h3>Summary Notes — Day 1</h3>
+
+                    <div class="key-points">
+                        <h4>What You Must Remember:</h4>
+                        <ul>
+                            <li><strong>Programming</strong> = Giving step-by-step instructions to a computer</li>
+                            <li><strong>Python</strong> = High-level, interpreted language created by Guido van Rossum (1991)</li>
+                            <li><strong>Interpreted</strong> = Code runs line by line (no compilation step)</li>
+                            <li><strong>Dynamically typed</strong> = No need to declare variable types</li>
+                            <li><strong>print()</strong> = Displays output on screen</li>
+                            <li><strong>input()</strong> = Takes input from user (always returns string)</li>
+                            <li><strong>int(), float()</strong> = Convert string to numbers</li>
+                            <li><strong># comment</strong> = Ignored by Python, used for notes</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>Common Mistakes to Avoid:</h4>
+                        <ul>
+                            <li><strong>Forgetting quotes:</strong> <code>print(Hello)</code> → Error! Use <code>print("Hello")</code></li>
+                            <li><strong>Wrong indentation:</strong> Python uses spaces to define code blocks</li>
+                            <li><strong>Case sensitivity:</strong> <code>Print</code> ≠ <code>print</code> (Python is case-sensitive)</li>
+                            <li><strong>Not converting input:</strong> <code>input()</code> returns string, use <code>int()</code> for numbers</li>
+                            <li><strong>Missing parentheses:</strong> <code>print "hi"</code> → Error! Use <code>print("hi")</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Code Walkthrough — Line by Line:</h4>
+                        <pre><code class="language-python"># Line 1: This is a comment - Python ignores this line completely
+# Line 2: Ask user for their name, store in variable 'name'
+name = input("What is your name? ")
+# Line 3: Ask user for age (as string), convert to integer
+age = int(input("How old are you? "))
+# Line 4: Calculate birth year using current year minus age
+birth_year = 2024 - age
+# Line 5: Display formatted output using f-string
+print(f"Hello {name}! You were born in {birth_year}.")</code></pre>
+
+                        <div class="line-explanation">
+                            <p><strong>Explanation of each part:</strong></p>
+                            <ul>
+                                <li><code>name = input("...")</code> — Shows message, waits for user to type, stores result in 'name'</li>
+                                <li><code>int(input("..."))</code> — Takes input AND converts it to integer in one line</li>
+                                <li><code>2024 - age</code> — Simple subtraction to find birth year</li>
+                                <li><code>f"...{variable}..."</code> — f-string: puts variable values inside the text</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Python vs Other Languages — Why Python Wins for Data Science:</h4>
+                        <ul>
+                            <li><strong>1 line in Python = 5-10 lines in Java/C++</strong> → Less code, faster development</li>
+                            <li><strong>English-like syntax</strong> → <code>if x > 5: print("Big")</code> reads like English</li>
+                            <li><strong>Rich ecosystem:</strong> 300,000+ packages on PyPI (pip install anything!)</li>
+                            <li><strong>Community:</strong> Largest developer community, easy to find help</li>
+                            <li><strong>Industry standard:</strong> Google, Netflix, NASA, Tesla all use Python for ML/AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="compiler" class="content-section">
+                <h2><i class="fas fa-play-circle"></i> Python Code Compiler</h2>
+                <div class="topic">
+                    <h3><i class="fas fa-terminal"></i> Try It Yourself</h3>
+                    <p>Practice the concepts from this day by writing and running Python code directly in your browser. Copy any example from above and experiment!</p>
+                    <div class="compiler-section">
+                        <iframe class="compiler-frame" src="https://www.programiz.com/python-programming/online-compiler/" loading="lazy" title="Python Compiler"></iframe>
+                    </div>
+                    <div class="info-box">
+                        <p><strong>Try these exercises in the compiler:</strong></p>
+                        <ul>
+                            <li>Print your name, age, and city</li>
+                            <li>Calculate area of a circle (3.14 * r * r)</li>
+                            <li>Convert temperature from Celsius to Fahrenheit</li>
+                            <li>Take two numbers as input and print their sum</li>
+                        </ul>
                     </div>
                 </div>
             </section>

@@ -607,16 +607,85 @@ tr:hover {
         height: auto;
         border-right: none;
         border-bottom: 2px solid rgba(255, 27, 107, 0.3);
+        padding: 1.5rem;
+    }
+
+    .topic-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .topic-list li {
+        margin-bottom: 0;
+    }
+
+    .topic-list a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        background: var(--darker-bg);
+        border-radius: 20px;
+    }
+
+    .navigation-buttons {
+        flex-direction: row;
+        margin-top: 1rem;
     }
     
     .content {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
     .day-header h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .day-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .day-subtitle {
+        font-size: 1rem;
+    }
+
+    .content-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .topic {
+        padding: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .topic h3 {
+        font-size: 1.3rem;
+    }
+
+    .topic h4 {
+        font-size: 1.1rem;
+    }
+
+    pre {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+
+    code {
+        font-size: 0.8rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 0.6rem;
     }
     
     .ipo-diagram {
@@ -638,5 +707,56 @@ tr:hover {
     
     .project-features {
         grid-template-columns: 1fr;
+    }
+
+    .assessment-section {
+        padding: 1.5rem;
+    }
+
+    .question {
+        padding: 1.2rem;
+    }
+
+    .key-points, .example-box, .info-box, .warning-box {
+        padding: 1rem;
+    }
+
+    .detailed-example {
+        padding: 1.2rem;
+    }
+
+    .compiler-section {
+        padding: 1rem;
+    }
+
+    .compiler-frame {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .day-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .topic {
+        padding: 1rem;
+    }
+
+    pre {
+        padding: 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .use-case {
+        padding: 1rem;
+    }
+
+    .compiler-frame {
+        height: 350px;
     }
 }

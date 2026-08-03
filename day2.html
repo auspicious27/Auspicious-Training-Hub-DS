@@ -12,10 +12,11 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <a href="https://github.com/auspicious27" target="_blank" class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></a><button class="menu-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#compiler">Code Compiler</a></li>
                 <li><a href="#assessment">Assessment</a></li>
             </ul>
         </div>
@@ -33,6 +34,8 @@
                 <li><a href="#comments">Comments</a></li>
                 <li><a href="#syntax">Basic Syntax</a></li>
                 <li><a href="#practice">Practice</a></li>
+                <li><a href="#detailed-notes">Important Notes</a></li>
+                <li><a href="#compiler">Code Compiler</a></li>
                 <li><a href="#assessment">Assessment</a></li>
             </ul>
             <div class="navigation-buttons">
@@ -420,6 +423,124 @@ hours = total_minutes // 60
 minutes = total_minutes % 60
 print(f"{total_minutes} minutes = {hours} hours and {minutes} minutes")</code></pre>
                         </details>
+                    </div>
+                </div>
+            </section>
+
+            <section id="detailed-notes" class="content-section">
+                <h2><i class="fas fa-sticky-note"></i> Important Notes & Deep Dive</h2>
+
+                <div class="topic">
+                    <h3>Variable Memory Concept</h3>
+                    <p>When you write <code>x = 10</code>, Python does the following behind the scenes:</p>
+                    <ol>
+                        <li>Creates an integer object with value 10 in memory</li>
+                        <li>Creates a variable name 'x' (like a label/tag)</li>
+                        <li>Attaches the label 'x' to that object</li>
+                    </ol>
+                    <pre><code class="language-python"># Understanding variable references
+x = 10      # x points to object 10
+y = x       # y also points to same object 10
+print(id(x))  # Memory address of x
+print(id(y))  # Same address! Both point to 10
+
+x = 20      # Now x points to NEW object 20
+print(x)    # 20
+print(y)    # Still 10! (y still points to original object)</code></pre>
+
+                    <div class="info-box">
+                        <p><strong>Key Insight:</strong> In Python, variables are just references (labels) pointing to objects in memory. They don't "contain" the value directly.</p>
+                    </div>
+                </div>
+
+                <div class="topic">
+                    <h3>Data Type Deep Dive</h3>
+
+                    <div class="key-points">
+                        <h4>Integer (int) — Unlimited Size!</h4>
+                        <ul>
+                            <li>Python integers have NO size limit (unlike C/Java where int max is ~2 billion)</li>
+                            <li><code>x = 99999999999999999999999999999</code> → Works perfectly in Python!</li>
+                            <li>Supports binary: <code>0b1010</code> = 10, Octal: <code>0o12</code> = 10, Hex: <code>0xA</code> = 10</li>
+                        </ul>
+                    </div>
+
+                    <div class="key-points">
+                        <h4>Float — Decimal Numbers</h4>
+                        <ul>
+                            <li>Stored as 64-bit double precision (limited accuracy)</li>
+                            <li><code>0.1 + 0.2</code> = 0.30000000000000004 (NOT exactly 0.3!)</li>
+                            <li>Scientific notation: <code>1.5e3</code> = 1500.0, <code>2.5e-2</code> = 0.025</li>
+                        </ul>
+                    </div>
+
+                    <div class="key-points">
+                        <h4>String (str) — Immutable!</h4>
+                        <ul>
+                            <li>Strings cannot be changed after creation (immutable)</li>
+                            <li><code>s = "hello"; s[0] = "H"</code> → TypeError!</li>
+                            <li>Instead: <code>s = "H" + s[1:]</code> → Creates new string "Hello"</li>
+                            <li>Triple quotes for multi-line: <code>"""line1\nline2"""</code></li>
+                        </ul>
+                    </div>
+
+                    <pre><code class="language-python"># Type checking and conversion examples
+x = "42"
+print(type(x))        # &lt;class 'str'&gt;
+print(isinstance(x, str))  # True
+
+# Safe conversion with error handling
+user_input = "hello"
+try:
+    num = int(user_input)
+except ValueError:
+    print("That's not a number!")
+
+# f-string formatting tricks
+price = 1234567.89
+print(f"Price: ₹{price:,.2f}")    # Price: ₹1,234,567.89
+print(f"Percentage: {0.856:.1%}")  # Percentage: 85.6%
+name = "python"
+print(f"{'python':>10}")           # Righ aligned:     python
+print(f"{'python':<10}")           # Left aligned: python    </code></pre>
+                </div>
+
+                <div class="topic">
+                    <h3>Quick Reference Card</h3>
+                    <table>
+                        <thead><tr><th>Operation</th><th>Code</th><th>Result</th></tr></thead>
+                        <tbody>
+                            <tr><td>Assign variable</td><td><code>x = 5</code></td><td>x stores 5</td></tr>
+                            <tr><td>Check type</td><td><code>type(x)</code></td><td>&lt;class 'int'&gt;</td></tr>
+                            <tr><td>String to int</td><td><code>int("42")</code></td><td>42</td></tr>
+                            <tr><td>Int to string</td><td><code>str(42)</code></td><td>"42"</td></tr>
+                            <tr><td>Float to int</td><td><code>int(3.9)</code></td><td>3 (truncates)</td></tr>
+                            <tr><td>Get input</td><td><code>input("msg")</code></td><td>Returns string</td></tr>
+                            <tr><td>F-string</td><td><code>f"Hi {name}"</code></td><td>Formatted text</td></tr>
+                            <tr><td>Multiple print</td><td><code>print(a, b, c)</code></td><td>Space separated</td></tr>
+                            <tr><td>Multi assign</td><td><code>a, b = 1, 2</code></td><td>a=1, b=2</td></tr>
+                            <tr><td>Swap</td><td><code>a, b = b, a</code></td><td>Swaps values</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="compiler" class="content-section">
+                <h2><i class="fas fa-play-circle"></i> Python Code Compiler</h2>
+                <div class="topic">
+                    <h3><i class="fas fa-terminal"></i> Try It Yourself</h3>
+                    <p>Practice variables, data types, and type casting. Write and run code directly here:</p>
+                    <div class="compiler-section">
+                        <iframe class="compiler-frame" src="https://www.programiz.com/python-programming/online-compiler/" loading="lazy" title="Python Compiler"></iframe>
+                    </div>
+                    <div class="info-box">
+                        <p><strong>Try these:</strong></p>
+                        <ul>
+                            <li>Create variables of each type (int, float, str, bool) and print their types</li>
+                            <li>Take two numbers as input, swap them, and print</li>
+                            <li>Convert temperature using f-string formatting</li>
+                            <li>Try what happens with <code>int("hello")</code></li>
+                        </ul>
                     </div>
                 </div>
             </section>

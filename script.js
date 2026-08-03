@@ -86,6 +86,21 @@ function markDayComplete(day) {
 document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
     
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // Close menu when link clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+    
     // Add copy button styling
     const style = document.createElement('style');
     style.textContent = `
