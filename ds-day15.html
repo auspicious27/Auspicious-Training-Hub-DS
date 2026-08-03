@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Day 15: Capstone Project: Smart Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fab fa-python"></i><span>Data Science ML</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python-data-science-ml-15-days.html">DS Roadmap</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 15 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#topics">Topics Covered</a></li>
+                <li><a href="#notes">Detailed Notes</a></li>
+                <li><a href="#practical">Practical Code</a></li>
+                <li><a href="#explanation">Code Explanation</a></li>
+                <li><a href="#practice">Practice Tasks</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons"><a href="ds-day14.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Previous</a><a href="python-data-science-ml-15-days.html" class="nav-btn next">Roadmap <i class="fas fa-home"></i></a></div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 15: Capstone Project: Smart Face Recognition Attendance System</h1>
+                <p class="day-subtitle">Student face capture, OpenCV recognition, attendance records, dashboard, report, pickle model, and final presentation</p>
+            </header>
+
+            <section id="intro" class="content-section">
+                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                <div class="topic">
+                    <p>Day 15 ka goal hai learners ko <strong>Capstone Project: Smart Face Recognition Attendance System</strong> practical way me samjhana. Is session me teacher pehle concept ko real-world story se explain karega, phir small example dikhayega, phir practical code run karwayega, aur finally code ka har important line meaning explain karega.</p>
+                    <p>Data Science course me har day previous day se connected hai. Python basics se data handling, data handling se visualization, visualization se machine learning, aur machine learning se final capstone project tak complete journey build hoti hai.</p>
+                    <div class="info-box"><p><strong>Project Focus:</strong> Smart Face Recognition Attendance System. Is day me concepts ko directly project workflow ke saath connect karke practical learning karni hai.</p></div>
+                </div>
+            </section>
+
+            <section id="topics" class="content-section">
+                <h2><i class="fas fa-list"></i> Topics Covered</h2>
+                <div class="topic"><ul><li><a href="#notes">Capture Student Face Data</a></li>
+<li><a href="#notes">Face Recognition using OpenCV</a></li>
+<li><a href="#notes">Attendance Marking System</a></li>
+<li><a href="#notes">Student Data Management</a></li>
+<li><a href="#notes">Store Attendance Records</a></li>
+<li><a href="#notes">Data Visualization Dashboard</a></li>
+<li><a href="#notes">Generate Attendance Report</a></li>
+<li><a href="#notes">Save Trained Model using Pickle</a></li>
+<li><a href="#notes">End-to-End Machine Learning Workflow</a></li>
+<li><a href="#notes">Final Project Presentation</a></li></ul></div>
+            </section>
+
+            <section id="notes" class="content-section">
+                <h2><i class="fas fa-book-open"></i> Detailed Classroom Notes</h2>
+                <div class="topic"><h3>Capture Student Face Data</h3>
+<p><strong>Capture Student Face Data</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Capture Student Face Data</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Capture Student Face Data</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Face Recognition using OpenCV</h3>
+<p><strong>Face Recognition using OpenCV</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Face Recognition using OpenCV</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Face Recognition using OpenCV</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Attendance Marking System</h3>
+<p><strong>Attendance Marking System</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Attendance Marking System</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Attendance Marking System</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Student Data Management</h3>
+<p><strong>Student Data Management</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Student Data Management</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Student Data Management</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Store Attendance Records</h3>
+<p><strong>Store Attendance Records</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Store Attendance Records</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Store Attendance Records</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Data Visualization Dashboard</h3>
+<p><strong>Data Visualization Dashboard</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Data Visualization Dashboard</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Data Visualization Dashboard</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Generate Attendance Report</h3>
+<p><strong>Generate Attendance Report</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Generate Attendance Report</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Generate Attendance Report</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Save Trained Model using Pickle</h3>
+<p><strong>Save Trained Model using Pickle</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Save Trained Model using Pickle</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Save Trained Model using Pickle</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>End-to-End Machine Learning Workflow</h3>
+<p><strong>End-to-End Machine Learning Workflow</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>End-to-End Machine Learning Workflow</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>End-to-End Machine Learning Workflow</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Final Project Presentation</h3>
+<p><strong>Final Project Presentation</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Final Project Presentation</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Final Project Presentation</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+            </section>
+
+            <section id="practical" class="content-section">
+                <h2><i class="fas fa-laptop-code"></i> Practical Code: Smart Attendance Record and Dashboard</h2>
+                <div class="topic">
+                    <p>Is practical ko Jupyter Notebook me run karna hai. Pehle code ko read karo, phir run karo, phir output observe karo. Teacher ko output ke baad explain karna hai ki input data kaise process hua and final result kaise bana.</p>
+                    <pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+
+attendance = pd.DataFrame({&quot;Student&quot;: [&quot;Rahul&quot;, &quot;Priya&quot;, &quot;Aman&quot;], &quot;Status&quot;: [&quot;Present&quot;, &quot;Present&quot;, &quot;Absent&quot;]})
+attendance.to_csv(&quot;attendance_report.csv&quot;, index=False)
+summary = attendance[&quot;Status&quot;].value_counts()
+print(attendance)
+print(summary)
+summary.plot(kind=&quot;bar&quot;, title=&quot;Attendance Dashboard&quot;)
+plt.show()</code></pre>
+                    <h4>Expected Output</h4>
+                    <pre><code>Attendance CSV file, status summary, and dashboard chart.</code></pre>
+                </div>
+            </section>
+
+            <section id="explanation" class="content-section">
+                <h2><i class="fas fa-table"></i> Detailed Code Explanation</h2>
+                <div class="topic">
+                    <p>Code explanation ko directly classroom me padhkar samjha sakte ho. Har line ka purpose, use case, and project workflow me role explain kiya gaya hai.</p>
+                    <table>
+                        <thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead>
+                        <tbody><tr><td>1</td><td><code>import pandas as pd</code></td><td>Ye line required library import karti hai. Library ka matlab ready-made tools ka collection hota hai. Is project me hum sab kuch scratch se nahi banate, balki Python libraries ka use karke real work fast karte hain. Import ke baad us library ke functions notebook me available ho jaate hain. Agar import fail hota hai to package install ya environment check karna hota hai. Ye line practical code ka setup part hai.</td></tr>
+<tr><td>2</td><td><code>import matplotlib.pyplot as plt</code></td><td>Ye line required library import karti hai. Library ka matlab ready-made tools ka collection hota hai. Is project me hum sab kuch scratch se nahi banate, balki Python libraries ka use karke real work fast karte hain. Import ke baad us library ke functions notebook me available ho jaate hain. Agar import fail hota hai to package install ya environment check karna hota hai. Ye line practical code ka setup part hai.</td></tr>
+<tr><td>4</td><td><code>attendance = pd.DataFrame({&quot;Student&quot;: [&quot;Rahul&quot;, &quot;Priya&quot;, &quot;Aman&quot;], &quot;Status&quot;: [&quot;Present&quot;, &quot;Present&quot;, &quot;Absent&quot;]})</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>5</td><td><code>attendance.to_csv(&quot;attendance_report.csv&quot;, index=False)</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>6</td><td><code>summary = attendance[&quot;Status&quot;].value_counts()</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>7</td><td><code>print(attendance)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
+<tr><td>8</td><td><code>print(summary)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
+<tr><td>9</td><td><code>summary.plot(kind=&quot;bar&quot;, title=&quot;Attendance Dashboard&quot;)</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>10</td><td><code>plt.show()</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next line ya final output me use hota hai. Data Science code me aisi lines data clean, transform, train, predict, evaluate, save, ya visualize kar sakti hain. Student ko batana hai ki har line previous data par kaam karke next step ke liye output banati hai. Is tarah complete workflow step by step build hota hai. Ye line program ke main logic ka part hai.</td></tr></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="practice" class="content-section">
+                <h2><i class="fas fa-pen-to-square"></i> Student Practice Tasks</h2>
+                <div class="topic">
+                    <ol>
+                        <li>Given practical code ko notebook me run karo and output screenshot observe karo.</li>
+                        <li>Code me at least two values change karo and output ka difference explain karo.</li>
+                        <li>Apne words me likho ki aaj ka topic real-world Data Science project me kaha use hota hai.</li>
+                        <li>Ek small extra example banao using same concept.</li>
+                        <li>Teacher ko explain karo ki code ka input, process, and output kya hai.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section">
+                <h2><i class="fas fa-clipboard-check"></i> Assessment Questions</h2>
+                <div class="topic">
+                    <ol>
+                        <li>Capstone Project: Smart Face Recognition Attendance System ka main purpose kya hai?</li>
+                        <li>Aaj ke kisi bhi 3 topics ka real-world use case explain karo.</li>
+                        <li>Practical code me data input kaha define hua hai?</li>
+                        <li>Practical code ka final output kya indicate karta hai?</li>
+                        <li>Agar code error de to sabse pehle kaunse 2 checks karoge?</li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

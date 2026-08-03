@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Day 2: Python Fundamentals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fab fa-python"></i><span>Data Science ML</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python-data-science-ml-15-days.html">DS Roadmap</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 2 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#topics">Topics Covered</a></li>
+                <li><a href="#notes">Detailed Notes</a></li>
+                <li><a href="#practical">Practical Code</a></li>
+                <li><a href="#explanation">Code Explanation</a></li>
+                <li><a href="#practice">Practice Tasks</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons"><a href="ds-day1.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Previous</a><a href="ds-day3.html" class="nav-btn next">Next <i class="fas fa-arrow-right"></i></a></div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 2: Python Fundamentals</h1>
+                <p class="day-subtitle">Variables, naming rules, data types, casting, input-output, comments, and syntax</p>
+            </header>
+
+            <section id="intro" class="content-section">
+                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                <div class="topic">
+                    <p>Day 2 ka goal hai learners ko <strong>Python Fundamentals</strong> practical way me samjhana. Is session me teacher pehle concept ko real-world story se explain karega, phir small example dikhayega, phir practical code run karwayega, aur finally code ka har important line meaning explain karega.</p>
+                    <p>Data Science course me har day previous day se connected hai. Python basics se data handling, data handling se visualization, visualization se machine learning, aur machine learning se final capstone project tak complete journey build hoti hai.</p>
+                    
+                </div>
+            </section>
+
+            <section id="topics" class="content-section">
+                <h2><i class="fas fa-list"></i> Topics Covered</h2>
+                <div class="topic"><ul><li><a href="#notes">Variables in Python</a></li>
+<li><a href="#notes">Naming Rules</a></li>
+<li><a href="#notes">Data Types: int, float, str, bool</a></li>
+<li><a href="#notes">Type Casting</a></li>
+<li><a href="#notes">Input and Output Handling</a></li>
+<li><a href="#notes">Comments in Python</a></li>
+<li><a href="#notes">Basic Python Syntax</a></li>
+<li><a href="#notes">Basic Programming Practice</a></li></ul></div>
+            </section>
+
+            <section id="notes" class="content-section">
+                <h2><i class="fas fa-book-open"></i> Detailed Classroom Notes</h2>
+                <div class="topic"><h3>Variables in Python</h3>
+<p><strong>Variables in Python</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Variables in Python</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Variables in Python</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Naming Rules</h3>
+<p><strong>Naming Rules</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Naming Rules</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Naming Rules</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Data Types: int, float, str, bool</h3>
+<p><strong>Data Types: int, float, str, bool</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Data Types: int, float, str, bool</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Data Types: int, float, str, bool</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Type Casting</h3>
+<p><strong>Type Casting</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Type Casting</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Type Casting</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Input and Output Handling</h3>
+<p><strong>Input and Output Handling</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Input and Output Handling</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Input and Output Handling</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Comments in Python</h3>
+<p><strong>Comments in Python</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Comments in Python</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Comments in Python</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Basic Python Syntax</h3>
+<p><strong>Basic Python Syntax</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Basic Python Syntax</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Basic Python Syntax</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+<div class="topic"><h3>Basic Programming Practice</h3>
+<p><strong>Basic Programming Practice</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
+<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Basic Programming Practice</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
+<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Basic Programming Practice</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+</div>
+            </section>
+
+            <section id="practical" class="content-section">
+                <h2><i class="fas fa-laptop-code"></i> Practical Code: Student Profile using Variables and Input</h2>
+                <div class="topic">
+                    <p>Is practical ko Jupyter Notebook me run karna hai. Pehle code ko read karo, phir run karo, phir output observe karo. Teacher ko output ke baad explain karna hai ki input data kaise process hua and final result kaise bana.</p>
+                    <pre><code class="language-python">student_name = input(&quot;Enter student name: &quot;)
+age = int(input(&quot;Enter age: &quot;))
+height = float(input(&quot;Enter height in feet: &quot;))
+is_enrolled = True
+print(&quot;Name:&quot;, student_name)
+print(&quot;Age:&quot;, age)
+print(&quot;Height:&quot;, height)
+print(&quot;Enrolled:&quot;, is_enrolled)</code></pre>
+                    <h4>Expected Output</h4>
+                    <pre><code>Name: Rahul
+Age: 20
+Height: 5.8
+Enrolled: True</code></pre>
+                </div>
+            </section>
+
+            <section id="explanation" class="content-section">
+                <h2><i class="fas fa-table"></i> Detailed Code Explanation</h2>
+                <div class="topic">
+                    <p>Code explanation ko directly classroom me padhkar samjha sakte ho. Har line ka purpose, use case, and project workflow me role explain kiya gaya hai.</p>
+                    <table>
+                        <thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead>
+                        <tbody><tr><td>1</td><td><code>student_name = input(&quot;Enter student name: &quot;)</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>2</td><td><code>age = int(input(&quot;Enter age: &quot;))</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>3</td><td><code>height = float(input(&quot;Enter height in feet: &quot;))</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>4</td><td><code>is_enrolled = True</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>5</td><td><code>print(&quot;Name:&quot;, student_name)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
+<tr><td>6</td><td><code>print(&quot;Age:&quot;, age)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
+<tr><td>7</td><td><code>print(&quot;Height:&quot;, height)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
+<tr><td>8</td><td><code>print(&quot;Enrolled:&quot;, is_enrolled)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="practice" class="content-section">
+                <h2><i class="fas fa-pen-to-square"></i> Student Practice Tasks</h2>
+                <div class="topic">
+                    <ol>
+                        <li>Given practical code ko notebook me run karo and output screenshot observe karo.</li>
+                        <li>Code me at least two values change karo and output ka difference explain karo.</li>
+                        <li>Apne words me likho ki aaj ka topic real-world Data Science project me kaha use hota hai.</li>
+                        <li>Ek small extra example banao using same concept.</li>
+                        <li>Teacher ko explain karo ki code ka input, process, and output kya hai.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section">
+                <h2><i class="fas fa-clipboard-check"></i> Assessment Questions</h2>
+                <div class="topic">
+                    <ol>
+                        <li>Python Fundamentals ka main purpose kya hai?</li>
+                        <li>Aaj ke kisi bhi 3 topics ka real-world use case explain karo.</li>
+                        <li>Practical code me data input kaha define hua hai?</li>
+                        <li>Practical code ka final output kya indicate karta hai?</li>
+                        <li>Agar code error de to sabse pehle kaunse 2 checks karoge?</li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
