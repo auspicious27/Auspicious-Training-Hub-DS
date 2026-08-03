@@ -560,8 +560,59 @@ body::before {
 footer {
     background: var(--darker-bg);
     color: var(--text-light);
-    padding: 2.5rem 0 1.5rem;
+    padding: 3rem 0 1.5rem;
     border-top: 2px solid var(--accent);
+}
+
+/* Footer Brand */
+.footer-brand {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 27, 107, 0.2);
+}
+
+.footer-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 2rem;
+    font-weight: 800;
+    transition: all 0.3s ease;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 27, 107, 0.1), rgba(102, 126, 234, 0.1));
+    border: 1px solid rgba(255, 27, 107, 0.3);
+}
+
+.footer-brand-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 27, 107, 0.3);
+    border-color: var(--accent);
+}
+
+.footer-brand-link i {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--gradient-start), #667eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-brand-tagline {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-top: 0.8rem;
+    font-style: italic;
+}
+
+.footer-role {
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
 }
 
 .footer-cards-container {
