@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science Day 3: Operators, Conditional Statements &amp; Loops</title>
+    <title>Day 3 - Operators, Conditional Statements &amp; Loops</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="day-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,8 +15,8 @@
             <div class="logo"><i class="fab fa-python"></i><span>Data Science ML</span></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="python-data-science-ml-15-days.html">DS Roadmap</a></li>
-                <li><a href="#assessment">Assessment</a></li>
+                <li><a href="python-data-science-ml-15-days.html">Curriculum</a></li>
+                <li><a href="#details">Details</a></li>
             </ul>
         </div>
     </nav>
@@ -25,219 +25,179 @@
         <aside class="sidebar">
             <h3>Day 3 Contents</h3>
             <ul class="topic-list">
-                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#overview">Overview</a></li>
                 <li><a href="#topics">Topics Covered</a></li>
-                <li><a href="#notes">Detailed Notes</a></li>
+                <li><a href="#details">Detailed Notes</a></li>
                 <li><a href="#practical">Practical Code</a></li>
                 <li><a href="#explanation">Code Explanation</a></li>
-                <li><a href="#practice">Practice Tasks</a></li>
-                <li><a href="#assessment">Assessment</a></li>
+                <li><a href="#practice">Practice</a></li>
             </ul>
             <div class="navigation-buttons"><a href="ds-day2.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Previous</a><a href="ds-day4.html" class="nav-btn next">Next <i class="fas fa-arrow-right"></i></a></div>
         </aside>
 
         <main class="content">
             <header class="day-header">
-                <h1>Day 3: Operators, Conditional Statements &amp; Loops</h1>
-                <p class="day-subtitle">Operators, expression evaluation, decisions, loops, loop control, range, and patterns</p>
+                <h1>Day 3 - Operators, Conditional Statements &amp; Loops</h1>
+
+                <p class="day-subtitle">PYTHON FOR DATA SCIENCE &amp; MACHINE LEARNING | Duration - 15 Days</p>
             </header>
 
-            <section id="intro" class="content-section">
-                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+            <section id="overview" class="content-section">
+                <h2><i class="fas fa-info-circle"></i> Overview</h2>
                 <div class="topic">
-                    <p>Day 3 ka goal hai learners ko <strong>Operators, Conditional Statements &amp; Loops</strong> practical way me samjhana. Is session me teacher pehle concept ko real-world story se explain karega, phir small example dikhayega, phir practical code run karwayega, aur finally code ka har important line meaning explain karega.</p>
-                    <p>Data Science course me har day previous day se connected hai. Python basics se data handling, data handling se visualization, visualization se machine learning, aur machine learning se final capstone project tak complete journey build hoti hai.</p>
-                    
+                    <p>Ye page Day 3 ke syllabus ko exactly structured way me cover karta hai. Isme pehle Topics Covered clearly diye gaye hain, phir har topic ya project feature ko classroom explanation ke form me samjhaya gaya hai.</p>
+                    <p>Teaching flow simple rahega: pehle concept samjhao, phir real-world use case connect karo, phir practical code run karao, phir output discuss karo, aur last me code ka line-by-line explanation do.</p>
                 </div>
             </section>
 
             <section id="topics" class="content-section">
                 <h2><i class="fas fa-list"></i> Topics Covered</h2>
-                <div class="topic"><ul><li><a href="#notes">Arithmetic Operators</a></li>
-<li><a href="#notes">Relational Operators</a></li>
-<li><a href="#notes">Logical Operators</a></li>
-<li><a href="#notes">Assignment Operators</a></li>
-<li><a href="#notes">Membership Operators</a></li>
-<li><a href="#notes">Identity Operators</a></li>
-<li><a href="#notes">Operator Precedence</a></li>
-<li><a href="#notes">Expression Evaluation</a></li>
-<li><a href="#notes">if Statement</a></li>
-<li><a href="#notes">if-else Statement</a></li>
-<li><a href="#notes">if-elif-else</a></li>
-<li><a href="#notes">Nested Conditions</a></li>
-<li><a href="#notes">Introduction to Loops</a></li>
-<li><a href="#notes">for Loop</a></li>
-<li><a href="#notes">while Loop</a></li>
-<li><a href="#notes">break, continue, pass</a></li>
-<li><a href="#notes">Range Function</a></li>
-<li><a href="#notes">Pattern-Based Programs</a></li></ul></div>
+                <div class="topic">
+
+                    <ul><li>Arithmetic Operators</li>
+<li>Relational Operators</li>
+<li>Logical Operators</li>
+<li>Assignment Operators</li>
+<li>Membership Operators</li>
+<li>Identity Operators</li>
+<li>Operator Precedence</li>
+<li>Expression Evaluation</li>
+<li>if Statement</li>
+<li>if-else Statement</li>
+<li>if-elif-else</li>
+<li>Nested Conditions</li>
+<li>Introduction to Loops</li>
+<li>for Loop</li>
+<li>while Loop</li>
+<li>break, continue, pass</li>
+<li>Range Function</li>
+<li>Pattern-Based Programs</li></ul>
+                </div>
             </section>
 
-            <section id="notes" class="content-section">
-                <h2><i class="fas fa-book-open"></i> Detailed Classroom Notes</h2>
+            <section id="details" class="content-section">
+                <h2><i class="fas fa-book-open"></i> Detailed Notes</h2>
                 <div class="topic"><h3>Arithmetic Operators</h3>
-<p><strong>Arithmetic Operators</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Arithmetic Operators</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Arithmetic Operators</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Arithmetic Operators</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Arithmetic Operators</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Relational Operators</h3>
-<p><strong>Relational Operators</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Relational Operators</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Relational Operators</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Relational Operators</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Relational Operators</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Logical Operators</h3>
-<p><strong>Logical Operators</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Logical Operators</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Logical Operators</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Logical Operators</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Logical Operators</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Assignment Operators</h3>
-<p><strong>Assignment Operators</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Assignment Operators</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Assignment Operators</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Assignment Operators</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Assignment Operators</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Membership Operators</h3>
-<p><strong>Membership Operators</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Membership Operators</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Membership Operators</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Membership Operators</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Membership Operators</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Identity Operators</h3>
-<p><strong>Identity Operators</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Identity Operators</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Identity Operators</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Identity Operators</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Identity Operators</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Operator Precedence</h3>
-<p><strong>Operator Precedence</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Operator Precedence</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Operator Precedence</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Operator Precedence</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Operator Precedence</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Expression Evaluation</h3>
-<p><strong>Expression Evaluation</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Expression Evaluation</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Expression Evaluation</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Expression Evaluation</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Expression Evaluation</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>if Statement</h3>
-<p><strong>if Statement</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>if Statement</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>if Statement</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>if Statement</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>if Statement</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>if-else Statement</h3>
-<p><strong>if-else Statement</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>if-else Statement</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>if-else Statement</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>if-else Statement</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>if-else Statement</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>if-elif-else</h3>
-<p><strong>if-elif-else</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>if-elif-else</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>if-elif-else</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>if-elif-else</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>if-elif-else</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Nested Conditions</h3>
-<p><strong>Nested Conditions</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Nested Conditions</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Nested Conditions</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Nested Conditions</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Nested Conditions</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Introduction to Loops</h3>
-<p><strong>Introduction to Loops</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Introduction to Loops</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Introduction to Loops</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Introduction to Loops</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Introduction to Loops</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>for Loop</h3>
-<p><strong>for Loop</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>for Loop</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>for Loop</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>for Loop</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>for Loop</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>while Loop</h3>
-<p><strong>while Loop</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>while Loop</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>while Loop</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>while Loop</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>while Loop</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>break, continue, pass</h3>
-<p><strong>break, continue, pass</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>break, continue, pass</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>break, continue, pass</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>break, continue, pass</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>break, continue, pass</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Range Function</h3>
-<p><strong>Range Function</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Range Function</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Range Function</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Range Function</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Range Function</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Pattern-Based Programs</h3>
-<p><strong>Pattern-Based Programs</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Pattern-Based Programs</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Pattern-Based Programs</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Pattern-Based Programs</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Pattern-Based Programs</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
             </section>
 
             <section id="practical" class="content-section">
-                <h2><i class="fas fa-laptop-code"></i> Practical Code: Marks Decision and Pattern Program</h2>
+                <h2><i class="fas fa-code"></i> Practical Code</h2>
                 <div class="topic">
-                    <p>Is practical ko Jupyter Notebook me run karna hai. Pehle code ko read karo, phir run karo, phir output observe karo. Teacher ko output ke baad explain karna hai ki input data kaise process hua and final result kaise bana.</p>
+                    <p>Is code ko Jupyter Notebook me run karna hai. Code simple rakha gaya hai taaki learner concept ko easily connect kar sake.</p>
                     <pre><code class="language-python">marks = 82
-if marks &gt;= 90:
-    grade = &quot;A+&quot;
-elif marks &gt;= 75:
-    grade = &quot;A&quot;
-elif marks &gt;= 60:
-    grade = &quot;B&quot;
+if marks &gt;= 75:
+    print(&quot;Excellent&quot;)
 else:
-    grade = &quot;Needs Improvement&quot;
-print(&quot;Grade:&quot;, grade)
+    print(&quot;Keep practicing&quot;)
 
-for row in range(1, 6):
-    print(&quot;*&quot; * row)</code></pre>
+for number in range(1, 6):
+    print(number)</code></pre>
                     <h4>Expected Output</h4>
-                    <pre><code>Grade: A
-*
-**
-***
-****
-*****</code></pre>
+                    <pre><code>Excellent
+1
+2
+3
+4
+5</code></pre>
                 </div>
             </section>
 
             <section id="explanation" class="content-section">
                 <h2><i class="fas fa-table"></i> Detailed Code Explanation</h2>
                 <div class="topic">
-                    <p>Code explanation ko directly classroom me padhkar samjha sakte ho. Har line ka purpose, use case, and project workflow me role explain kiya gaya hai.</p>
                     <table>
-                        <thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead>
-                        <tbody><tr><td>1</td><td><code>marks = 82</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>2</td><td><code>if marks &gt;= 90:</code></td><td>Ye line decision-making logic ka part hai. Program condition check karta hai aur condition ke according different block run karta hai. Real projects me conditions validation, grading, unknown user detection, missing data handling, and error handling ke liye use hoti hain. Isse program intelligent behavior show karta hai. Beginner ko samjhana hai ki condition True hone par indented code run hota hai. Ye line control flow manage karti hai.</td></tr>
-<tr><td>3</td><td><code>grade = &quot;A+&quot;</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>4</td><td><code>elif marks &gt;= 75:</code></td><td>Ye line decision-making logic ka part hai. Program condition check karta hai aur condition ke according different block run karta hai. Real projects me conditions validation, grading, unknown user detection, missing data handling, and error handling ke liye use hoti hain. Isse program intelligent behavior show karta hai. Beginner ko samjhana hai ki condition True hone par indented code run hota hai. Ye line control flow manage karti hai.</td></tr>
-<tr><td>5</td><td><code>grade = &quot;A&quot;</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>6</td><td><code>elif marks &gt;= 60:</code></td><td>Ye line decision-making logic ka part hai. Program condition check karta hai aur condition ke according different block run karta hai. Real projects me conditions validation, grading, unknown user detection, missing data handling, and error handling ke liye use hoti hain. Isse program intelligent behavior show karta hai. Beginner ko samjhana hai ki condition True hone par indented code run hota hai. Ye line control flow manage karti hai.</td></tr>
-<tr><td>7</td><td><code>grade = &quot;B&quot;</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>8</td><td><code>else:</code></td><td>Ye line decision-making logic ka part hai. Program condition check karta hai aur condition ke according different block run karta hai. Real projects me conditions validation, grading, unknown user detection, missing data handling, and error handling ke liye use hoti hain. Isse program intelligent behavior show karta hai. Beginner ko samjhana hai ki condition True hone par indented code run hota hai. Ye line control flow manage karti hai.</td></tr>
-<tr><td>9</td><td><code>grade = &quot;Needs Improvement&quot;</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>10</td><td><code>print(&quot;Grade:&quot;, grade)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
-<tr><td>12</td><td><code>for row in range(1, 6):</code></td><td>Ye line loop start karti hai. Loop ka kaam repeated work ko automate karna hota hai. Dataset rows, folders, images, features, ya repeated calculations par loop use hota hai. Without loop hume same code baar-baar manually likhna padta. Loop se code short, scalable, and practical ban jata hai. Ye line repeated processing ka engine hai.</td></tr>
-<tr><td>13</td><td><code>print(&quot;*&quot; * row)</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr></tbody>
+                        <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+                        <tbody><tr><td>1</td><td><code>marks = 82</code></td><td>Ye line variable me value store karti hai. Variable ko simple box ki tarah samjho jisme data rakha jata hai. Later code isi value ko read, process, calculate, train, predict, ya display kar sakta hai. Python me variable type automatically detect hota hai. Clean variable name se code readable rehta hai. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>2</td><td><code>if marks &gt;= 75:</code></td><td>Ye line decision making ke liye use hoti hai. Program condition check karta hai and uske according correct block run karta hai. Conditions grading, validation, missing data, model result, and unknown face detection me use hoti hain. Agar condition True hoti hai to indented code run hota hai. Agar False hoti hai to next condition ya else block run hota hai. Ye line program ko logical behavior deti hai.</td></tr>
+<tr><td>3</td><td><code>print(&quot;Excellent&quot;)</code></td><td>Ye line output screen par show karti hai. Notebook me print se immediately result visible hota hai. Teacher output dekhkar explain kar sakta hai ki code ne kya calculate ya process kiya. Debugging me bhi print useful hota hai. Data Science me summary, prediction, score, report status, and confirmation print kiye ja sakte hain. Ye line user ko visible feedback deti hai.</td></tr>
+<tr><td>4</td><td><code>else:</code></td><td>Ye line decision making ke liye use hoti hai. Program condition check karta hai and uske according correct block run karta hai. Conditions grading, validation, missing data, model result, and unknown face detection me use hoti hain. Agar condition True hoti hai to indented code run hota hai. Agar False hoti hai to next condition ya else block run hota hai. Ye line program ko logical behavior deti hai.</td></tr>
+<tr><td>5</td><td><code>print(&quot;Keep practicing&quot;)</code></td><td>Ye line output screen par show karti hai. Notebook me print se immediately result visible hota hai. Teacher output dekhkar explain kar sakta hai ki code ne kya calculate ya process kiya. Debugging me bhi print useful hota hai. Data Science me summary, prediction, score, report status, and confirmation print kiye ja sakte hain. Ye line user ko visible feedback deti hai.</td></tr>
+<tr><td>7</td><td><code>for number in range(1, 6):</code></td><td>Ye line loop start karti hai. Loop repeated work ko automate karta hai. Data Science me rows, columns, lists, steps, images, and records par repeated processing hoti hai. Loop ke bina same code baar-baar manually likhna padta. Loop code ko short and scalable banata hai. Ye line repeated execution ka practical tool hai.</td></tr>
+<tr><td>8</td><td><code>print(number)</code></td><td>Ye line output screen par show karti hai. Notebook me print se immediately result visible hota hai. Teacher output dekhkar explain kar sakta hai ki code ne kya calculate ya process kiya. Debugging me bhi print useful hota hai. Data Science me summary, prediction, score, report status, and confirmation print kiye ja sakte hain. Ye line user ko visible feedback deti hai.</td></tr></tbody>
                     </table>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
-                <h2><i class="fas fa-pen-to-square"></i> Student Practice Tasks</h2>
+                <h2><i class="fas fa-pen"></i> Practice</h2>
                 <div class="topic">
                     <ol>
-                        <li>Given practical code ko notebook me run karo and output screenshot observe karo.</li>
-                        <li>Code me at least two values change karo and output ka difference explain karo.</li>
-                        <li>Apne words me likho ki aaj ka topic real-world Data Science project me kaha use hota hai.</li>
-                        <li>Ek small extra example banao using same concept.</li>
-                        <li>Teacher ko explain karo ki code ka input, process, and output kya hai.</li>
-                    </ol>
-                </div>
-            </section>
-
-            <section id="assessment" class="content-section">
-                <h2><i class="fas fa-clipboard-check"></i> Assessment Questions</h2>
-                <div class="topic">
-                    <ol>
-                        <li>Operators, Conditional Statements &amp; Loops ka main purpose kya hai?</li>
-                        <li>Aaj ke kisi bhi 3 topics ka real-world use case explain karo.</li>
-                        <li>Practical code me data input kaha define hua hai?</li>
-                        <li>Practical code ka final output kya indicate karta hai?</li>
-                        <li>Agar code error de to sabse pehle kaunse 2 checks karoge?</li>
+                        <li>Notebook me practical code run karo.</li>
+                        <li>Output ko read karke explain karo.</li>
+                        <li>Code me two values change karke dobara run karo.</li>
+                        <li>Aaj ke topics covered me se 3 points apne words me explain karo.</li>
+                        <li>Ek small real-world example banao jo aaj ke topic se connected ho.</li>
                     </ol>
                 </div>
             </section>

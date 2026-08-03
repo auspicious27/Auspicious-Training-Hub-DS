@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science Day 9: Data Visualization &amp; Exploratory Data Analysis</title>
+    <title>Day 9 - Data Visualization &amp; Exploratory Data Analysis</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="day-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,8 +15,8 @@
             <div class="logo"><i class="fab fa-python"></i><span>Data Science ML</span></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="python-data-science-ml-15-days.html">DS Roadmap</a></li>
-                <li><a href="#assessment">Assessment</a></li>
+                <li><a href="python-data-science-ml-15-days.html">Curriculum</a></li>
+                <li><a href="#details">Details</a></li>
             </ul>
         </div>
     </nav>
@@ -25,162 +25,127 @@
         <aside class="sidebar">
             <h3>Day 9 Contents</h3>
             <ul class="topic-list">
-                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#overview">Overview</a></li>
                 <li><a href="#topics">Topics Covered</a></li>
-                <li><a href="#notes">Detailed Notes</a></li>
+                <li><a href="#details">Detailed Notes</a></li>
                 <li><a href="#practical">Practical Code</a></li>
                 <li><a href="#explanation">Code Explanation</a></li>
-                <li><a href="#practice">Practice Tasks</a></li>
-                <li><a href="#assessment">Assessment</a></li>
+                <li><a href="#practice">Practice</a></li>
             </ul>
             <div class="navigation-buttons"><a href="ds-day8.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Previous</a><a href="ds-day10.html" class="nav-btn next">Next <i class="fas fa-arrow-right"></i></a></div>
         </aside>
 
         <main class="content">
             <header class="day-header">
-                <h1>Day 9: Data Visualization &amp; Exploratory Data Analysis</h1>
-                <p class="day-subtitle">Matplotlib, Seaborn, charts, correlation matrix, EDA, and insights</p>
+                <h1>Day 9 - Data Visualization &amp; Exploratory Data Analysis</h1>
+
+                <p class="day-subtitle">PYTHON FOR DATA SCIENCE &amp; MACHINE LEARNING | Duration - 15 Days</p>
             </header>
 
-            <section id="intro" class="content-section">
-                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+            <section id="overview" class="content-section">
+                <h2><i class="fas fa-info-circle"></i> Overview</h2>
                 <div class="topic">
-                    <p>Day 9 ka goal hai learners ko <strong>Data Visualization &amp; Exploratory Data Analysis</strong> practical way me samjhana. Is session me teacher pehle concept ko real-world story se explain karega, phir small example dikhayega, phir practical code run karwayega, aur finally code ka har important line meaning explain karega.</p>
-                    <p>Data Science course me har day previous day se connected hai. Python basics se data handling, data handling se visualization, visualization se machine learning, aur machine learning se final capstone project tak complete journey build hoti hai.</p>
-                    
+                    <p>Ye page Day 9 ke syllabus ko exactly structured way me cover karta hai. Isme pehle Topics Covered clearly diye gaye hain, phir har topic ya project feature ko classroom explanation ke form me samjhaya gaya hai.</p>
+                    <p>Teaching flow simple rahega: pehle concept samjhao, phir real-world use case connect karo, phir practical code run karao, phir output discuss karo, aur last me code ka line-by-line explanation do.</p>
                 </div>
             </section>
 
             <section id="topics" class="content-section">
                 <h2><i class="fas fa-list"></i> Topics Covered</h2>
-                <div class="topic"><ul><li><a href="#notes">Matplotlib Basics</a></li>
-<li><a href="#notes">Seaborn Basics</a></li>
-<li><a href="#notes">Line Charts</a></li>
-<li><a href="#notes">Bar Charts</a></li>
-<li><a href="#notes">Histograms</a></li>
-<li><a href="#notes">Scatter Plots</a></li>
-<li><a href="#notes">Correlation Matrix</a></li>
-<li><a href="#notes">Exploratory Data Analysis (EDA)</a></li>
-<li><a href="#notes">Data Insights</a></li></ul></div>
+                <div class="topic">
+
+                    <ul><li>Matplotlib Basics</li>
+<li>Seaborn Basics</li>
+<li>Line Charts</li>
+<li>Bar Charts</li>
+<li>Histograms</li>
+<li>Scatter Plots</li>
+<li>Correlation Matrix</li>
+<li>Exploratory Data Analysis (EDA)</li>
+<li>Data Insights</li></ul>
+                </div>
             </section>
 
-            <section id="notes" class="content-section">
-                <h2><i class="fas fa-book-open"></i> Detailed Classroom Notes</h2>
+            <section id="details" class="content-section">
+                <h2><i class="fas fa-book-open"></i> Detailed Notes</h2>
                 <div class="topic"><h3>Matplotlib Basics</h3>
-<p><strong>Matplotlib Basics</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Matplotlib Basics</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Matplotlib Basics</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Matplotlib Basics</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Matplotlib Basics</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Seaborn Basics</h3>
-<p><strong>Seaborn Basics</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Seaborn Basics</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Seaborn Basics</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Seaborn Basics</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Seaborn Basics</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Line Charts</h3>
-<p><strong>Line Charts</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Line Charts</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Line Charts</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Line Charts</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Line Charts</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Bar Charts</h3>
-<p><strong>Bar Charts</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Bar Charts</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Bar Charts</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Bar Charts</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Bar Charts</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Histograms</h3>
-<p><strong>Histograms</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Histograms</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Histograms</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Histograms</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Histograms</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Scatter Plots</h3>
-<p><strong>Scatter Plots</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Scatter Plots</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Scatter Plots</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Scatter Plots</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Scatter Plots</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Correlation Matrix</h3>
-<p><strong>Correlation Matrix</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Correlation Matrix</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Correlation Matrix</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Correlation Matrix</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Correlation Matrix</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Exploratory Data Analysis (EDA)</h3>
-<p><strong>Exploratory Data Analysis (EDA)</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Exploratory Data Analysis (EDA)</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Exploratory Data Analysis (EDA)</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Exploratory Data Analysis (EDA)</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Exploratory Data Analysis (EDA)</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
 <div class="topic"><h3>Data Insights</h3>
-<p><strong>Data Insights</strong> ko classroom me simple real-world example se samjhana chahiye. Is topic ka main purpose learners ko ye batana hai ki programming, data handling, analysis, ya machine learning workflow me ye concept kaha fit hota hai. Jab student pehli baar topic sunta hai, to definition ke saath practical reason bhi clear hona chahiye: hum isko kyu use karte hain, kab use karte hain, aur isse problem solve kaise hoti hai.</p>
-<p>Data Science learning me har concept ek chain ka part hai. Pehle data ko samajhna hota hai, phir usko clean karna hota hai, phir useful columns select karne hote hain, phir analysis ya model building hoti hai. <strong>Data Insights</strong> ko bhi isi practical flow me explain karo, taaki student sirf theory memorize na kare balki use case bhi samjhe.</p>
-<div class="example-box"><h4>Real-world use case</h4><p>Agar hum student marks, house prices, salary prediction, Titanic survival, ya attendance data par kaam kar rahe hain, to <strong>Data Insights</strong> hume data ko better samajhne, process karne, decision lene, ya prediction banane me help karta hai. Isliye classroom me example hamesha dataset ya project se connect karke dikhana chahiye.</p></div>
+<p><strong>Data Insights</strong> ko pehle simple definition se introduce karo. Student ko batana hai ki ye topic Python, Data Science, Machine Learning, ya OpenCV workflow me kyu important hai. Is topic ka practical use tab clear hota hai jab hum ise real dataset, prediction problem, visualization, ya project feature ke saath connect karte hain.</p>
+<p>Classroom explanation me <strong>Data Insights</strong> ko example ke saath samjhao. Agar topic Python basics se related hai to small program dikhao. Agar topic data science se related hai to dataset example lo. Agar topic machine learning se related hai to features, labels, model, prediction, and evaluation ke flow se connect karo.</p>
 </div>
             </section>
 
             <section id="practical" class="content-section">
-                <h2><i class="fas fa-laptop-code"></i> Practical Code: EDA with Titanic-style Dataset</h2>
+                <h2><i class="fas fa-code"></i> Practical Code</h2>
                 <div class="topic">
-                    <p>Is practical ko Jupyter Notebook me run karna hai. Pehle code ko read karo, phir run karo, phir output observe karo. Teacher ko output ke baad explain karna hai ki input data kaise process hua and final result kaise bana.</p>
-                    <pre><code class="language-python">import pandas as pd
-import seaborn as sns
+                    <p>Is code ko Jupyter Notebook me run karna hai. Code simple rakha gaya hai taaki learner concept ko easily connect kar sake.</p>
+                    <pre><code class="language-python">import seaborn as sns
 import matplotlib.pyplot as plt
 
 df = sns.load_dataset(&quot;titanic&quot;)
-print(df.head())
-print(df[[&quot;age&quot;, &quot;fare&quot;, &quot;survived&quot;]].corr())
-
-sns.histplot(df[&quot;age&quot;].dropna(), kde=True)
+sns.histplot(df[&quot;age&quot;].dropna())
 plt.title(&quot;Age Distribution&quot;)
-plt.show()
-
-sns.scatterplot(data=df, x=&quot;age&quot;, y=&quot;fare&quot;, hue=&quot;survived&quot;)
-plt.title(&quot;Age vs Fare&quot;)
 plt.show()</code></pre>
                     <h4>Expected Output</h4>
-                    <pre><code>Titanic dataset preview, correlation matrix, histogram, and scatter plot.</code></pre>
+                    <pre><code>Histogram chart of Titanic age distribution.</code></pre>
                 </div>
             </section>
 
             <section id="explanation" class="content-section">
                 <h2><i class="fas fa-table"></i> Detailed Code Explanation</h2>
                 <div class="topic">
-                    <p>Code explanation ko directly classroom me padhkar samjha sakte ho. Har line ka purpose, use case, and project workflow me role explain kiya gaya hai.</p>
                     <table>
-                        <thead><tr><th>Line</th><th>Code</th><th>Detailed Explanation</th></tr></thead>
-                        <tbody><tr><td>1</td><td><code>import pandas as pd</code></td><td>Ye line required library import karti hai. Library ka matlab ready-made tools ka collection hota hai. Is project me hum sab kuch scratch se nahi banate, balki Python libraries ka use karke real work fast karte hain. Import ke baad us library ke functions notebook me available ho jaate hain. Agar import fail hota hai to package install ya environment check karna hota hai. Ye line practical code ka setup part hai.</td></tr>
-<tr><td>2</td><td><code>import seaborn as sns</code></td><td>Ye line required library import karti hai. Library ka matlab ready-made tools ka collection hota hai. Is project me hum sab kuch scratch se nahi banate, balki Python libraries ka use karke real work fast karte hain. Import ke baad us library ke functions notebook me available ho jaate hain. Agar import fail hota hai to package install ya environment check karna hota hai. Ye line practical code ka setup part hai.</td></tr>
-<tr><td>3</td><td><code>import matplotlib.pyplot as plt</code></td><td>Ye line required library import karti hai. Library ka matlab ready-made tools ka collection hota hai. Is project me hum sab kuch scratch se nahi banate, balki Python libraries ka use karke real work fast karte hain. Import ke baad us library ke functions notebook me available ho jaate hain. Agar import fail hota hai to package install ya environment check karna hota hai. Ye line practical code ka setup part hai.</td></tr>
-<tr><td>5</td><td><code>df = sns.load_dataset(&quot;titanic&quot;)</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>6</td><td><code>print(df.head())</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
-<tr><td>7</td><td><code>print(df[[&quot;age&quot;, &quot;fare&quot;, &quot;survived&quot;]].corr())</code></td><td>Ye line output screen par show karti hai. Notebook me print statement se student ko immediate feedback milta hai. Debugging ke time bhi print useful hota hai kyunki hum check kar sakte hain variable me kya value aa rahi hai. Teaching me output dekhkar concept clear hota hai. Real workflow me final result, summary, prediction, ya status message print kiya jata hai. Ye line code ka visible result deti hai.</td></tr>
-<tr><td>9</td><td><code>sns.histplot(df[&quot;age&quot;].dropna(), kde=True)</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>10</td><td><code>plt.title(&quot;Age Distribution&quot;)</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next line ya final output me use hota hai. Data Science code me aisi lines data clean, transform, train, predict, evaluate, save, ya visualize kar sakti hain. Student ko batana hai ki har line previous data par kaam karke next step ke liye output banati hai. Is tarah complete workflow step by step build hota hai. Ye line program ke main logic ka part hai.</td></tr>
-<tr><td>11</td><td><code>plt.show()</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next line ya final output me use hota hai. Data Science code me aisi lines data clean, transform, train, predict, evaluate, save, ya visualize kar sakti hain. Student ko batana hai ki har line previous data par kaam karke next step ke liye output banati hai. Is tarah complete workflow step by step build hota hai. Ye line program ke main logic ka part hai.</td></tr>
-<tr><td>13</td><td><code>sns.scatterplot(data=df, x=&quot;age&quot;, y=&quot;fare&quot;, hue=&quot;survived&quot;)</code></td><td>Ye line variable me value store karti hai. Variable ko container ki tarah samjho jisme data temporary memory me rakha jata hai. Is value ko code ke next steps me use kiya ja sakta hai. Data Science workflow me variables dataset, model, features, labels, result, ya file path hold karte hain. Clean variable names code ko readable banate hain. Ye line program ke data flow ko organize karti hai.</td></tr>
-<tr><td>14</td><td><code>plt.title(&quot;Age vs Fare&quot;)</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next line ya final output me use hota hai. Data Science code me aisi lines data clean, transform, train, predict, evaluate, save, ya visualize kar sakti hain. Student ko batana hai ki har line previous data par kaam karke next step ke liye output banati hai. Is tarah complete workflow step by step build hota hai. Ye line program ke main logic ka part hai.</td></tr>
-<tr><td>15</td><td><code>plt.show()</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next line ya final output me use hota hai. Data Science code me aisi lines data clean, transform, train, predict, evaluate, save, ya visualize kar sakti hain. Student ko batana hai ki har line previous data par kaam karke next step ke liye output banati hai. Is tarah complete workflow step by step build hota hai. Ye line program ke main logic ka part hai.</td></tr></tbody>
+                        <thead><tr><th>Line</th><th>Code</th><th>Explanation</th></tr></thead>
+                        <tbody><tr><td>1</td><td><code>import seaborn as sns</code></td><td>Ye line required library import karti hai. Library hume ready-made functions deti hai, jisse project fast and practical banta hai. Data Science me Pandas, Matplotlib, Seaborn, Scikit-learn, OpenCV, and Pickle jaise tools bahut use hote hain. Import ke baad hum us library ke functions notebook me use kar sakte hain. Agar import error aaye to package install karna hota hai. Isliye import line setup ka important part hai.</td></tr>
+<tr><td>2</td><td><code>import matplotlib.pyplot as plt</code></td><td>Ye line required library import karti hai. Library hume ready-made functions deti hai, jisse project fast and practical banta hai. Data Science me Pandas, Matplotlib, Seaborn, Scikit-learn, OpenCV, and Pickle jaise tools bahut use hote hain. Import ke baad hum us library ke functions notebook me use kar sakte hain. Agar import error aaye to package install karna hota hai. Isliye import line setup ka important part hai.</td></tr>
+<tr><td>4</td><td><code>df = sns.load_dataset(&quot;titanic&quot;)</code></td><td>Ye line variable me value store karti hai. Variable ko simple box ki tarah samjho jisme data rakha jata hai. Later code isi value ko read, process, calculate, train, predict, ya display kar sakta hai. Python me variable type automatically detect hota hai. Clean variable name se code readable rehta hai. Ye line program ke data flow ko organize karti hai.</td></tr>
+<tr><td>5</td><td><code>sns.histplot(df[&quot;age&quot;].dropna())</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next steps me use hota hai. Kabhi ye calculation karta hai, kabhi model train karta hai, kabhi data clean karta hai, kabhi chart banata hai. Data Science workflow me har line previous data ko next useful form me convert karti hai. Teacher ko batana hai ki code top-to-bottom execute hota hai. Ye line project logic ka active part hai.</td></tr>
+<tr><td>6</td><td><code>plt.title(&quot;Age Distribution&quot;)</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next steps me use hota hai. Kabhi ye calculation karta hai, kabhi model train karta hai, kabhi data clean karta hai, kabhi chart banata hai. Data Science workflow me har line previous data ko next useful form me convert karti hai. Teacher ko batana hai ki code top-to-bottom execute hota hai. Ye line project logic ka active part hai.</td></tr>
+<tr><td>7</td><td><code>plt.show()</code></td><td>Ye line practical operation perform karti hai. Is operation ka result next steps me use hota hai. Kabhi ye calculation karta hai, kabhi model train karta hai, kabhi data clean karta hai, kabhi chart banata hai. Data Science workflow me har line previous data ko next useful form me convert karti hai. Teacher ko batana hai ki code top-to-bottom execute hota hai. Ye line project logic ka active part hai.</td></tr></tbody>
                     </table>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
-                <h2><i class="fas fa-pen-to-square"></i> Student Practice Tasks</h2>
+                <h2><i class="fas fa-pen"></i> Practice</h2>
                 <div class="topic">
                     <ol>
-                        <li>Given practical code ko notebook me run karo and output screenshot observe karo.</li>
-                        <li>Code me at least two values change karo and output ka difference explain karo.</li>
-                        <li>Apne words me likho ki aaj ka topic real-world Data Science project me kaha use hota hai.</li>
-                        <li>Ek small extra example banao using same concept.</li>
-                        <li>Teacher ko explain karo ki code ka input, process, and output kya hai.</li>
-                    </ol>
-                </div>
-            </section>
-
-            <section id="assessment" class="content-section">
-                <h2><i class="fas fa-clipboard-check"></i> Assessment Questions</h2>
-                <div class="topic">
-                    <ol>
-                        <li>Data Visualization &amp; Exploratory Data Analysis ka main purpose kya hai?</li>
-                        <li>Aaj ke kisi bhi 3 topics ka real-world use case explain karo.</li>
-                        <li>Practical code me data input kaha define hua hai?</li>
-                        <li>Practical code ka final output kya indicate karta hai?</li>
-                        <li>Agar code error de to sabse pehle kaunse 2 checks karoge?</li>
+                        <li>Notebook me practical code run karo.</li>
+                        <li>Output ko read karke explain karo.</li>
+                        <li>Code me two values change karke dobara run karo.</li>
+                        <li>Aaj ke topics covered me se 3 points apne words me explain karo.</li>
+                        <li>Ek small real-world example banao jo aaj ke topic se connected ho.</li>
                     </ol>
                 </div>
             </section>

@@ -8,176 +8,42 @@
     <link rel="stylesheet" href="day-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .course-hero {
-            padding: 130px 0 70px;
-            background: #000;
-            border-bottom: 2px solid var(--accent);
-        }
-        .course-hero h1 {
-            font-size: clamp(2.2rem, 5vw, 4.2rem);
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-        .course-hero .tagline {
-            color: var(--text-gray);
-            font-size: 1.2rem;
-            max-width: 900px;
-        }
-        .course-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 28px;
-        }
-        .course-pill {
-            border: 1px solid rgba(255, 27, 107, 0.45);
-            background: rgba(255, 27, 107, 0.1);
-            color: #fff;
-            padding: 10px 14px;
-            border-radius: 999px;
-            font-weight: 700;
-        }
-        .course-wrap {
-            padding: 55px 0;
-        }
-        .course-section {
-            background: rgba(26, 26, 26, 0.96);
-            border: 1px solid rgba(255, 27, 107, 0.25);
-            border-radius: 18px;
-            padding: 28px;
-            margin-bottom: 28px;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
-        }
-        .course-section h2 {
-            color: #fff;
-            margin-bottom: 14px;
-            font-size: 1.8rem;
-        }
-        .course-section p {
-            color: var(--text-gray);
-            margin-bottom: 12px;
-        }
-        .path-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-            margin-top: 20px;
-        }
-        .path-card {
-            background: #111;
-            border: 1px solid rgba(255, 27, 107, 0.22);
-            border-radius: 14px;
-            padding: 20px;
-        }
-        .path-card h3 {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .path-card ul {
-            margin-left: 18px;
-            color: var(--text-gray);
-        }
-        .day-card {
-            background: #101010;
-            border: 1px solid rgba(255, 27, 107, 0.22);
-            border-radius: 16px;
-            padding: 22px;
-            margin: 18px 0;
-        }
-        .day-card h3 {
-            color: #fff;
-            margin-bottom: 8px;
-            font-size: 1.45rem;
-        }
-        .day-label {
-            color: var(--accent);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            font-size: 0.88rem;
-        }
-        .topic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
-            margin-top: 14px;
-        }
-        .topic-chip {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #f5f5f5;
-            padding: 10px 12px;
-            border-radius: 10px;
-        }
-        .project-box {
-            margin-top: 14px;
-            padding: 16px;
-            border-radius: 12px;
-            background: rgba(255, 27, 107, 0.1);
-            border: 1px solid rgba(255, 27, 107, 0.28);
-        }
-        .project-box strong {
-            color: #fff;
-        }
-        .flow-list {
-            counter-reset: flow;
-            display: grid;
-            gap: 12px;
-            margin-top: 18px;
-        }
-        .flow-item {
-            counter-increment: flow;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px;
-            color: var(--text-gray);
-        }
-        .flow-item::before {
-            content: counter(flow);
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: #fff;
-            font-weight: 800;
-            margin-right: 10px;
-        }
-        @media (max-width: 760px) {
-            .course-section {
-                padding: 20px;
-            }
-        }
+        .course-hero { padding: 130px 0 70px; background: #000; border-bottom: 2px solid var(--accent); }
+        .course-hero h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 1rem; }
+        .course-hero .tagline { color: var(--text-gray); font-size: 1.2rem; max-width: 900px; }
+        .course-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+        .course-pill { border: 1px solid rgba(255, 27, 107, 0.45); background: rgba(255, 27, 107, 0.1); color: #fff; padding: 10px 14px; border-radius: 999px; font-weight: 700; }
+        .course-wrap { padding: 55px 0; }
+        .course-section { background: rgba(26, 26, 26, 0.96); border: 1px solid rgba(255, 27, 107, 0.25); border-radius: 18px; padding: 28px; margin-bottom: 28px; }
+        .course-section h2, .day-card h3, .day-card h4 { color: #fff; }
+        .course-section p, .day-card p { color: var(--text-gray); }
+        .day-card { background: #101010; border: 1px solid rgba(255, 27, 107, 0.22); border-radius: 16px; padding: 22px; margin: 18px 0; }
+        .day-label { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.88rem; text-decoration: none; }
+        .topic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 14px; }
+        .topic-chip { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); color: #f5f5f5; padding: 10px 12px; border-radius: 10px; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <i class="fab fa-python"></i>
-                <span>Auspicious</span>
-            </div>
+            <div class="logo"><i class="fab fa-python"></i><span>Auspicious</span></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#curriculum" class="active">Curriculum</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#outcomes">Outcomes</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="course-hero">
         <div class="container">
-            <h1>Python for Data Science & Machine Learning</h1>
-            <p class="tagline">A 15-day practical training roadmap that takes learners from Python programming basics to data science workflows, visualization, regression models, OpenCV face recognition, and a final smart attendance capstone project.</p>
+            <h1>PYTHON FOR DATA SCIENCE &amp; MACHINE LEARNING</h1>
+            <p class="tagline">Duration - 15 Days</p>
             <div class="course-meta">
-                <span class="course-pill">Duration: 15 Days</span>
-                <span class="course-pill">Mode: Theory + Practical</span>
-                <span class="course-pill">Tools: Python, Jupyter, Pandas, NumPy, Matplotlib, Seaborn, OpenCV</span>
-                <span class="course-pill">Final Capstone: Smart Face Recognition Attendance System</span>
+                <span class="course-pill">Python Programming</span>
+                <span class="course-pill">Data Science</span>
+                <span class="course-pill">Machine Learning</span>
+                <span class="course-pill">OpenCV Projects</span>
+                <span class="course-pill">Final Capstone Project</span>
             </div>
         </div>
     </header>
@@ -185,304 +51,255 @@
     <main class="course-wrap">
         <div class="container">
             <section class="course-section">
-                <h2><i class="fas fa-bullseye"></i> Course Purpose</h2>
-                <p>This course is designed for learners who want to understand Python from the beginning and then use it for real data science and machine learning tasks. The journey starts with programming logic, variables, operators, loops, functions, and data structures. After that, learners move into datasets, NumPy, Pandas, preprocessing, visualization, EDA, supervised learning, linear regression, OpenCV, model saving, and deployment basics.</p>
-                <p>The complete training is practical-first. Every major concept should be explained with real-world examples, classroom practice code, output discussion, and line-by-line code explanation. By Day 15, students should be able to build and present an end-to-end Smart Face Recognition Attendance System.</p>
+                <h2><i class="fas fa-book-open"></i> Complete 15 Days Curriculum</h2>
+                <p>Ye page aapke diye hue syllabus ke same structure me banaya gaya hai. Har day card par click karke detailed day-wise notes open kar sakte ho.</p>
             </section>
-
-            <section class="course-section">
-                <h2><i class="fas fa-route"></i> Learning Path</h2>
-                <div class="path-grid">
-                    <div class="path-card">
-                        <h3>Days 1-5: Python Foundation</h3>
-                        <ul>
-                            <li>Programming basics and Python setup</li>
-                            <li>Variables, data types, operators, conditions, loops</li>
-                            <li>Functions, strings, and data structures</li>
-                            <li>Mini project using student marks</li>
-                        </ul>
-                    </div>
-                    <div class="path-card">
-                        <h3>Days 6-9: Data Science Core</h3>
-                        <ul>
-                            <li>Data Science, AI, ML, and DL overview</li>
-                            <li>NumPy, Pandas, datasets, preprocessing</li>
-                            <li>Student performance dashboard project</li>
-                            <li>Visualization and EDA using Matplotlib and Seaborn</li>
-                        </ul>
-                    </div>
-                    <div class="path-card">
-                        <h3>Days 10-12: Machine Learning</h3>
-                        <ul>
-                            <li>Supervised learning and regression concepts</li>
-                            <li>Features, labels, model training, prediction</li>
-                            <li>House price prediction mini project</li>
-                            <li>MAE, MSE, R2 score, and real-world regression problems</li>
-                        </ul>
-                    </div>
-                    <div class="path-card">
-                        <h3>Days 13-15: OpenCV + Capstone</h3>
-                        <ul>
-                            <li>Face detection and recognition using OpenCV</li>
-                            <li>Model saving and loading using Pickle</li>
-                            <li>Attendance system with dashboard and report</li>
-                            <li>Final end-to-end project presentation</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
             <section id="curriculum" class="course-section">
-                <h2><i class="fas fa-calendar-days"></i> 15 Days Curriculum</h2>
 
                 <article class="day-card">
                     <a href="ds-day1.html" class="day-label">Day 1</a>
-                    <h3><a href="ds-day1.html" style="color: inherit; text-decoration: none;">Introduction to Programming & Python</a></h3>
-                    <p>Learners understand what programming means, why Python is popular, and how to run their first Python program.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">What is Programming?</span>
-                        <span class="topic-chip">Introduction to Python</span>
-                        <span class="topic-chip">Features of Python</span>
-                        <span class="topic-chip">Real-world Applications of Python</span>
-                        <span class="topic-chip">Installing Python & Anaconda</span>
-                        <span class="topic-chip">Python IDEs and Code Editors</span>
-                        <span class="topic-chip">Running Python Scripts</span>
-                        <span class="topic-chip">Python Interpreter Basics</span>
-                        <span class="topic-chip">Writing First Python Program</span>
-                    </div>
+                    <h3><a href="ds-day1.html" style="color: inherit; text-decoration: none;">Introduction to Programming &amp; Python</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">What is Programming?</span>
+<span class="topic-chip">Introduction to Python</span>
+<span class="topic-chip">Features of Python</span>
+<span class="topic-chip">Real-world Applications of Python</span>
+<span class="topic-chip">Installing Python &amp; Anaconda</span>
+<span class="topic-chip">Python IDEs and Code Editors</span>
+<span class="topic-chip">Running Python Scripts</span>
+<span class="topic-chip">Python Interpreter Basics</span>
+<span class="topic-chip">Writing First Python Program</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day2.html" class="day-label">Day 2</a>
                     <h3><a href="ds-day2.html" style="color: inherit; text-decoration: none;">Python Fundamentals</a></h3>
-                    <p>Learners build confidence with variables, basic data types, input/output, comments, and Python syntax.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">Variables in Python</span>
-                        <span class="topic-chip">Naming Rules</span>
-                        <span class="topic-chip">Data Types: int, float, str, bool</span>
-                        <span class="topic-chip">Type Casting</span>
-                        <span class="topic-chip">Input and Output Handling</span>
-                        <span class="topic-chip">Comments in Python</span>
-                        <span class="topic-chip">Basic Python Syntax</span>
-                        <span class="topic-chip">Basic Programming Practice</span>
-                    </div>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">Variables in Python</span>
+<span class="topic-chip">Naming Rules</span>
+<span class="topic-chip">Data Types (int, float, str, bool)</span>
+<span class="topic-chip">Type Casting</span>
+<span class="topic-chip">Input and Output Handling</span>
+<span class="topic-chip">Comments in Python</span>
+<span class="topic-chip">Basic Python Syntax</span>
+<span class="topic-chip">Basic Programming Practice</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day3.html" class="day-label">Day 3</a>
-                    <h3><a href="ds-day3.html" style="color: inherit; text-decoration: none;">Operators, Conditional Statements & Loops</a></h3>
-                    <p>Learners understand decision-making and repetition, which are the base of almost every practical program.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">Arithmetic Operators</span>
-                        <span class="topic-chip">Relational Operators</span>
-                        <span class="topic-chip">Logical Operators</span>
-                        <span class="topic-chip">Assignment Operators</span>
-                        <span class="topic-chip">Membership Operators</span>
-                        <span class="topic-chip">Identity Operators</span>
-                        <span class="topic-chip">Operator Precedence</span>
-                        <span class="topic-chip">Expression Evaluation</span>
-                        <span class="topic-chip">if, if-else, if-elif-else</span>
-                        <span class="topic-chip">Nested Conditions</span>
-                        <span class="topic-chip">for Loop and while Loop</span>
-                        <span class="topic-chip">break, continue, pass</span>
-                        <span class="topic-chip">Range Function</span>
-                        <span class="topic-chip">Pattern-Based Programs</span>
-                    </div>
+                    <h3><a href="ds-day3.html" style="color: inherit; text-decoration: none;">Operators, Conditional Statements &amp; Loops</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">Arithmetic Operators</span>
+<span class="topic-chip">Relational Operators</span>
+<span class="topic-chip">Logical Operators</span>
+<span class="topic-chip">Assignment Operators</span>
+<span class="topic-chip">Membership Operators</span>
+<span class="topic-chip">Identity Operators</span>
+<span class="topic-chip">Operator Precedence</span>
+<span class="topic-chip">Expression Evaluation</span>
+<span class="topic-chip">if Statement</span>
+<span class="topic-chip">if-else Statement</span>
+<span class="topic-chip">if-elif-else</span>
+<span class="topic-chip">Nested Conditions</span>
+<span class="topic-chip">Introduction to Loops</span>
+<span class="topic-chip">for Loop</span>
+<span class="topic-chip">while Loop</span>
+<span class="topic-chip">break, continue, pass</span>
+<span class="topic-chip">Range Function</span>
+<span class="topic-chip">Pattern-Based Programs</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day4.html" class="day-label">Day 4</a>
-                    <h3><a href="ds-day4.html" style="color: inherit; text-decoration: none;">Mini Project 1: Student Marks Management System</a></h3>
-                    <p>This project connects Python fundamentals with a real classroom-style marks calculation workflow.</p>
-                    <div class="project-box">
-                        <strong>Project Features:</strong> Student Data Input, Marks Calculation, Percentage Calculation, Grade Assignment, Result Display, Basic Report Generation.
-                    </div>
+                    <h3><a href="ds-day4.html" style="color: inherit; text-decoration: none;">Mini Project 1</a></h3>
+                    <p><strong>Project:</strong> Student Marks Management System</p>
+                    <h4>Project Features</h4>
+                    <div class="topic-grid"><span class="topic-chip">Student Data Input</span>
+<span class="topic-chip">Marks Calculation</span>
+<span class="topic-chip">Percentage Calculation</span>
+<span class="topic-chip">Grade Assignment</span>
+<span class="topic-chip">Result Display</span>
+<span class="topic-chip">Basic Report Generation</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day5.html" class="day-label">Day 5</a>
-                    <h3><a href="ds-day5.html" style="color: inherit; text-decoration: none;">Functions, Strings & Data Structures</a></h3>
-                    <p>Learners understand how to organize reusable logic and store data using Python collections.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">Defining Functions</span>
-                        <span class="topic-chip">Function Parameters & Arguments</span>
-                        <span class="topic-chip">Return Statement</span>
-                        <span class="topic-chip">Lambda Functions</span>
-                        <span class="topic-chip">String Basics</span>
-                        <span class="topic-chip">String Operations</span>
-                        <span class="topic-chip">Lists</span>
-                        <span class="topic-chip">Tuples</span>
-                        <span class="topic-chip">Dictionaries</span>
-                        <span class="topic-chip">Sets</span>
-                    </div>
+                    <h3><a href="ds-day5.html" style="color: inherit; text-decoration: none;">Functions, Strings &amp; Data Structures</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">Defining Functions</span>
+<span class="topic-chip">Function Parameters &amp; Arguments</span>
+<span class="topic-chip">Return Statement</span>
+<span class="topic-chip">Lambda Functions</span>
+<span class="topic-chip">String Basics</span>
+<span class="topic-chip">String Operations</span>
+<span class="topic-chip">Lists</span>
+<span class="topic-chip">Tuples</span>
+<span class="topic-chip">Dictionaries</span>
+<span class="topic-chip">Sets</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day6.html" class="day-label">Day 6</a>
-                    <h3><a href="ds-day6.html" style="color: inherit; text-decoration: none;">Introduction to Data Science & Machine Learning</a></h3>
-                    <p>Learners understand the big picture of Data Science, AI, ML, DL, and where these technologies are used in real life.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">What is Data Science?</span>
-                        <span class="topic-chip">Artificial Intelligence (AI)</span>
-                        <span class="topic-chip">Machine Learning (ML)</span>
-                        <span class="topic-chip">Deep Learning (DL)</span>
-                        <span class="topic-chip">Applications of Machine Learning</span>
-                        <span class="topic-chip">Machine Learning Workflow</span>
-                        <span class="topic-chip">Types of Machine Learning</span>
-                        <span class="topic-chip">Real-world ML Use Cases</span>
-                    </div>
+                    <h3><a href="ds-day6.html" style="color: inherit; text-decoration: none;">Introduction to Data Science &amp; Machine Learning</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">What is Data Science?</span>
+<span class="topic-chip">Artificial Intelligence (AI)</span>
+<span class="topic-chip">Machine Learning (ML)</span>
+<span class="topic-chip">Deep Learning (DL)</span>
+<span class="topic-chip">Applications of Machine Learning</span>
+<span class="topic-chip">Machine Learning Workflow</span>
+<span class="topic-chip">Types of Machine Learning</span>
+<span class="topic-chip">Real-world ML Use Cases</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day7.html" class="day-label">Day 7</a>
-                    <h3><a href="ds-day7.html" style="color: inherit; text-decoration: none;">Data Preprocessing, NumPy & Pandas</a></h3>
-                    <p>Learners start working with datasets and learn how to prepare raw data for analysis and machine learning.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">What is a Dataset?</span>
-                        <span class="topic-chip">Introduction to NumPy</span>
-                        <span class="topic-chip">Creating Arrays</span>
-                        <span class="topic-chip">Array Operations</span>
-                        <span class="topic-chip">Introduction to Pandas</span>
-                        <span class="topic-chip">Series & DataFrames</span>
-                        <span class="topic-chip">Loading CSV Files</span>
-                        <span class="topic-chip">Handling Missing Values</span>
-                        <span class="topic-chip">Data Cleaning</span>
-                        <span class="topic-chip">Feature Selection</span>
-                        <span class="topic-chip">Train-Test Split</span>
-                    </div>
+                    <h3><a href="ds-day7.html" style="color: inherit; text-decoration: none;">Data Preprocessing, NumPy &amp; Pandas</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">What is a Dataset?</span>
+<span class="topic-chip">Introduction to NumPy</span>
+<span class="topic-chip">Creating Arrays</span>
+<span class="topic-chip">Array Operations</span>
+<span class="topic-chip">Introduction to Pandas</span>
+<span class="topic-chip">Series &amp; DataFrames</span>
+<span class="topic-chip">Loading CSV Files</span>
+<span class="topic-chip">Handling Missing Values</span>
+<span class="topic-chip">Data Cleaning</span>
+<span class="topic-chip">Feature Selection</span>
+<span class="topic-chip">Train-Test Split</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day8.html" class="day-label">Day 8</a>
-                    <h3><a href="ds-day8.html" style="color: inherit; text-decoration: none;">Mini Project 2: Student Performance Analysis Dashboard</a></h3>
-                    <p>This project teaches learners how to load, clean, analyze, visualize, and report student performance data using Pandas and visualization libraries.</p>
-                    <div class="project-box">
-                        <strong>Project Features:</strong> Load Dataset, Clean Dataset, Data Analysis using Pandas, Data Visualization, Generate Performance Report, Identify Top Performers.
-                    </div>
+                    <h3><a href="ds-day8.html" style="color: inherit; text-decoration: none;">Mini Project 2</a></h3>
+                    <p><strong>Project:</strong> Student Performance Analysis Dashboard</p>
+                    <h4>Project Features</h4>
+                    <div class="topic-grid"><span class="topic-chip">Load Dataset</span>
+<span class="topic-chip">Clean Dataset</span>
+<span class="topic-chip">Data Analysis using Pandas</span>
+<span class="topic-chip">Data Visualization</span>
+<span class="topic-chip">Generate Performance Report</span>
+<span class="topic-chip">Identify Top Performers</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day9.html" class="day-label">Day 9</a>
-                    <h3><a href="ds-day9.html" style="color: inherit; text-decoration: none;">Data Visualization & Exploratory Data Analysis</a></h3>
-                    <p>Learners understand how charts help in finding patterns, relationships, and insights inside datasets.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">Matplotlib Basics</span>
-                        <span class="topic-chip">Seaborn Basics</span>
-                        <span class="topic-chip">Line Charts</span>
-                        <span class="topic-chip">Bar Charts</span>
-                        <span class="topic-chip">Histograms</span>
-                        <span class="topic-chip">Scatter Plots</span>
-                        <span class="topic-chip">Correlation Matrix</span>
-                        <span class="topic-chip">Exploratory Data Analysis (EDA)</span>
-                        <span class="topic-chip">Data Insights</span>
-                    </div>
+                    <h3><a href="ds-day9.html" style="color: inherit; text-decoration: none;">Data Visualization &amp; Exploratory Data Analysis</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">Matplotlib Basics</span>
+<span class="topic-chip">Seaborn Basics</span>
+<span class="topic-chip">Line Charts</span>
+<span class="topic-chip">Bar Charts</span>
+<span class="topic-chip">Histograms</span>
+<span class="topic-chip">Scatter Plots</span>
+<span class="topic-chip">Correlation Matrix</span>
+<span class="topic-chip">Exploratory Data Analysis (EDA)</span>
+<span class="topic-chip">Data Insights</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day10.html" class="day-label">Day 10</a>
-                    <h3><a href="ds-day10.html" style="color: inherit; text-decoration: none;">Supervised Learning & Linear Regression</a></h3>
-                    <p>Learners understand how supervised models learn from features and labels and make numeric predictions.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">Introduction to Supervised Learning</span>
-                        <span class="topic-chip">Features & Labels</span>
-                        <span class="topic-chip">Regression</span>
-                        <span class="topic-chip">Linear Regression</span>
-                        <span class="topic-chip">Model Training</span>
-                        <span class="topic-chip">Model Prediction</span>
-                        <span class="topic-chip">Model Evaluation</span>
-                        <span class="topic-chip">Student Marks Prediction Dataset</span>
-                        <span class="topic-chip">Salary Prediction Dataset</span>
-                    </div>
+                    <h3><a href="ds-day10.html" style="color: inherit; text-decoration: none;">Supervised Learning &amp; Linear Regression</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">Introduction to Supervised Learning</span>
+<span class="topic-chip">Features &amp; Labels</span>
+<span class="topic-chip">Regression</span>
+<span class="topic-chip">Linear Regression</span>
+<span class="topic-chip">Model Training</span>
+<span class="topic-chip">Model Prediction</span>
+<span class="topic-chip">Model Evaluation</span>
+<span class="topic-chip">Student Marks Prediction Dataset</span>
+<span class="topic-chip">Salary Prediction Dataset</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day11.html" class="day-label">Day 11</a>
-                    <h3><a href="ds-day11.html" style="color: inherit; text-decoration: none;">Mini Project 3: House Price Prediction System</a></h3>
-                    <p>This project applies regression to predict house prices using real-world features and evaluation metrics.</p>
-                    <div class="project-box">
-                        <strong>Project Features:</strong> Load House Price Dataset, Data Preprocessing, Train Linear Regression Model, Predict House Prices, Model Evaluation, Graphical Visualization.
-                    </div>
+                    <h3><a href="ds-day11.html" style="color: inherit; text-decoration: none;">Mini Project 3</a></h3>
+                    <p><strong>Project:</strong> House Price Prediction System</p>
+                    <h4>Project Features</h4>
+                    <div class="topic-grid"><span class="topic-chip">Load House Price Dataset</span>
+<span class="topic-chip">Data Preprocessing</span>
+<span class="topic-chip">Train Linear Regression Model</span>
+<span class="topic-chip">Predict House Prices</span>
+<span class="topic-chip">Model Evaluation</span>
+<span class="topic-chip">Graphical Visualization</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day12.html" class="day-label">Day 12</a>
-                    <h3><a href="ds-day12.html" style="color: inherit; text-decoration: none;">Multiple Linear Regression & Model Evaluation</a></h3>
-                    <p>Learners understand how multiple features affect predictions and how to evaluate model performance properly.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">Introduction to Multiple Linear Regression</span>
-                        <span class="topic-chip">Multiple Features</span>
-                        <span class="topic-chip">Feature Selection</span>
-                        <span class="topic-chip">Correlation Analysis</span>
-                        <span class="topic-chip">Feature Engineering</span>
-                        <span class="topic-chip">Model Building</span>
-                        <span class="topic-chip">MAE</span>
-                        <span class="topic-chip">MSE</span>
-                        <span class="topic-chip">R² Score</span>
-                        <span class="topic-chip">Real-world Regression Problems</span>
-                    </div>
+                    <h3><a href="ds-day12.html" style="color: inherit; text-decoration: none;">Multiple Linear Regression &amp; Model Evaluation</a></h3>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">Introduction to Multiple Linear Regression</span>
+<span class="topic-chip">Multiple Features</span>
+<span class="topic-chip">Feature Selection</span>
+<span class="topic-chip">Correlation Analysis</span>
+<span class="topic-chip">Feature Engineering</span>
+<span class="topic-chip">Model Building</span>
+<span class="topic-chip">MAE</span>
+<span class="topic-chip">MSE</span>
+<span class="topic-chip">R² Score</span>
+<span class="topic-chip">Real-world Regression Problems</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day13.html" class="day-label">Day 13</a>
-                    <h3><a href="ds-day13.html" style="color: inherit; text-decoration: none;">Mini Project 4: Face Recognition System</a></h3>
-                    <p>This project introduces computer vision using OpenCV and builds the foundation for face-based attendance automation.</p>
-                    <div class="project-box">
-                        <strong>Project Features:</strong> Face Detection using OpenCV, Capture Images from Webcam, Face Recognition using Machine Learning, Train Face Recognition Model, Identify Registered Users, Real-time Face Detection, Attendance Marking (Basic), Save Recognition Results.
-                    </div>
+                    <h3><a href="ds-day13.html" style="color: inherit; text-decoration: none;">Mini Project 4</a></h3>
+                    <p><strong>Project:</strong> Face Recognition System</p>
+                    <h4>Project Features</h4>
+                    <div class="topic-grid"><span class="topic-chip">Face Detection using OpenCV</span>
+<span class="topic-chip">Capture Images from Webcam</span>
+<span class="topic-chip">Face Recognition using Machine Learning</span>
+<span class="topic-chip">Train Face Recognition Model</span>
+<span class="topic-chip">Identify Registered Users</span>
+<span class="topic-chip">Real-time Face Detection</span>
+<span class="topic-chip">Attendance Marking (Basic)</span>
+<span class="topic-chip">Save Recognition Results</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day14.html" class="day-label">Day 14</a>
                     <h3><a href="ds-day14.html" style="color: inherit; text-decoration: none;">Machine Learning Model Deployment Basics</a></h3>
-                    <p>Learners understand how trained models are saved, loaded, tested, compared, and used again for prediction workflows.</p>
-                    <div class="topic-grid">
-                        <span class="topic-chip">End-to-End Machine Learning Workflow</span>
-                        <span class="topic-chip">Model Testing</span>
-                        <span class="topic-chip">Model Comparison</span>
-                        <span class="topic-chip">Feature Engineering</span>
-                        <span class="topic-chip">Saving Models using Pickle</span>
-                        <span class="topic-chip">Loading Trained Models</span>
-                        <span class="topic-chip">Prediction using Saved Models</span>
-                        <span class="topic-chip">Introduction to OpenCV</span>
-                        <span class="topic-chip">Real-world Machine Learning Applications</span>
-                    </div>
+
+                    <h4>Topics Covered</h4>
+                    <div class="topic-grid"><span class="topic-chip">End-to-End Machine Learning Workflow</span>
+<span class="topic-chip">Model Testing</span>
+<span class="topic-chip">Model Comparison</span>
+<span class="topic-chip">Feature Engineering</span>
+<span class="topic-chip">Saving Models using Pickle</span>
+<span class="topic-chip">Loading Trained Models</span>
+<span class="topic-chip">Prediction using Saved Models</span>
+<span class="topic-chip">Introduction to OpenCV</span>
+<span class="topic-chip">Real-world Machine Learning Applications</span></div>
                 </article>
 
                 <article class="day-card">
                     <a href="ds-day15.html" class="day-label">Day 15</a>
-                    <h3><a href="ds-day15.html" style="color: inherit; text-decoration: none;">Capstone Project: Smart Face Recognition Attendance System</a></h3>
-                    <p>The final day combines Python, data handling, OpenCV, model saving, dashboard creation, and presentation into one complete capstone project.</p>
-                    <div class="project-box">
-                        <strong>Project Features:</strong> Capture Student Face Data, Face Recognition using OpenCV, Attendance Marking System, Student Data Management, Store Attendance Records, Data Visualization Dashboard, Generate Attendance Report, Save Trained Model using Pickle, End-to-End Machine Learning Workflow, Final Project Presentation.
-                    </div>
+                    <h3><a href="ds-day15.html" style="color: inherit; text-decoration: none;">Capstone Project</a></h3>
+                    <p><strong>Project:</strong> Smart Face Recognition Attendance System</p>
+                    <h4>Project Features</h4>
+                    <div class="topic-grid"><span class="topic-chip">Capture Student Face Data</span>
+<span class="topic-chip">Face Recognition using OpenCV</span>
+<span class="topic-chip">Attendance Marking System</span>
+<span class="topic-chip">Student Data Management</span>
+<span class="topic-chip">Store Attendance Records</span>
+<span class="topic-chip">Data Visualization Dashboard</span>
+<span class="topic-chip">Generate Attendance Report</span>
+<span class="topic-chip">Save Trained Model using Pickle</span>
+<span class="topic-chip">End-to-End Machine Learning Workflow</span>
+<span class="topic-chip">Final Project Presentation</span></div>
                 </article>
-            </section>
-
-            <section id="projects" class="course-section">
-                <h2><i class="fas fa-laptop-code"></i> Mini Projects and Capstone</h2>
-                <div class="flow-list">
-                    <div class="flow-item"><strong>Day 4:</strong> Student Marks Management System for Python basics, calculations, conditions, and report generation.</div>
-                    <div class="flow-item"><strong>Day 8:</strong> Student Performance Analysis Dashboard using Pandas, cleaning, analysis, charts, and performance insights.</div>
-                    <div class="flow-item"><strong>Day 11:</strong> House Price Prediction System using preprocessing, regression model training, prediction, evaluation, and visualization.</div>
-                    <div class="flow-item"><strong>Day 13:</strong> Face Recognition System using OpenCV, webcam capture, model training, identity prediction, and basic attendance.</div>
-                    <div class="flow-item"><strong>Day 15:</strong> Smart Face Recognition Attendance System with student data management, attendance records, dashboard, report, Pickle model saving, and final presentation.</div>
-                </div>
-            </section>
-
-            <section id="outcomes" class="course-section">
-                <h2><i class="fas fa-graduation-cap"></i> Final Learning Outcomes</h2>
-                <p>After completing this 15-day course, learners should be able to write Python programs, handle data using NumPy and Pandas, clean datasets, visualize data, perform EDA, train regression models, evaluate model performance, use OpenCV for face detection and recognition, save trained model information using Pickle, and present an end-to-end machine learning capstone project.</p>
-                <p>This document can be used as the official course roadmap, website curriculum page, or student orientation page for the complete Python for Data Science & Machine Learning program.</p>
             </section>
         </div>
     </main>
-
-    <footer>
-        <div class="container">
-            <p class="footer-tagline">Python for Data Science & Machine Learning - 15 Days Training Roadmap</p>
-        </div>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
