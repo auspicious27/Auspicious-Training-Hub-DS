@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Introduction to Programming & Python</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>Auspicious</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 1 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#what-is-programming">What is Programming?</a></li>
+                <li><a href="#intro-python">Introduction to Python</a></li>
+                <li><a href="#features">Features of Python</a></li>
+                <li><a href="#applications">Real-world Applications</a></li>
+                <li><a href="#installation">Installing Python & Anaconda</a></li>
+                <li><a href="#ides">Python IDEs</a></li>
+                <li><a href="#running">Running Python Scripts</a></li>
+                <li><a href="#interpreter">Python Interpreter</a></li>
+                <li><a href="#first-program">First Python Program</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="index.html" class="nav-btn prev"><i class="fas fa-home"></i> Home</a>
+                <a href="day2.html" class="nav-btn next">Day 2 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 1: Introduction to Programming & Python</h1>
+                <p class="day-subtitle">Understanding programming fundamentals and getting started with Python</p>
+            </header>
+
+            <section id="intro" class="content-section">
+                <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                <p>Welcome to Day 1 of Python for Data Science & Machine Learning! Today we'll explore what programming is, why Python is the top choice for data science, and set up your development environment. By the end of this day, you'll write your first Python program.</p>
+            </section>
+
+            <section id="what-is-programming" class="content-section">
+                <h2><i class="fas fa-laptop-code"></i> What is Programming?</h2>
+                
+                <div class="topic">
+                    <h3>Understanding Programming</h3>
+                    <p><strong>Programming</strong> is the process of creating a set of instructions that tell a computer how to perform a task. Think of it as writing a recipe that a computer follows step by step.</p>
+                    
+                    <div class="key-points">
+                        <h4>Why Do We Need Programming?</h4>
+                        <ul>
+                            <li><strong>Automation:</strong> Perform repetitive tasks quickly and accurately</li>
+                            <li><strong>Problem Solving:</strong> Break complex problems into manageable steps</li>
+                            <li><strong>Data Processing:</strong> Analyze and manipulate large datasets</li>
+                            <li><strong>Innovation:</strong> Build apps, websites, AI systems, and more</li>
+                            <li><strong>Career Growth:</strong> High demand in every industry</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Real-World Analogy:</h4>
+                        <p>Imagine you're giving directions to someone who has never been to your house:</p>
+                        <ol>
+                            <li>Start at the main road</li>
+                            <li>Turn left at the traffic signal</li>
+                            <li>Walk 200 meters straight</li>
+                            <li>Turn right at the blue building</li>
+                            <li>My house is the 3rd one on the left</li>
+                        </ol>
+                        <p>Programming is exactly like this — giving precise, step-by-step instructions to a computer!</p>
+                    </div>
+
+                    <h4>Types of Programming Languages</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Language</th>
+                                <th>Example</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Low Level</td>
+                                <td>Machine Language</td>
+                                <td>10110000 01100001</td>
+                                <td>Hardware control</td>
+                            </tr>
+                            <tr>
+                                <td>Low Level</td>
+                                <td>Assembly</td>
+                                <td>MOV AL, 61h</td>
+                                <td>System programming</td>
+                            </tr>
+                            <tr>
+                                <td>High Level</td>
+                                <td>Python, Java, C++</td>
+                                <td>print("Hello")</td>
+                                <td>Applications, AI, Web</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="intro-python" class="content-section">
+                <h2><i class="fab fa-python"></i> Introduction to Python</h2>
+                
+                <div class="topic">
+                    <h3>What is Python?</h3>
+                    <p>Python is a high-level, interpreted, general-purpose programming language created by <strong>Guido van Rossum</strong> in <strong>1991</strong>. It emphasizes code readability and simplicity, making it perfect for beginners and professionals alike.</p>
+                    
+                    <div class="info-box">
+                        <p><strong>Fun Fact:</strong> Python is named after the British comedy group "Monty Python" — not the snake!</p>
+                    </div>
+
+                    <h4>Python Timeline</h4>
+                    <ul>
+                        <li><strong>1991:</strong> Python 1.0 released by Guido van Rossum</li>
+                        <li><strong>2000:</strong> Python 2.0 released with list comprehensions</li>
+                        <li><strong>2008:</strong> Python 3.0 released (major upgrade)</li>
+                        <li><strong>2024:</strong> Python 3.12+ (current version)</li>
+                    </ul>
+
+                    <div class="key-points">
+                        <h4>Why Python for Data Science?</h4>
+                        <ul>
+                            <li>Simple syntax — reads like English</li>
+                            <li>Rich ecosystem of data science libraries (NumPy, Pandas, Scikit-learn)</li>
+                            <li>Largest community support</li>
+                            <li>Used by Google, Netflix, Instagram, NASA</li>
+                            <li>Free and open-source</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="content-section">
+                <h2><i class="fas fa-star"></i> Features of Python</h2>
+                
+                <div class="topic">
+                    <h3>Key Features That Make Python Special</h3>
+                    
+                    <div class="use-cases">
+                        <div class="use-case">
+                            <i class="fas fa-book-reader"></i>
+                            <h4>Easy to Learn</h4>
+                            <p>Simple, readable syntax close to English</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-play-circle"></i>
+                            <h4>Interpreted</h4>
+                            <p>Runs line by line, no compilation needed</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-laptop"></i>
+                            <h4>Cross-Platform</h4>
+                            <p>Works on Windows, Mac, Linux</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Dynamically Typed</h4>
+                            <p>No need to declare variable types</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-cubes"></i>
+                            <h4>Object-Oriented</h4>
+                            <p>Supports OOP concepts</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-boxes"></i>
+                            <h4>Extensive Libraries</h4>
+                            <p>Thousands of pre-built packages</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Python vs Other Languages — Hello World Comparison:</h4>
+                        <p><strong>Python:</strong></p>
+                        <pre><code class="language-python">print("Hello, World!")</code></pre>
+                        <p><strong>Java:</strong></p>
+                        <pre><code>public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+                        <p><strong>C++:</strong></p>
+                        <pre><code>#include &lt;iostream&gt;
+int main() {
+    std::cout &lt;&lt; "Hello, World!";
+    return 0;
+}</code></pre>
+                        <p>See how simple Python is compared to others!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="applications" class="content-section">
+                <h2><i class="fas fa-globe"></i> Real-world Applications of Python</h2>
+                
+                <div class="topic">
+                    <h3>Where Python is Used</h3>
+                    
+                    <div class="use-cases">
+                        <div class="use-case">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Data Science</h4>
+                            <p>Pandas, NumPy, Matplotlib</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-robot"></i>
+                            <h4>Machine Learning & AI</h4>
+                            <p>Scikit-learn, TensorFlow, PyTorch</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-globe"></i>
+                            <h4>Web Development</h4>
+                            <p>Django, Flask, FastAPI</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Automation</h4>
+                            <p>Scripting, Web Scraping, Testing</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-eye"></i>
+                            <h4>Computer Vision</h4>
+                            <p>OpenCV, Face Recognition</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-comments"></i>
+                            <h4>NLP</h4>
+                            <p>NLTK, spaCy, ChatGPT</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Companies Using Python:</h4>
+                        <ul>
+                            <li><strong>Google:</strong> YouTube, Search Engine</li>
+                            <li><strong>Netflix:</strong> Recommendation System</li>
+                            <li><strong>Instagram:</strong> Backend Development</li>
+                            <li><strong>Spotify:</strong> Music Recommendations</li>
+                            <li><strong>NASA:</strong> Scientific Research</li>
+                            <li><strong>Tesla:</strong> Self-Driving Cars</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="installation" class="content-section">
+                <h2><i class="fas fa-download"></i> Installing Python & Anaconda</h2>
+                
+                <div class="topic">
+                    <h3>Method 1: Installing Python Directly</h3>
+                    <ol>
+                        <li>Visit <a href="https://www.python.org/downloads/" target="_blank" style="color: var(--accent);">python.org/downloads</a></li>
+                        <li>Download the latest version (Python 3.12+)</li>
+                        <li>Run the installer</li>
+                        <li><strong>Important:</strong> Check "Add Python to PATH" during installation</li>
+                        <li>Click "Install Now"</li>
+                        <li>Verify: Open terminal and type <code>python --version</code></li>
+                    </ol>
+
+                    <h3>Method 2: Installing Anaconda (Recommended for Data Science)</h3>
+                    <p>Anaconda is a complete data science platform that comes with Python + 250+ pre-installed packages.</p>
+                    
+                    <div class="key-points">
+                        <h4>Why Anaconda?</h4>
+                        <ul>
+                            <li>Comes with NumPy, Pandas, Matplotlib pre-installed</li>
+                            <li>Includes Jupyter Notebook (interactive coding)</li>
+                            <li>Easy package management with conda</li>
+                            <li>No need to install packages individually</li>
+                        </ul>
+                    </div>
+
+                    <h4>Anaconda Installation Steps:</h4>
+                    <ol>
+                        <li>Visit <a href="https://www.anaconda.com/download" target="_blank" style="color: var(--accent);">anaconda.com/download</a></li>
+                        <li>Download for your OS (Windows/Mac/Linux) — ~700 MB</li>
+                        <li>Run installer → Choose "Just Me"</li>
+                        <li>Register Anaconda as default Python</li>
+                        <li>Complete installation (5-10 min)</li>
+                        <li>Open Anaconda Navigator to verify</li>
+                    </ol>
+
+                    <div class="output-box">
+                        <strong>Verify Installation:</strong>
+                        <pre>$ python --version
+Python 3.12.0
+
+$ conda --version
+conda 23.7.4</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ides" class="content-section">
+                <h2><i class="fas fa-desktop"></i> Python IDEs and Code Editors</h2>
+                
+                <div class="topic">
+                    <h3>Popular Python Development Environments</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>IDE/Editor</th>
+                                <th>Best For</th>
+                                <th>Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Jupyter Notebook</strong></td>
+                                <td>Data Science, ML</td>
+                                <td>Interactive cells, inline graphs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>VS Code</strong></td>
+                                <td>General Programming</td>
+                                <td>Extensions, debugging, Git</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PyCharm</strong></td>
+                                <td>Large Projects</td>
+                                <td>Auto-complete, refactoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Colab</strong></td>
+                                <td>Cloud-based ML</td>
+                                <td>Free GPU, no setup needed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IDLE</strong></td>
+                                <td>Beginners</td>
+                                <td>Comes with Python, simple</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Spyder</strong></td>
+                                <td>Scientific Computing</td>
+                                <td>Variable explorer, plots</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>Our Recommendation:</strong> Use <strong>Jupyter Notebook</strong> (via Anaconda) for this course — it's perfect for Data Science learning with interactive code execution and inline visualizations.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="running" class="content-section">
+                <h2><i class="fas fa-terminal"></i> Running Python Scripts</h2>
+                
+                <div class="topic">
+                    <h3>Different Ways to Run Python Code</h3>
+                    
+                    <h4>1. Using Python Interactive Shell (REPL)</h4>
+                    <pre><code class="language-python">$ python
+>>> print("Hello from Python Shell!")
+Hello from Python Shell!
+>>> 2 + 3
+5
+>>> exit()</code></pre>
+
+                    <h4>2. Running a Python File (.py)</h4>
+                    <pre><code class="language-python"># Save as hello.py
+print("Hello from a Python file!")
+
+# Run in terminal:
+# $ python hello.py</code></pre>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <pre>Hello from a Python file!</pre>
+                    </div>
+
+                    <h4>3. Using Jupyter Notebook</h4>
+                    <pre><code class="language-python"># In a Jupyter cell, just type and press Shift+Enter
+print("Hello from Jupyter!")
+2 + 3  # Output appears below the cell</code></pre>
+
+                    <h4>4. Using Google Colab (Online)</h4>
+                    <p>Visit <a href="https://colab.research.google.com" target="_blank" style="color: var(--accent);">colab.research.google.com</a> → New Notebook → Start coding!</p>
+                </div>
+            </section>
+
+            <section id="interpreter" class="content-section">
+                <h2><i class="fas fa-cog"></i> Python Interpreter Basics</h2>
+                
+                <div class="topic">
+                    <h3>How Python Executes Code</h3>
+                    <p>Python is an <strong>interpreted language</strong> — it reads and executes code line by line, unlike compiled languages (C, Java) that convert entire code first.</p>
+                    
+                    <div class="ipo-diagram">
+                        <div class="ipo-box input">
+                            <h4>SOURCE CODE</h4>
+                            <p>Your .py file</p>
+                        </div>
+                        <div class="ipo-arrow">→</div>
+                        <div class="ipo-box process">
+                            <h4>INTERPRETER</h4>
+                            <p>Reads line by line</p>
+                        </div>
+                        <div class="ipo-arrow">→</div>
+                        <div class="ipo-box output">
+                            <h4>OUTPUT</h4>
+                            <p>Results on screen</p>
+                        </div>
+                    </div>
+
+                    <div class="key-points">
+                        <h4>Interpreted vs Compiled:</h4>
+                        <ul>
+                            <li><strong>Interpreted (Python):</strong> Executes line by line → Easier to debug, slower execution</li>
+                            <li><strong>Compiled (C/C++):</strong> Converts all code first → Harder to debug, faster execution</li>
+                        </ul>
+                    </div>
+
+                    <h4>Python Execution Flow:</h4>
+                    <ol>
+                        <li>You write Python code (.py file)</li>
+                        <li>Python interpreter reads the code</li>
+                        <li>Converts to bytecode (.pyc)</li>
+                        <li>Python Virtual Machine (PVM) executes bytecode</li>
+                        <li>Output is displayed</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="first-program" class="content-section">
+                <h2><i class="fas fa-code"></i> Writing First Python Program</h2>
+                
+                <div class="topic">
+                    <h3>Your First Python Programs</h3>
+                    
+                    <div class="detailed-example">
+                        <h4>Example 1: Hello World</h4>
+                        <pre><code class="language-python"># My first Python program
+print("Hello, World!")
+print("Welcome to Python for Data Science!")</code></pre>
+                        
+                        <div class="output-box">
+                            <strong>Output:</strong>
+                            <pre>Hello, World!
+Welcome to Python for Data Science!</pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Example 2: Basic Calculations</h4>
+                        <pre><code class="language-python"># Basic arithmetic
+print(5 + 3)      # Addition
+print(10 - 4)     # Subtraction
+print(6 * 7)      # Multiplication
+print(15 / 4)     # Division
+print(15 // 4)    # Floor Division
+print(15 % 4)     # Modulus (Remainder)
+print(2 ** 5)     # Power (2^5)</code></pre>
+                        
+                        <div class="output-box">
+                            <strong>Output:</strong>
+                            <pre>8
+6
+42
+3.75
+3
+3
+32</pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Example 3: Using Variables</h4>
+                        <pre><code class="language-python"># Storing data in variables
+name = "Data Scientist"
+age = 25
+salary = 75000.50
+
+print("Role:", name)
+print("Age:", age)
+print("Salary:", salary)</code></pre>
+                        
+                        <div class="output-box">
+                            <strong>Output:</strong>
+                            <pre>Role: Data Scientist
+Age: 25
+Salary: 75000.5</pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Example 4: User Input</h4>
+                        <pre><code class="language-python"># Getting input from user
+name = input("Enter your name: ")
+print("Hello,", name, "! Welcome to ML world!")
+
+# Getting numeric input
+age = int(input("Enter your age: "))
+print("In 5 years, you'll be", age + 5, "years old")</code></pre>
+                        
+                        <div class="output-box">
+                            <strong>Sample Run:</strong>
+                            <pre>Enter your name: Sayeed
+Hello, Sayeed ! Welcome to ML world!
+Enter your age: 22
+In 5 years, you'll be 27 years old</pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Example 5: Simple Calculator</h4>
+                        <pre><code class="language-python"># Simple Calculator Program
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+print("\n--- Results ---")
+print("Addition:", num1 + num2)
+print("Subtraction:", num1 - num2)
+print("Multiplication:", num1 * num2)
+print("Division:", num1 / num2)</code></pre>
+                        
+                        <div class="output-box">
+                            <strong>Sample Run:</strong>
+                            <pre>Enter first number: 10
+Enter second number: 3
+
+--- Results ---
+Addition: 13.0
+Subtraction: 7.0
+Multiplication: 30.0
+Division: 3.3333333333333335</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic">
+                    <h3>Practice Exercises</h3>
+                    
+                    <div class="exercise">
+                        <h4>Exercise 1: Personal Info Display</h4>
+                        <p>Write a program that displays your name, age, city, and favorite programming language.</p>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">name = "Sayeed"
+age = 22
+city = "Hyderabad"
+language = "Python"
+
+print("Name:", name)
+print("Age:", age)
+print("City:", city)
+print("Favorite Language:", language)</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Exercise 2: Area of Rectangle</h4>
+                        <p>Write a program to calculate the area and perimeter of a rectangle.</p>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">length = float(input("Enter length: "))
+width = float(input("Enter width: "))
+
+area = length * width
+perimeter = 2 * (length + width)
+
+print("Area:", area)
+print("Perimeter:", perimeter)</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Exercise 3: Temperature Converter</h4>
+                        <p>Convert Celsius to Fahrenheit. Formula: F = (C × 9/5) + 32</p>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">celsius = float(input("Enter temperature in Celsius: "))
+fahrenheit = (celsius * 9/5) + 32
+print(f"{celsius}°C = {fahrenheit}°F")</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 1 Assessment</h2>
+                
+                <div class="assessment-intro">
+                    <p>Test your understanding of today's concepts!</p>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Question 1</h3>
+                        <p>Who created Python and in which year?</p>
+                        <div class="options">
+                            <label><input type="radio" name="q1" value="a"> A) James Gosling, 1995</label>
+                            <label><input type="radio" name="q1" value="b"> B) Guido van Rossum, 1991</label>
+                            <label><input type="radio" name="q1" value="c"> C) Dennis Ritchie, 1972</label>
+                            <label><input type="radio" name="q1" value="d"> D) Bjarne Stroustrup, 1985</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: B) Guido van Rossum, 1991</strong></p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2</h3>
+                        <p>Which of the following is NOT a feature of Python?</p>
+                        <div class="options">
+                            <label><input type="radio" name="q2" value="a"> A) Interpreted</label>
+                            <label><input type="radio" name="q2" value="b"> B) Dynamically Typed</label>
+                            <label><input type="radio" name="q2" value="c"> C) Compiled Only</label>
+                            <label><input type="radio" name="q2" value="d"> D) Cross-Platform</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: C) Compiled Only</strong> — Python is interpreted, not compiled.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3</h3>
+                        <p>What is the output of: <code>print(10 // 3)</code></p>
+                        <div class="options">
+                            <label><input type="radio" name="q3" value="a"> A) 3.33</label>
+                            <label><input type="radio" name="q3" value="b"> B) 3</label>
+                            <label><input type="radio" name="q3" value="c"> C) 4</label>
+                            <label><input type="radio" name="q3" value="d"> D) 1</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: B) 3</strong> — // is floor division, it removes the decimal part.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4</h3>
+                        <p>Which function is used to take user input in Python?</p>
+                        <div class="options">
+                            <label><input type="radio" name="q4" value="a"> A) scanf()</label>
+                            <label><input type="radio" name="q4" value="b"> B) read()</label>
+                            <label><input type="radio" name="q4" value="c"> C) input()</label>
+                            <label><input type="radio" name="q4" value="d"> D) get()</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: C) input()</strong></p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5</h3>
+                        <p>What does the <code>print()</code> function do?</p>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer:</strong> The print() function displays output to the console/screen. It can print strings, numbers, variables, and expressions.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6</h3>
+                        <p>What is the output of: <code>print(2 ** 4)</code></p>
+                        <div class="options">
+                            <label><input type="radio" name="q6" value="a"> A) 8</label>
+                            <label><input type="radio" name="q6" value="b"> B) 6</label>
+                            <label><input type="radio" name="q6" value="c"> C) 16</label>
+                            <label><input type="radio" name="q6" value="d"> D) 24</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: C) 16</strong> — ** is the power operator. 2^4 = 16</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7</h3>
+                        <p>Which IDE is recommended for Data Science in Python?</p>
+                        <div class="options">
+                            <label><input type="radio" name="q7" value="a"> A) Notepad</label>
+                            <label><input type="radio" name="q7" value="b"> B) Jupyter Notebook</label>
+                            <label><input type="radio" name="q7" value="c"> C) Turbo C++</label>
+                            <label><input type="radio" name="q7" value="d"> D) BlueJ</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: B) Jupyter Notebook</strong> — It provides interactive coding with inline visualizations, perfect for DS/ML.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8</h3>
+                        <p>Python is named after:</p>
+                        <div class="options">
+                            <label><input type="radio" name="q8" value="a"> A) A snake</label>
+                            <label><input type="radio" name="q8" value="b"> B) Monty Python comedy group</label>
+                            <label><input type="radio" name="q8" value="c"> C) A Greek god</label>
+                            <label><input type="radio" name="q8" value="d"> D) A city</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Answer: B) Monty Python comedy group</strong></p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9</h3>
+                        <p>Write a Python program to calculate Simple Interest. (SI = P × R × T / 100)</p>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">P = float(input("Enter Principal: "))
+R = float(input("Enter Rate: "))
+T = float(input("Enter Time: "))
+
+SI = (P * R * T) / 100
+print("Simple Interest:", SI)</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10</h3>
+                        <p>What is the difference between <code>/</code> and <code>//</code> in Python?</p>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer">
+                                <p><strong>/</strong> — Regular division (returns float): 10/3 = 3.333</p>
+                                <p><strong>//</strong> — Floor division (returns integer): 10//3 = 3</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="index.html" class="nav-btn prev"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="day2.html" class="nav-btn next">Next: Day 2 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: Functions, Strings & Data Structures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 5 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#parameters">Parameters & Arguments</a></li>
+                <li><a href="#lambda">Lambda Functions</a></li>
+                <li><a href="#strings">Strings</a></li>
+                <li><a href="#lists">Lists</a></li>
+                <li><a href="#tuples">Tuples</a></li>
+                <li><a href="#dictionaries">Dictionaries</a></li>
+                <li><a href="#sets">Sets</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day4.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 4</a>
+                <a href="day6.html" class="nav-btn next">Day 6 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 5: Functions, Strings & Data Structures</h1>
+                <p class="day-subtitle">Reusable code blocks and Python's powerful data structures</p>
+            </header>
+
+            <section id="functions" class="content-section">
+                <h2><i class="fas fa-cube"></i> Defining Functions</h2>
+                <div class="topic">
+                    <h3>What are Functions?</h3>
+                    <p>A function is a reusable block of code that performs a specific task. Functions help organize code, avoid repetition, and make programs modular.</p>
+                    
+                    <pre><code class="language-python"># Defining a function
+def greet():
+    print("Hello! Welcome to Data Science")
+
+# Calling a function
+greet()  # Hello! Welcome to Data Science
+greet()  # Can be called multiple times
+
+# Function with return value
+def add(a, b):
+    return a + b
+
+result = add(5, 3)
+print(result)  # 8</code></pre>
+
+                    <div class="key-points">
+                        <h4>Function Syntax:</h4>
+                        <ul>
+                            <li><code>def</code> keyword to define</li>
+                            <li>Function name follows naming rules</li>
+                            <li>Parentheses () for parameters</li>
+                            <li>Colon : after parentheses</li>
+                            <li>Indented body</li>
+                            <li><code>return</code> to send back a value</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="parameters" class="content-section">
+                <h2><i class="fas fa-sliders-h"></i> Parameters & Arguments</h2>
+                <div class="topic">
+                    <h3>Types of Parameters</h3>
+                    <pre><code class="language-python"># Positional arguments
+def student_info(name, age, city):
+    print(f"{name}, {age} years, from {city}")
+
+student_info("Sayeed", 22, "Hyderabad")
+
+# Default parameters
+def greet(name, greeting="Hello"):
+    print(f"{greeting}, {name}!")
+
+greet("Ali")              # Hello, Ali!
+greet("Ali", "Welcome")  # Welcome, Ali!
+
+# Keyword arguments
+def calc_bmi(weight, height):
+    return weight / (height ** 2)
+
+bmi = calc_bmi(height=1.75, weight=70)  # Order doesn't matter
+print(f"BMI: {bmi:.2f}")
+
+# *args - Variable number of arguments
+def total(*numbers):
+    return sum(numbers)
+
+print(total(1, 2, 3))        # 6
+print(total(10, 20, 30, 40)) # 100
+
+# **kwargs - Variable keyword arguments
+def display_info(**info):
+    for key, value in info.items():
+        print(f"{key}: {value}")
+
+display_info(name="Sayeed", course="ML", year=2024)</code></pre>
+
+                    <h3>Return Statement</h3>
+                    <pre><code class="language-python"># Single return
+def square(n):
+    return n ** 2
+
+# Multiple returns
+def min_max(numbers):
+    return min(numbers), max(numbers)
+
+low, high = min_max([3, 7, 1, 9, 4])
+print(f"Min: {low}, Max: {high}")  # Min: 1, Max: 9</code></pre>
+                </div>
+            </section>
+
+            <section id="lambda" class="content-section">
+                <h2><i class="fas fa-bolt"></i> Lambda Functions</h2>
+                <div class="topic">
+                    <h3>Anonymous Functions (One-liners)</h3>
+                    <pre><code class="language-python"># Lambda syntax: lambda arguments: expression
+square = lambda x: x ** 2
+print(square(5))  # 25
+
+add = lambda a, b: a + b
+print(add(3, 7))  # 10
+
+# Lambda with built-in functions
+numbers = [3, 1, 4, 1, 5, 9]
+sorted_nums = sorted(numbers, key=lambda x: -x)  # Descending
+print(sorted_nums)  # [9, 5, 4, 3, 1, 1]
+
+# Lambda with map/filter
+marks = [85, 42, 93, 37, 76, 55]
+passed = list(filter(lambda x: x >= 40, marks))
+print(passed)  # [85, 42, 93, 76, 55]
+
+doubled = list(map(lambda x: x * 2, [1, 2, 3, 4]))
+print(doubled)  # [2, 4, 6, 8]</code></pre>
+                </div>
+            </section>
+
+            <section id="strings" class="content-section">
+                <h2><i class="fas fa-font"></i> Strings</h2>
+                <div class="topic">
+                    <h3>String Basics & Operations</h3>
+                    <pre><code class="language-python"># Creating strings
+s1 = "Hello World"
+s2 = 'Python'
+s3 = """Multi-line
+string"""
+
+# Indexing (0-based)
+print(s1[0])    # H
+print(s1[-1])   # d (last character)
+
+# Slicing [start:stop:step]
+print(s1[0:5])   # Hello
+print(s1[6:])    # World
+print(s1[::-1])  # dlroW olleH (reversed)
+
+# String methods
+text = "  Python for Data Science  "
+print(text.strip())       # Removes spaces
+print(text.lower())       # lowercase
+print(text.upper())       # UPPERCASE
+print(text.replace("Python", "ML"))
+print(text.split())       # ['Python', 'for', 'Data', 'Science']
+print(text.find("Data"))  # Index where "Data" starts
+print(text.count("a"))    # Count occurrences
+
+# String formatting
+name, score = "Ali", 95.5
+print(f"Name: {name}, Score: {score:.1f}")
+
+# String checks
+print("hello".isalpha())  # True
+print("123".isdigit())    # True
+print("hello world".title())  # Hello World</code></pre>
+                </div>
+            </section>
+
+            <section id="lists" class="content-section">
+                <h2><i class="fas fa-list"></i> Lists</h2>
+                <div class="topic">
+                    <h3>Python Lists (Ordered, Mutable)</h3>
+                    <pre><code class="language-python"># Creating lists
+fruits = ["apple", "banana", "mango"]
+numbers = [1, 2, 3, 4, 5]
+mixed = [1, "hello", 3.14, True]
+
+# Accessing elements
+print(fruits[0])     # apple
+print(fruits[-1])    # mango
+print(fruits[1:3])   # ['banana', 'mango']
+
+# List methods
+fruits.append("grape")      # Add to end
+fruits.insert(1, "orange")  # Insert at index
+fruits.remove("banana")     # Remove by value
+popped = fruits.pop()       # Remove & return last
+fruits.sort()               # Sort in place
+fruits.reverse()            # Reverse in place
+
+# List operations
+nums = [3, 1, 4, 1, 5]
+print(len(nums))        # 5
+print(sum(nums))        # 14
+print(min(nums))        # 1
+print(max(nums))        # 5
+print(sorted(nums))     # [1, 1, 3, 4, 5]
+
+# List comprehension (powerful!)
+squares = [x**2 for x in range(1, 6)]
+print(squares)  # [1, 4, 9, 16, 25]
+
+evens = [x for x in range(20) if x % 2 == 0]
+print(evens)  # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
+                </div>
+            </section>
+
+            <section id="tuples" class="content-section">
+                <h2><i class="fas fa-lock"></i> Tuples</h2>
+                <div class="topic">
+                    <h3>Python Tuples (Ordered, Immutable)</h3>
+                    <pre><code class="language-python"># Creating tuples
+point = (3, 5)
+colors = ("red", "green", "blue")
+single = (42,)  # Single element needs comma
+
+# Accessing elements
+print(colors[0])    # red
+print(colors[-1])   # blue
+print(colors[1:])   # ('green', 'blue')
+
+# Tuple unpacking
+x, y = point
+print(f"x={x}, y={y}")  # x=3, y=5
+
+# Tuples are immutable
+# colors[0] = "yellow"  # TypeError!
+
+# Tuple methods
+nums = (1, 2, 3, 2, 4, 2)
+print(nums.count(2))   # 3
+print(nums.index(3))   # 2
+
+# When to use tuples vs lists?
+# Tuples: Fixed data (coordinates, RGB colors, constants)
+# Lists: Data that changes (shopping cart, student marks)</code></pre>
+                </div>
+            </section>
+
+            <section id="dictionaries" class="content-section">
+                <h2><i class="fas fa-book"></i> Dictionaries</h2>
+                <div class="topic">
+                    <h3>Key-Value Pairs (Unordered, Mutable)</h3>
+                    <pre><code class="language-python"># Creating dictionaries
+student = {
+    "name": "Sayeed",
+    "age": 22,
+    "course": "Data Science",
+    "marks": [85, 90, 78]
+}
+
+# Accessing values
+print(student["name"])       # Sayeed
+print(student.get("age"))    # 22
+print(student.get("email", "N/A"))  # N/A (default)
+
+# Adding/Modifying
+student["email"] = "sayeed@gmail.com"
+student["age"] = 23
+
+# Dictionary methods
+print(student.keys())    # All keys
+print(student.values())  # All values
+print(student.items())   # Key-value pairs
+
+# Iterating
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(1, 6)}
+print(squares)  # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+# Nested dictionary
+students = {
+    "S001": {"name": "Ali", "marks": 85},
+    "S002": {"name": "Sara", "marks": 92}
+}
+print(students["S001"]["name"])  # Ali</code></pre>
+                </div>
+            </section>
+
+            <section id="sets" class="content-section">
+                <h2><i class="fas fa-circle-notch"></i> Sets</h2>
+                <div class="topic">
+                    <h3>Unique Elements (Unordered, No Duplicates)</h3>
+                    <pre><code class="language-python"># Creating sets
+fruits = {"apple", "banana", "mango", "apple"}
+print(fruits)  # {'apple', 'banana', 'mango'} - no duplicates!
+
+# Set operations
+a = {1, 2, 3, 4, 5}
+b = {4, 5, 6, 7, 8}
+
+print(a | b)   # Union: {1, 2, 3, 4, 5, 6, 7, 8}
+print(a & b)   # Intersection: {4, 5}
+print(a - b)   # Difference: {1, 2, 3}
+print(a ^ b)   # Symmetric difference: {1, 2, 3, 6, 7, 8}
+
+# Set methods
+fruits.add("grape")
+fruits.remove("banana")
+fruits.discard("xyz")  # No error if not found
+
+# Practical use: Remove duplicates from list
+nums = [1, 2, 2, 3, 3, 3, 4]
+unique = list(set(nums))
+print(unique)  # [1, 2, 3, 4]</code></pre>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 5 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Q1: What is the output?</h3>
+                        <pre><code class="language-python">def greet(name="World"):
+    return f"Hello, {name}!"
+print(greet())</code></pre>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Hello, World!</strong> — Default parameter is used when no argument is passed.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q2: What does "hello"[::-1] return?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>"olleh"</strong> — Reverses the string using slice with step -1.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q3: Difference between list and tuple?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>List</strong> is mutable (can be changed), <strong>Tuple</strong> is immutable (cannot be changed after creation). Lists use [], Tuples use ().</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q4: What is a lambda function?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>An anonymous (unnamed) function defined in one line: <code>lambda x: x * 2</code>. Used for short, simple operations.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q5: How to get all keys from a dictionary?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Use <code>dict.keys()</code> method. Example: <code>student.keys()</code></p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q6: What does set do with duplicates?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Sets automatically remove duplicates. <code>{1, 2, 2, 3}</code> becomes <code>{1, 2, 3}</code></p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q7: Write a function to check if a number is prime</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+print(is_prime(7))   # True
+print(is_prime(10))  # False</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q8: What is list comprehension?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>A concise way to create lists: <code>[expression for item in iterable if condition]</code>. Example: <code>[x**2 for x in range(5)]</code> → [0, 1, 4, 9, 16]</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q9: What is *args used for?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><code>*args</code> allows a function to accept any number of positional arguments as a tuple.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q10: Write a function that returns word count of a sentence</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">def word_count(sentence):
+    words = sentence.split()
+    return len(words)
+
+print(word_count("Python for Data Science"))  # 4</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day4.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 4</a>
+                <a href="day6.html" class="nav-btn next">Next: Day 6 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

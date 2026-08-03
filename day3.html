@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: Operators, Conditional Statements & Loops</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 3 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#arithmetic">Arithmetic Operators</a></li>
+                <li><a href="#relational">Relational Operators</a></li>
+                <li><a href="#logical">Logical Operators</a></li>
+                <li><a href="#assignment">Assignment Operators</a></li>
+                <li><a href="#membership">Membership & Identity</a></li>
+                <li><a href="#precedence">Operator Precedence</a></li>
+                <li><a href="#conditionals">Conditional Statements</a></li>
+                <li><a href="#loops">Loops</a></li>
+                <li><a href="#patterns">Pattern Programs</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day2.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 2</a>
+                <a href="day4.html" class="nav-btn next">Day 4 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 3: Operators, Conditional Statements & Loops</h1>
+                <p class="day-subtitle">Master operators, decision making, and repetition in Python</p>
+            </header>
+
+            <section id="arithmetic" class="content-section">
+                <h2><i class="fas fa-calculator"></i> Arithmetic Operators</h2>
+                <div class="topic">
+                    <h3>Mathematical Operations in Python</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>+</td><td>Addition</td><td>10 + 3</td><td>13</td></tr>
+                            <tr><td>-</td><td>Subtraction</td><td>10 - 3</td><td>7</td></tr>
+                            <tr><td>*</td><td>Multiplication</td><td>10 * 3</td><td>30</td></tr>
+                            <tr><td>/</td><td>Division</td><td>10 / 3</td><td>3.333</td></tr>
+                            <tr><td>//</td><td>Floor Division</td><td>10 // 3</td><td>3</td></tr>
+                            <tr><td>%</td><td>Modulus</td><td>10 % 3</td><td>1</td></tr>
+                            <tr><td>**</td><td>Exponent</td><td>2 ** 4</td><td>16</td></tr>
+                        </tbody>
+                    </table>
+                    <pre><code class="language-python"># Arithmetic operators in action
+a, b = 17, 5
+
+print(f"Addition: {a} + {b} = {a + b}")        # 22
+print(f"Subtraction: {a} - {b} = {a - b}")     # 12
+print(f"Multiplication: {a} * {b} = {a * b}")  # 85
+print(f"Division: {a} / {b} = {a / b}")        # 3.4
+print(f"Floor Division: {a} // {b} = {a // b}")# 3
+print(f"Modulus: {a} % {b} = {a % b}")         # 2
+print(f"Power: {a} ** {b} = {a ** b}")         # 1419857</code></pre>
+                </div>
+            </section>
+
+            <section id="relational" class="content-section">
+                <h2><i class="fas fa-balance-scale"></i> Relational Operators</h2>
+                <div class="topic">
+                    <h3>Comparison Operators (Return True/False)</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>==</td><td>Equal to</td><td>5 == 5</td><td>True</td></tr>
+                            <tr><td>!=</td><td>Not equal</td><td>5 != 3</td><td>True</td></tr>
+                            <tr><td>&gt;</td><td>Greater than</td><td>5 &gt; 3</td><td>True</td></tr>
+                            <tr><td>&lt;</td><td>Less than</td><td>5 &lt; 3</td><td>False</td></tr>
+                            <tr><td>&gt;=</td><td>Greater or equal</td><td>5 &gt;= 5</td><td>True</td></tr>
+                            <tr><td>&lt;=</td><td>Less or equal</td><td>5 &lt;= 3</td><td>False</td></tr>
+                        </tbody>
+                    </table>
+                    <pre><code class="language-python">x, y = 10, 20
+print(x == y)   # False
+print(x != y)   # True
+print(x > y)    # False
+print(x < y)    # True
+print(x >= 10)  # True
+print(x <= 5)   # False</code></pre>
+                </div>
+            </section>
+
+            <section id="logical" class="content-section">
+                <h2><i class="fas fa-code-branch"></i> Logical Operators</h2>
+                <div class="topic">
+                    <h3>Combining Conditions</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>and</td><td>Both True</td><td>True and False</td><td>False</td></tr>
+                            <tr><td>or</td><td>At least one True</td><td>True or False</td><td>True</td></tr>
+                            <tr><td>not</td><td>Reverses</td><td>not True</td><td>False</td></tr>
+                        </tbody>
+                    </table>
+                    <pre><code class="language-python">age = 22
+has_license = True
+
+# and - both conditions must be True
+can_drive = age >= 18 and has_license
+print(f"Can drive: {can_drive}")  # True
+
+# or - at least one condition True
+is_weekend = False
+is_holiday = True
+can_rest = is_weekend or is_holiday
+print(f"Can rest: {can_rest}")    # True
+
+# not - reverses the condition
+is_raining = False
+go_outside = not is_raining
+print(f"Go outside: {go_outside}") # True</code></pre>
+                </div>
+            </section>
+
+            <section id="assignment" class="content-section">
+                <h2><i class="fas fa-equals"></i> Assignment Operators</h2>
+                <div class="topic">
+                    <h3>Shorthand Assignment</h3>
+                    <pre><code class="language-python">x = 10      # Assign
+x += 5      # x = x + 5  → 15
+x -= 3      # x = x - 3  → 12
+x *= 2      # x = x * 2  → 24
+x /= 4      # x = x / 4  → 6.0
+x //= 2     # x = x // 2 → 3.0
+x %= 2      # x = x % 2  → 1.0
+x **= 3     # x = x ** 3 → 1.0
+
+print(x)    # 1.0</code></pre>
+                </div>
+            </section>
+
+            <section id="membership" class="content-section">
+                <h2><i class="fas fa-search"></i> Membership & Identity Operators</h2>
+                <div class="topic">
+                    <h3>Membership Operators (in, not in)</h3>
+                    <pre><code class="language-python"># Check if value exists in a sequence
+fruits = ["apple", "banana", "mango"]
+
+print("apple" in fruits)      # True
+print("grape" in fruits)      # False
+print("grape" not in fruits)  # True
+
+# Works with strings too
+name = "Data Science"
+print("Data" in name)         # True
+print("ML" in name)           # False</code></pre>
+
+                    <h3>Identity Operators (is, is not)</h3>
+                    <pre><code class="language-python"># Check if two variables point to same object
+a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+
+print(a == b)     # True (same value)
+print(a is b)     # False (different objects)
+print(a is c)     # True (same object)
+print(a is not b) # True</code></pre>
+                </div>
+            </section>
+
+            <section id="precedence" class="content-section">
+                <h2><i class="fas fa-sort-numeric-up"></i> Operator Precedence</h2>
+                <div class="topic">
+                    <h3>Order of Operations (Highest to Lowest)</h3>
+                    <table>
+                        <thead><tr><th>Priority</th><th>Operator</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>()</td><td>Parentheses</td></tr>
+                            <tr><td>2</td><td>**</td><td>Exponentiation</td></tr>
+                            <tr><td>3</td><td>*, /, //, %</td><td>Multiplication, Division</td></tr>
+                            <tr><td>4</td><td>+, -</td><td>Addition, Subtraction</td></tr>
+                            <tr><td>5</td><td>==, !=, &gt;, &lt;</td><td>Comparisons</td></tr>
+                            <tr><td>6</td><td>not</td><td>Logical NOT</td></tr>
+                            <tr><td>7</td><td>and</td><td>Logical AND</td></tr>
+                            <tr><td>8</td><td>or</td><td>Logical OR</td></tr>
+                        </tbody>
+                    </table>
+                    <pre><code class="language-python"># Expression evaluation
+result = 2 + 3 * 4      # 14 (not 20!)
+result = (2 + 3) * 4    # 20 (parentheses first)
+result = 2 ** 3 ** 2    # 512 (right to left: 3**2=9, 2**9=512)
+result = 10 - 3 + 2     # 9 (left to right for same priority)</code></pre>
+                </div>
+            </section>
+
+            <section id="conditionals" class="content-section">
+                <h2><i class="fas fa-code-branch"></i> Conditional Statements</h2>
+                <div class="topic">
+                    <h3>if Statement</h3>
+                    <pre><code class="language-python">age = 20
+
+if age >= 18:
+    print("You are an adult")
+    print("You can vote")</code></pre>
+
+                    <h3>if-else Statement</h3>
+                    <pre><code class="language-python">marks = 45
+
+if marks >= 40:
+    print("PASSED!")
+else:
+    print("FAILED!")</code></pre>
+
+                    <h3>if-elif-else Statement</h3>
+                    <pre><code class="language-python">marks = 78
+
+if marks >= 90:
+    grade = "A+"
+elif marks >= 80:
+    grade = "A"
+elif marks >= 70:
+    grade = "B"
+elif marks >= 60:
+    grade = "C"
+elif marks >= 40:
+    grade = "D"
+else:
+    grade = "F"
+
+print(f"Marks: {marks}, Grade: {grade}")  # Grade: B</code></pre>
+
+                    <h3>Nested Conditions</h3>
+                    <pre><code class="language-python">age = 25
+has_license = True
+
+if age >= 18:
+    if has_license:
+        print("You can drive!")
+    else:
+        print("Get a license first!")
+else:
+    print("You're too young to drive")</code></pre>
+
+                    <div class="example-box">
+                        <h4>Practical Example: Eligibility Checker</h4>
+                        <pre><code class="language-python">age = int(input("Enter age: "))
+nationality = input("Enter nationality: ")
+
+if age >= 18 and nationality.lower() == "indian":
+    print("Eligible to vote in India!")
+elif age >= 18:
+    print("Adult but not Indian citizen")
+else:
+    years_left = 18 - age
+    print(f"Not eligible. Wait {years_left} more years.")</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="loops" class="content-section">
+                <h2><i class="fas fa-sync-alt"></i> Loops</h2>
+                <div class="topic">
+                    <h3>for Loop</h3>
+                    <pre><code class="language-python"># Iterating over a range
+for i in range(5):
+    print(i)  # 0, 1, 2, 3, 4
+
+# range(start, stop, step)
+for i in range(1, 11):
+    print(i)  # 1 to 10
+
+for i in range(0, 20, 5):
+    print(i)  # 0, 5, 10, 15
+
+# Iterating over a list
+fruits = ["apple", "banana", "mango"]
+for fruit in fruits:
+    print(f"I like {fruit}")
+
+# Iterating over a string
+for char in "Python":
+    print(char)</code></pre>
+
+                    <h3>while Loop</h3>
+                    <pre><code class="language-python"># Basic while loop
+count = 1
+while count <= 5:
+    print(f"Count: {count}")
+    count += 1
+
+# Sum of numbers
+total = 0
+num = 1
+while num <= 100:
+    total += num
+    num += 1
+print(f"Sum of 1 to 100: {total}")  # 5050</code></pre>
+
+                    <h3>break, continue, pass</h3>
+                    <pre><code class="language-python"># break - exit loop immediately
+for i in range(10):
+    if i == 5:
+        break
+    print(i)  # 0, 1, 2, 3, 4
+
+# continue - skip current iteration
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)  # 1, 3, 5, 7, 9 (odd numbers only)
+
+# pass - do nothing (placeholder)
+for i in range(5):
+    if i == 3:
+        pass  # TODO: handle this later
+    print(i)  # 0, 1, 2, 3, 4</code></pre>
+
+                    <h3>Range Function Details</h3>
+                    <pre><code class="language-python"># range(stop) - 0 to stop-1
+print(list(range(5)))        # [0, 1, 2, 3, 4]
+
+# range(start, stop) - start to stop-1
+print(list(range(3, 8)))     # [3, 4, 5, 6, 7]
+
+# range(start, stop, step)
+print(list(range(0, 20, 3))) # [0, 3, 6, 9, 12, 15, 18]
+
+# Reverse range
+print(list(range(10, 0, -1)))# [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]</code></pre>
+                </div>
+            </section>
+
+            <section id="patterns" class="content-section">
+                <h2><i class="fas fa-th"></i> Pattern-Based Programs</h2>
+                <div class="topic">
+                    <h3>Pattern Programs using Loops</h3>
+                    
+                    <div class="detailed-example">
+                        <h4>Pattern 1: Right Triangle</h4>
+                        <pre><code class="language-python"># Right angle triangle
+for i in range(1, 6):
+    print("* " * i)</code></pre>
+                        <div class="output-box">
+                            <strong>Output:</strong>
+                            <pre>* 
+* * 
+* * * 
+* * * * 
+* * * * * </pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Pattern 2: Number Triangle</h4>
+                        <pre><code class="language-python">for i in range(1, 6):
+    for j in range(1, i + 1):
+        print(j, end=" ")
+    print()</code></pre>
+                        <div class="output-box">
+                            <strong>Output:</strong>
+                            <pre>1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5 </pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Pattern 3: Multiplication Table</h4>
+                        <pre><code class="language-python">num = int(input("Enter number: "))
+for i in range(1, 11):
+    print(f"{num} x {i} = {num * i}")</code></pre>
+                        <div class="output-box">
+                            <strong>Output (for num=5):</strong>
+                            <pre>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50</pre>
+                        </div>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>Pattern 4: Inverted Triangle</h4>
+                        <pre><code class="language-python">for i in range(5, 0, -1):
+    print("* " * i)</code></pre>
+                        <div class="output-box">
+                            <strong>Output:</strong>
+                            <pre>* * * * * 
+* * * * 
+* * * 
+* * 
+* </pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 3 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Q1: What is 17 % 5?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>2</strong> — 17 divided by 5 = 3 remainder 2</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q2: What is the output?</h3>
+                        <pre><code class="language-python">x = 5
+print(x > 3 and x < 10)</code></pre>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>True</strong> — Both conditions are True (5>3 AND 5<10)</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q3: What does break do in a loop?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>break</strong> immediately exits/terminates the loop entirely, regardless of the loop condition.</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q4: What is range(2, 10, 3)?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>[2, 5, 8]</strong> — Starts at 2, increments by 3, stops before 10.</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q5: What is the difference between == and =?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>=</strong> is assignment (x = 5), <strong>==</strong> is comparison (x == 5 returns True/False)</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q6: Write a program to check if a number is even or odd</h3>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">num = int(input("Enter number: "))
+if num % 2 == 0:
+    print(f"{num} is Even")
+else:
+    print(f"{num} is Odd")</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q7: What is the output?</h3>
+                        <pre><code class="language-python">for i in range(5):
+    if i == 3:
+        continue
+    print(i)</code></pre>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>0 1 2 4</strong> — continue skips i=3 and moves to next iteration</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q8: Write a program to find factorial of a number</h3>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">n = int(input("Enter number: "))
+factorial = 1
+for i in range(1, n + 1):
+    factorial *= i
+print(f"Factorial of {n} = {factorial}")</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q9: What is "in" operator used for?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p>The <strong>in</strong> operator checks if a value exists in a sequence (list, string, tuple). Returns True if found, False otherwise.</p></div>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q10: Write a program to print sum of even numbers from 1 to 50</h3>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">total = 0
+for i in range(2, 51, 2):
+    total += i
+print(f"Sum of even numbers (1-50): {total}")  # 650</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day2.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 2</a>
+                <a href="day4.html" class="nav-btn next">Next: Day 4 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

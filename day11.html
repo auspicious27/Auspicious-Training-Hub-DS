@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 11: Mini Project 3 - House Price Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 11 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#dataset">Load Dataset</a></li>
+                <li><a href="#preprocessing">Preprocessing</a></li>
+                <li><a href="#model">Train Model</a></li>
+                <li><a href="#predict">Predictions</a></li>
+                <li><a href="#evaluate">Evaluation</a></li>
+                <li><a href="#visualize">Visualization</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day10.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 10</a>
+                <a href="day12.html" class="nav-btn next">Day 12 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 11: Mini Project 3</h1>
+                <p class="day-subtitle">House Price Prediction System using Linear Regression</p>
+            </header>
+
+            <section id="overview" class="content-section">
+                <h2><i class="fas fa-home"></i> Project Overview</h2>
+                <div class="topic">
+                    <h3>House Price Prediction System</h3>
+                    <p>Build a complete ML system that predicts house prices based on features like area, bedrooms, bathrooms, and location.</p>
+                    <div class="project-features">
+                        <div class="feature-card"><i class="fas fa-upload"></i><h4>Load Dataset</h4><p>Load house price data</p></div>
+                        <div class="feature-card"><i class="fas fa-broom"></i><h4>Preprocessing</h4><p>Clean and prepare data</p></div>
+                        <div class="feature-card"><i class="fas fa-cogs"></i><h4>Train Model</h4><p>Linear Regression model</p></div>
+                        <div class="feature-card"><i class="fas fa-magic"></i><h4>Predict Prices</h4><p>Predict for new houses</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-bar"></i><h4>Evaluation</h4><p>MAE, MSE, R² Score</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-area"></i><h4>Visualization</h4><p>Graphs and insights</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dataset" class="content-section">
+                <h2><i class="fas fa-database"></i> Step 1: Load House Price Dataset</h2>
+                <div class="topic">
+                    <pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# Create a realistic house price dataset
+np.random.seed(42)
+n = 200
+
+area = np.random.randint(800, 4000, n)
+bedrooms = np.random.randint(1, 6, n)
+bathrooms = np.random.randint(1, 4, n)
+age = np.random.randint(0, 30, n)
+location_score = np.random.uniform(3, 10, n)
+
+# Price formula (with some noise)
+price = (area * 3500 + 
+         bedrooms * 500000 + 
+         bathrooms * 300000 + 
+         location_score * 200000 - 
+         age * 50000 + 
+         np.random.normal(0, 500000, n))
+
+df = pd.DataFrame({
+    'Area_sqft': area,
+    'Bedrooms': bedrooms,
+    'Bathrooms': bathrooms,
+    'Age_years': age,
+    'Location_Score': location_score.round(1),
+    'Price': price.astype(int)
+})
+
+print("Dataset Shape:", df.shape)
+print("\nFirst 5 rows:")
+print(df.head())
+print("\nStatistical Summary:")
+print(df.describe())</code></pre>
+                </div>
+            </section>
+
+            <section id="preprocessing" class="content-section">
+                <h2><i class="fas fa-broom"></i> Step 2: Data Preprocessing</h2>
+                <div class="topic">
+                    <pre><code class="language-python"># Check for missing values
+print("Missing values:\n", df.isnull().sum())
+
+# Check correlations with price
+print("\nCorrelation with Price:")
+print(df.corr()['Price'].sort_values(ascending=False))
+
+# Visualize correlations
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+axes[0,0].scatter(df['Area_sqft'], df['Price'], alpha=0.5, c='#ff1b6b')
+axes[0,0].set_xlabel('Area (sqft)')
+axes[0,0].set_ylabel('Price')
+axes[0,0].set_title('Area vs Price')
+
+axes[0,1].scatter(df['Bedrooms'], df['Price'], alpha=0.5, c='#667eea')
+axes[0,1].set_xlabel('Bedrooms')
+axes[0,1].set_ylabel('Price')
+axes[0,1].set_title('Bedrooms vs Price')
+
+axes[1,0].scatter(df['Location_Score'], df['Price'], alpha=0.5, c='#f093fb')
+axes[1,0].set_xlabel('Location Score')
+axes[1,0].set_ylabel('Price')
+axes[1,0].set_title('Location vs Price')
+
+axes[1,1].hist(df['Price'], bins=30, color='#4facfe', edgecolor='black')
+axes[1,1].set_xlabel('Price')
+axes[1,1].set_title('Price Distribution')
+
+plt.tight_layout()
+plt.show()
+
+# Prepare features and target
+X = df[['Area_sqft', 'Bedrooms', 'Bathrooms', 'Age_years', 'Location_Score']]
+y = df['Price']
+
+# Train-Test Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+print(f"\nTraining samples: {len(X_train)}")
+print(f"Testing samples: {len(X_test)}")</code></pre>
+                </div>
+            </section>
+
+            <section id="model" class="content-section">
+                <h2><i class="fas fa-cogs"></i> Step 3: Train Linear Regression Model</h2>
+                <div class="topic">
+                    <pre><code class="language-python"># Create and train model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Model coefficients
+print("Model Coefficients:")
+for feature, coef in zip(X.columns, model.coef_):
+    print(f"  {feature}: ₹{coef:,.0f}")
+print(f"  Intercept: ₹{model.intercept_:,.0f}")
+
+# Interpretation:
+# For every 1 sqft increase in area, price increases by ₹X
+# For every additional bedroom, price increases by ₹Y</code></pre>
+                </div>
+            </section>
+
+            <section id="predict" class="content-section">
+                <h2><i class="fas fa-magic"></i> Step 4: Make Predictions</h2>
+                <div class="topic">
+                    <pre><code class="language-python"># Predict on test data
+y_pred = model.predict(X_test)
+
+# Compare actual vs predicted
+results = pd.DataFrame({
+    'Actual Price': y_test.values,
+    'Predicted Price': y_pred.astype(int),
+    'Difference': (y_test.values - y_pred).astype(int)
+})
+print("Actual vs Predicted (first 10):")
+print(results.head(10))
+
+# Predict for a new house
+new_house = pd.DataFrame({
+    'Area_sqft': [2000],
+    'Bedrooms': [3],
+    'Bathrooms': [2],
+    'Age_years': [5],
+    'Location_Score': [8.0]
+})
+
+predicted_price = model.predict(new_house)
+print(f"\nNew House Details:")
+print(f"  Area: 2000 sqft, 3 BHK, 2 Bath, 5 years old, Location: 8/10")
+print(f"  Predicted Price: ₹{predicted_price[0]:,.0f}")</code></pre>
+                </div>
+            </section>
+
+            <section id="evaluate" class="content-section">
+                <h2><i class="fas fa-chart-bar"></i> Step 5: Model Evaluation</h2>
+                <div class="topic">
+                    <pre><code class="language-python"># Evaluation Metrics
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, y_pred)
+
+print("=" * 40)
+print("  MODEL EVALUATION REPORT")
+print("=" * 40)
+print(f"  MAE:  ₹{mae:,.0f}")
+print(f"  MSE:  ₹{mse:,.0f}")
+print(f"  RMSE: ₹{rmse:,.0f}")
+print(f"  R² Score: {r2:.4f}")
+print(f"\n  Model Accuracy: {r2*100:.2f}%")
+print("=" * 40)</code></pre>
+                </div>
+            </section>
+
+            <section id="visualize" class="content-section">
+                <h2><i class="fas fa-chart-area"></i> Step 6: Visualization</h2>
+                <div class="topic">
+                    <pre><code class="language-python"># Actual vs Predicted plot
+plt.figure(figsize=(10, 6))
+plt.scatter(y_test, y_pred, alpha=0.6, c='#ff1b6b')
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 
+         'g--', linewidth=2, label='Perfect Prediction')
+plt.xlabel("Actual Price (₹)")
+plt.ylabel("Predicted Price (₹)")
+plt.title(f"House Price Prediction (R² = {r2:.3f})")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+
+# Residual plot
+residuals = y_test - y_pred
+plt.figure(figsize=(10, 5))
+plt.scatter(y_pred, residuals, alpha=0.6, c='#667eea')
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel("Predicted Price")
+plt.ylabel("Residuals (Actual - Predicted)")
+plt.title("Residual Plot")
+plt.grid(True, alpha=0.3)
+plt.show()</code></pre>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 11 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: What features would you use to predict house prices?</h3><details><summary>Show Answer</summary><div class="answer"><p>Area, bedrooms, bathrooms, age, location, amenities, floor, parking, etc.</p></div></details></div>
+                    <div class="question"><h3>Q2: What does a high R² score indicate?</h3><details><summary>Show Answer</summary><div class="answer"><p>The model explains a large portion of variance. Closer to 1 = better predictions.</p></div></details></div>
+                    <div class="question"><h3>Q3: What is a residual?</h3><details><summary>Show Answer</summary><div class="answer"><p>The difference between actual and predicted value: Residual = Actual - Predicted</p></div></details></div>
+                    <div class="question"><h3>Q4: If model.coef_ for Area is 3500, what does it mean?</h3><details><summary>Show Answer</summary><div class="answer"><p>For every 1 sqft increase in area, the predicted price increases by ₹3,500 (keeping other features constant).</p></div></details></div>
+                    <div class="question"><h3>Q5: Why do we check correlation before model training?</h3><details><summary>Show Answer</summary><div class="answer"><p>To identify which features have strong relationships with the target. Highly correlated features are more useful for prediction.</p></div></details></div>
+                    <div class="question"><h3>Q6: What does a residual plot tell us?</h3><details><summary>Show Answer</summary><div class="answer"><p>Shows if errors are random (good — scattered around 0) or have patterns (bad — model might be missing something).</p></div></details></div>
+                    <div class="question"><h3>Q7: How to improve this model?</h3><details><summary>Show Answer</summary><div class="answer"><p>Add more features, get more data, try polynomial regression, feature engineering, or try different algorithms.</p></div></details></div>
+                    <div class="question"><h3>Q8: What is feature engineering?</h3><details><summary>Show Answer</summary><div class="answer"><p>Creating new features from existing ones. Example: Price_per_sqft = Price / Area, or Age_Category = "New"/"Old".</p></div></details></div>
+                    <div class="question"><h3>Q9: Predict price for: 3000 sqft, 4 BHK, 3 bath, 2 years old, location 9</h3><details><summary>Show Solution</summary><pre><code class="language-python">new_house = [[3000, 4, 3, 2, 9]]
+price = model.predict(new_house)
+print(f"Predicted: ₹{price[0]:,.0f}")</code></pre></details></div>
+                    <div class="question"><h3>Q10: What is the ideal residual distribution?</h3><details><summary>Show Answer</summary><div class="answer"><p>Residuals should be randomly distributed around 0 with no pattern. This indicates the model's errors are random and not systematic.</p></div></details></div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day10.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 10</a>
+                <a href="day12.html" class="nav-btn next">Next: Day 12 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

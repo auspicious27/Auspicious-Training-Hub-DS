@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: Python Fundamentals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 2 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#naming">Naming Rules</a></li>
+                <li><a href="#datatypes">Data Types</a></li>
+                <li><a href="#typecasting">Type Casting</a></li>
+                <li><a href="#io">Input & Output</a></li>
+                <li><a href="#comments">Comments</a></li>
+                <li><a href="#syntax">Basic Syntax</a></li>
+                <li><a href="#practice">Practice</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day1.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 1</a>
+                <a href="day3.html" class="nav-btn next">Day 3 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 2: Python Fundamentals</h1>
+                <p class="day-subtitle">Variables, Data Types, Type Casting, and Input/Output Handling</p>
+            </header>
+
+            <section id="variables" class="content-section">
+                <h2><i class="fas fa-box"></i> Variables in Python</h2>
+                <div class="topic">
+                    <h3>What are Variables?</h3>
+                    <p>A <strong>variable</strong> is a named container that stores data in memory. Think of it as a labeled box where you can put values.</p>
+                    
+                    <pre><code class="language-python"># Creating variables
+name = "Sayeed"          # String variable
+age = 22                 # Integer variable
+height = 5.8             # Float variable
+is_student = True        # Boolean variable
+
+print(name, age, height, is_student)</code></pre>
+                    
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <pre>Sayeed 22 5.8 True</pre>
+                    </div>
+
+                    <div class="key-points">
+                        <h4>Key Points about Variables:</h4>
+                        <ul>
+                            <li>No need to declare type (dynamically typed)</li>
+                            <li>Value can be changed anytime</li>
+                            <li>Variable is created when you first assign a value</li>
+                            <li>Use <code>=</code> for assignment</li>
+                        </ul>
+                    </div>
+
+                    <pre><code class="language-python"># Variables can be reassigned
+x = 10
+print(x)    # 10
+
+x = "Hello"
+print(x)    # Hello (type changed from int to str!)
+
+# Multiple assignment
+a, b, c = 1, 2, 3
+print(a, b, c)  # 1 2 3
+
+# Same value to multiple variables
+x = y = z = 100
+print(x, y, z)  # 100 100 100</code></pre>
+                </div>
+            </section>
+
+            <section id="naming" class="content-section">
+                <h2><i class="fas fa-tag"></i> Naming Rules</h2>
+                <div class="topic">
+                    <h3>Variable Naming Rules in Python</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr><th>Rule</th><th>Valid Example</th><th>Invalid Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Must start with letter or underscore</td><td>name, _count</td><td>1name, @var</td></tr>
+                            <tr><td>Can contain letters, numbers, underscores</td><td>age1, my_var</td><td>my-var, my var</td></tr>
+                            <tr><td>Case sensitive</td><td>Name ≠ name ≠ NAME</td><td>—</td></tr>
+                            <tr><td>Cannot use Python keywords</td><td>my_class</td><td>class, if, for</td></tr>
+                            <tr><td>No spaces allowed</td><td>first_name</td><td>first name</td></tr>
+                        </tbody>
+                    </table>
+
+                    <pre><code class="language-python"># Good variable names (snake_case convention)
+student_name = "Ali"
+total_marks = 95
+is_passed = True
+max_attempts = 3
+
+# Bad variable names (avoid these)
+# 2name = "test"    # Error: starts with number
+# my-var = 10       # Error: hyphen not allowed
+# class = "A"       # Error: 'class' is a keyword</code></pre>
+
+                    <div class="info-box">
+                        <p><strong>Python Naming Conventions:</strong></p>
+                        <ul>
+                            <li>Variables & Functions: <code>snake_case</code> (e.g., student_name)</li>
+                            <li>Classes: <code>PascalCase</code> (e.g., StudentData)</li>
+                            <li>Constants: <code>UPPER_CASE</code> (e.g., MAX_SIZE)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="datatypes" class="content-section">
+                <h2><i class="fas fa-database"></i> Data Types</h2>
+                <div class="topic">
+                    <h3>Python Data Types (int, float, str, bool)</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>int</code></td><td>Whole numbers</td><td>10, -5, 0, 1000</td></tr>
+                            <tr><td><code>float</code></td><td>Decimal numbers</td><td>3.14, -0.5, 2.0</td></tr>
+                            <tr><td><code>str</code></td><td>Text (strings)</td><td>"Hello", 'Python'</td></tr>
+                            <tr><td><code>bool</code></td><td>True or False</td><td>True, False</td></tr>
+                        </tbody>
+                    </table>
+
+                    <pre><code class="language-python"># Integer (int) - whole numbers
+age = 25
+marks = -10
+population = 1400000000
+print(type(age))       # &lt;class 'int'&gt;
+
+# Float - decimal numbers
+pi = 3.14159
+temperature = -5.5
+salary = 50000.75
+print(type(pi))        # &lt;class 'float'&gt;
+
+# String (str) - text data
+name = "Python"
+city = 'Hyderabad'
+message = """This is a
+multi-line string"""
+print(type(name))      # &lt;class 'str'&gt;
+
+# Boolean (bool) - True/False
+is_active = True
+is_empty = False
+print(type(is_active)) # &lt;class 'bool'&gt;</code></pre>
+
+                    <div class="key-points">
+                        <h4>The type() Function:</h4>
+                        <p>Use <code>type()</code> to check the data type of any variable:</p>
+                        <pre><code class="language-python">x = 42
+print(type(x))    # &lt;class 'int'&gt;
+
+y = "Hello"
+print(type(y))    # &lt;class 'str'&gt;
+
+z = 3.14
+print(type(z))    # &lt;class 'float'&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="typecasting" class="content-section">
+                <h2><i class="fas fa-exchange-alt"></i> Type Casting</h2>
+                <div class="topic">
+                    <h3>Converting Between Data Types</h3>
+                    <p>Type casting is converting one data type to another.</p>
+                    
+                    <pre><code class="language-python"># String to Integer
+age_str = "25"
+age_int = int(age_str)
+print(age_int + 5)      # 30
+
+# String to Float
+price_str = "99.99"
+price = float(price_str)
+print(price)            # 99.99
+
+# Integer to String
+num = 100
+num_str = str(num)
+print("Score: " + num_str)  # Score: 100
+
+# Float to Integer (truncates decimal)
+pi = 3.99
+print(int(pi))          # 3 (not rounded, just cuts decimal)
+
+# Integer to Float
+x = 10
+print(float(x))         # 10.0
+
+# Boolean conversions
+print(int(True))        # 1
+print(int(False))       # 0
+print(bool(1))          # True
+print(bool(0))          # False
+print(bool(""))         # False (empty string)
+print(bool("Hello"))    # True (non-empty string)</code></pre>
+
+                    <div class="warning-box">
+                        <p><strong>Common Error:</strong> You cannot convert non-numeric strings to int/float</p>
+                        <pre><code class="language-python"># This will cause ValueError!
+# num = int("hello")  # Error!
+# num = int("12.5")   # Error! Use float() first</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="io" class="content-section">
+                <h2><i class="fas fa-keyboard"></i> Input and Output Handling</h2>
+                <div class="topic">
+                    <h3>Output with print()</h3>
+                    <pre><code class="language-python"># Basic print
+print("Hello, World!")
+
+# Print multiple items
+name = "Sayeed"
+age = 22
+print("Name:", name, "Age:", age)
+
+# Using sep parameter
+print("Python", "Data", "Science", sep=" - ")
+# Output: Python - Data - Science
+
+# Using end parameter
+print("Hello", end=" ")
+print("World")
+# Output: Hello World (on same line)
+
+# f-strings (formatted strings) - Most Recommended!
+name = "Sayeed"
+age = 22
+print(f"My name is {name} and I am {age} years old")
+
+# .format() method
+print("Name: {} Age: {}".format(name, age))</code></pre>
+
+                    <h3>Input with input()</h3>
+                    <pre><code class="language-python"># input() always returns a string!
+name = input("Enter your name: ")
+print(type(name))  # &lt;class 'str'&gt;
+
+# For numbers, convert the input
+age = int(input("Enter your age: "))
+height = float(input("Enter your height: "))
+
+# Complete example
+name = input("Enter name: ")
+marks = int(input("Enter marks: "))
+percentage = marks / 5  # assuming out of 500
+
+print(f"\nStudent: {name}")
+print(f"Marks: {marks}/500")
+print(f"Percentage: {percentage}%")</code></pre>
+                    
+                    <div class="output-box">
+                        <strong>Sample Run:</strong>
+                        <pre>Enter name: Ali
+Enter marks: 425
+
+Student: Ali
+Marks: 425/500
+Percentage: 85.0%</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comments" class="content-section">
+                <h2><i class="fas fa-comment"></i> Comments in Python</h2>
+                <div class="topic">
+                    <h3>Types of Comments</h3>
+                    <pre><code class="language-python"># Single-line comment - starts with #
+# This line is ignored by Python
+
+name = "Sayeed"  # Inline comment
+
+# Multi-line comments using triple quotes
+"""
+This is a multi-line comment.
+It can span multiple lines.
+Often used for documentation (docstrings).
+"""
+
+'''
+This also works for
+multi-line comments
+using single quotes.
+'''</code></pre>
+
+                    <div class="info-box">
+                        <p><strong>When to use comments:</strong></p>
+                        <ul>
+                            <li>Explain complex logic</li>
+                            <li>Document function purposes</li>
+                            <li>Leave notes for other developers</li>
+                            <li>Temporarily disable code for testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="syntax" class="content-section">
+                <h2><i class="fas fa-file-code"></i> Basic Python Syntax</h2>
+                <div class="topic">
+                    <h3>Python Syntax Rules</h3>
+                    
+                    <h4>1. Indentation is Mandatory</h4>
+                    <pre><code class="language-python"># Python uses indentation for code blocks
+if True:
+    print("This is indented")  # 4 spaces
+    print("Same block")
+
+# Wrong! Will cause IndentationError
+# if True:
+# print("No indentation")  # Error!</code></pre>
+
+                    <h4>2. No Semicolons Needed</h4>
+                    <pre><code class="language-python"># Python doesn't need semicolons
+x = 10
+y = 20
+print(x + y)
+
+# Semicolons CAN be used but not recommended
+a = 1; b = 2; c = 3  # Valid but ugly</code></pre>
+
+                    <h4>3. Case Sensitivity</h4>
+                    <pre><code class="language-python">Name = "Alice"
+name = "Bob"
+NAME = "Charlie"
+# All three are different variables!
+
+print(Name)   # Alice
+print(name)   # Bob
+print(NAME)   # Charlie</code></pre>
+
+                    <h4>4. Line Continuation</h4>
+                    <pre><code class="language-python"># Using backslash
+total = 10 + 20 + 30 + \
+        40 + 50 + 60
+
+# Using parentheses (preferred)
+total = (10 + 20 + 30 +
+         40 + 50 + 60)
+
+print(total)  # 210</code></pre>
+                </div>
+            </section>
+
+            <section id="practice" class="content-section">
+                <h2><i class="fas fa-dumbbell"></i> Basic Programming Practice</h2>
+                <div class="topic">
+                    <h3>Practice Programs</h3>
+                    
+                    <div class="exercise">
+                        <h4>Program 1: Swap Two Variables</h4>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python"># Method 1: Using temporary variable
+a = 10
+b = 20
+temp = a
+a = b
+b = temp
+print(f"a = {a}, b = {b}")  # a = 20, b = 10
+
+# Method 2: Pythonic way (single line!)
+a, b = 10, 20
+a, b = b, a
+print(f"a = {a}, b = {b}")  # a = 20, b = 10</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Program 2: BMI Calculator</h4>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">weight = float(input("Enter weight (kg): "))
+height = float(input("Enter height (m): "))
+
+bmi = weight / (height ** 2)
+print(f"Your BMI is: {bmi:.2f}")</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>Program 3: Convert Minutes to Hours & Minutes</h4>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">total_minutes = int(input("Enter minutes: "))
+hours = total_minutes // 60
+minutes = total_minutes % 60
+print(f"{total_minutes} minutes = {hours} hours and {minutes} minutes")</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 2 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Q1: What is the output?</h3>
+                        <pre><code class="language-python">x = "5"
+y = 3
+print(x * y)</code></pre>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>Output: 555</strong> — String "5" repeated 3 times (string multiplication)</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q2: What is type("123")?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>&lt;class 'str'&gt;</strong> — Anything in quotes is a string, even numbers!</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q3: What happens when you do int(3.9)?</h3>
+                        <div class="options">
+                            <label><input type="radio" name="q3" value="a"> A) 4 (rounds up)</label>
+                            <label><input type="radio" name="q3" value="b"> B) 3 (truncates)</label>
+                            <label><input type="radio" name="q3" value="c"> C) Error</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>B) 3</strong> — int() truncates (cuts off) the decimal, does NOT round.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q4: Which is a valid variable name?</h3>
+                        <div class="options">
+                            <label><input type="radio" name="q4" value="a"> A) 2fast</label>
+                            <label><input type="radio" name="q4" value="b"> B) my-name</label>
+                            <label><input type="radio" name="q4" value="c"> C) _private</label>
+                            <label><input type="radio" name="q4" value="d"> D) class</label>
+                        </div>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>C) _private</strong> — Starts with underscore, which is valid.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q5: What does input() return?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p>input() <strong>always returns a string (str)</strong>. You must use int() or float() to convert numeric input.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q6: What is the output?</h3>
+                        <pre><code class="language-python">a, b = 5, 10
+a, b = b, a
+print(a, b)</code></pre>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>10 5</strong> — This swaps the values of a and b.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q7: What is bool(0)?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p><strong>False</strong> — 0, empty string "", and None are all False in Python.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q8: Fix this code:</h3>
+                        <pre><code class="language-python">age = input("Enter age: ")
+print("Next year you'll be", age + 1)</code></pre>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p>Error: can't add int to string. Fix: <code>age = int(input("Enter age: "))</code></p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q9: What is f-string?</h3>
+                        <details>
+                            <summary>Show Answer</summary>
+                            <div class="answer"><p>f-string (formatted string literal) allows embedding expressions inside strings using <code>f"text {variable}"</code>. It's the modern and recommended way to format strings in Python 3.6+.</p></div>
+                        </details>
+                    </div>
+
+                    <div class="question">
+                        <h3>Q10: Write a program to find area of a circle</h3>
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code class="language-python">radius = float(input("Enter radius: "))
+area = 3.14159 * radius ** 2
+print(f"Area of circle: {area:.2f}")</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day1.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 1</a>
+                <a href="day3.html" class="nav-btn next">Next: Day 3 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

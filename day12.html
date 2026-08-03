@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 12: Multiple Linear Regression & Model Evaluation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 12 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#multiple">Multiple Linear Regression</a></li>
+                <li><a href="#features">Multiple Features</a></li>
+                <li><a href="#selection">Feature Selection</a></li>
+                <li><a href="#correlation">Correlation Analysis</a></li>
+                <li><a href="#engineering">Feature Engineering</a></li>
+                <li><a href="#metrics">MAE, MSE, R² Score</a></li>
+                <li><a href="#realworld">Real-world Problems</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day11.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 11</a>
+                <a href="day13.html" class="nav-btn next">Day 13 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 12: Multiple Linear Regression & Model Evaluation</h1>
+                <p class="day-subtitle">Working with multiple features and evaluating model performance</p>
+            </header>
+
+            <section id="multiple" class="content-section">
+                <h2><i class="fas fa-layer-group"></i> Multiple Linear Regression</h2>
+                <div class="topic">
+                    <h3>What is Multiple Linear Regression?</h3>
+                    <p>Multiple Linear Regression uses <strong>two or more features</strong> to predict the target. It extends simple linear regression (one feature) to multiple dimensions.</p>
+                    
+                    <div class="key-points">
+                        <h4>The Equation:</h4>
+                        <p><code>y = b₀ + b₁x₁ + b₂x₂ + b₃x₃ + ... + bₙxₙ</code></p>
+                        <ul>
+                            <li><strong>y:</strong> Predicted value</li>
+                            <li><strong>b₀:</strong> Intercept</li>
+                            <li><strong>b₁, b₂...:</strong> Coefficients for each feature</li>
+                            <li><strong>x₁, x₂...:</strong> Feature values</li>
+                        </ul>
+                    </div>
+
+                    <pre><code class="language-python"># Simple vs Multiple Regression
+# Simple:   Price = b₀ + b₁ × Area
+# Multiple: Price = b₀ + b₁ × Area + b₂ × Bedrooms + b₃ × Age
+
+# Multiple regression usually gives better predictions
+# because it considers more factors!</code></pre>
+                </div>
+            </section>
+
+            <section id="features" class="content-section">
+                <h2><i class="fas fa-columns"></i> Working with Multiple Features</h2>
+                <div class="topic">
+                    <h3>Complete Multiple Regression Example</h3>
+                    <pre><code class="language-python">import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_absolute_error
+import matplotlib.pyplot as plt
+
+# Employee Salary Dataset
+np.random.seed(42)
+n = 150
+
+data = {
+    'Experience_Years': np.random.uniform(0, 20, n),
+    'Education_Level': np.random.choice([1, 2, 3, 4], n),  # 1=HSC, 2=Graduate, 3=PG, 4=PhD
+    'Skills_Count': np.random.randint(2, 12, n),
+    'Projects_Done': np.random.randint(1, 30, n),
+    'Certifications': np.random.randint(0, 8, n),
+}
+
+# Salary based on features
+salary = (data['Experience_Years'] * 40000 + 
+          data['Education_Level'] * 100000 + 
+          data['Skills_Count'] * 20000 + 
+          data['Projects_Done'] * 5000 + 
+          data['Certifications'] * 15000 +
+          200000 + np.random.normal(0, 50000, n))
+
+data['Salary'] = salary.astype(int)
+df = pd.DataFrame(data)
+
+print("Dataset:")
+print(df.head())
+print(f"\nShape: {df.shape}")
+print(f"\nSalary Range: ₹{df['Salary'].min():,} to ₹{df['Salary'].max():,}")</code></pre>
+                </div>
+            </section>
+
+            <section id="selection" class="content-section">
+                <h2><i class="fas fa-filter"></i> Feature Selection</h2>
+                <div class="topic">
+                    <h3>Choosing the Right Features</h3>
+                    <pre><code class="language-python"># Method 1: Correlation-based selection
+correlation = df.corr()['Salary'].sort_values(ascending=False)
+print("Feature Correlations with Salary:")
+print(correlation)
+
+# Select features with correlation > 0.3
+important_features = correlation[abs(correlation) > 0.3].index.tolist()
+important_features.remove('Salary')
+print(f"\nSelected Features: {important_features}")
+
+# Method 2: Using all features
+X = df.drop('Salary', axis=1)
+y = df['Salary']
+
+# Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train with ALL features
+model_all = LinearRegression()
+model_all.fit(X_train, y_train)
+r2_all = r2_score(y_test, model_all.predict(X_test))
+
+# Train with SELECTED features only
+X_sel = df[important_features]
+X_train_s, X_test_s, y_train_s, y_test_s = train_test_split(X_sel, y, test_size=0.2, random_state=42)
+model_sel = LinearRegression()
+model_sel.fit(X_train_s, y_train_s)
+r2_sel = r2_score(y_test_s, model_sel.predict(X_test_s))
+
+print(f"\nR² with all features: {r2_all:.4f}")
+print(f"R² with selected features: {r2_sel:.4f}")</code></pre>
+                </div>
+            </section>
+
+            <section id="correlation" class="content-section">
+                <h2><i class="fas fa-link"></i> Correlation Analysis</h2>
+                <div class="topic">
+                    <h3>Understanding Feature Relationships</h3>
+                    <pre><code class="language-python">import seaborn as sns
+
+# Correlation heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(df.corr(), annot=True, cmap='RdYlBu_r', center=0, fmt='.2f')
+plt.title("Feature Correlation Matrix")
+plt.tight_layout()
+plt.show()
+
+# Pairplot for visual relationships
+sns.pairplot(df[['Experience_Years', 'Skills_Count', 'Salary']], 
+             diag_kind='kde', plot_kws={'alpha': 0.6})
+plt.show()</code></pre>
+                    
+                    <div class="warning-box">
+                        <p><strong>Multicollinearity Warning:</strong> If two features are highly correlated with each other (e.g., 0.9+), keep only one. Having both can confuse the model.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="engineering" class="content-section">
+                <h2><i class="fas fa-wrench"></i> Feature Engineering</h2>
+                <div class="topic">
+                    <h3>Creating New Features</h3>
+                    <pre><code class="language-python"># Feature Engineering examples
+df['Total_Score'] = (df['Skills_Count'] + df['Projects_Done'] + df['Certifications'])
+df['Experience_Level'] = pd.cut(df['Experience_Years'], 
+                                bins=[0, 3, 7, 15, 25], 
+                                labels=['Junior', 'Mid', 'Senior', 'Expert'])
+
+# Polynomial features (for non-linear relationships)
+df['Exp_Squared'] = df['Experience_Years'] ** 2
+
+# Interaction features
+df['Exp_x_Skills'] = df['Experience_Years'] * df['Skills_Count']
+
+print("New features added:")
+print(df[['Experience_Years', 'Skills_Count', 'Exp_x_Skills', 'Total_Score']].head())</code></pre>
+                </div>
+            </section>
+
+            <section id="metrics" class="content-section">
+                <h2><i class="fas fa-ruler"></i> MAE, MSE, R² Score — Deep Dive</h2>
+                <div class="topic">
+                    <h3>Understanding Evaluation Metrics</h3>
+                    <pre><code class="language-python">from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+y_pred = model_all.predict(X_test)
+
+# MAE - Mean Absolute Error
+mae = mean_absolute_error(y_test, y_pred)
+print(f"MAE: ₹{mae:,.0f}")
+# Average error in rupees (easy to interpret)
+
+# MSE - Mean Squared Error
+mse = mean_squared_error(y_test, y_pred)
+print(f"MSE: {mse:,.0f}")
+# Penalizes large errors more (squared)
+
+# RMSE - Root Mean Squared Error
+rmse = np.sqrt(mse)
+print(f"RMSE: ₹{rmse:,.0f}")
+# Same unit as target (easier to interpret than MSE)
+
+# R² Score
+r2 = r2_score(y_test, y_pred)
+print(f"R² Score: {r2:.4f}")
+# Proportion of variance explained (0 to 1)</code></pre>
+
+                    <div class="info-box">
+                        <h4>When to use which metric:</h4>
+                        <ul>
+                            <li><strong>MAE:</strong> When all errors matter equally</li>
+                            <li><strong>MSE/RMSE:</strong> When large errors are especially bad</li>
+                            <li><strong>R²:</strong> For comparing models on same dataset</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="realworld" class="content-section">
+                <h2><i class="fas fa-briefcase"></i> Real-world Regression Problems</h2>
+                <div class="topic">
+                    <h3>Where Multiple Regression is Used</h3>
+                    <table>
+                        <thead><tr><th>Problem</th><th>Features</th><th>Target</th></tr></thead>
+                        <tbody>
+                            <tr><td>House Price</td><td>Area, Rooms, Location</td><td>Price</td></tr>
+                            <tr><td>Salary</td><td>Experience, Skills, Education</td><td>Salary</td></tr>
+                            <tr><td>Insurance</td><td>Age, BMI, Smoker, Region</td><td>Charges</td></tr>
+                            <tr><td>Car Price</td><td>Year, KM Driven, Fuel, Owner</td><td>Selling Price</td></tr>
+                            <tr><td>Student Marks</td><td>Hours, Attendance, Previous</td><td>Final Score</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 12 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: How is multiple regression different from simple regression?</h3><details><summary>Show Answer</summary><div class="answer"><p>Simple uses 1 feature (y = mx + b). Multiple uses 2+ features (y = b₀ + b₁x₁ + b₂x₂ + ...).</p></div></details></div>
+                    <div class="question"><h3>Q2: What is multicollinearity?</h3><details><summary>Show Answer</summary><div class="answer"><p>When two or more features are highly correlated with each other. This can make the model unstable and coefficients unreliable.</p></div></details></div>
+                    <div class="question"><h3>Q3: What is feature engineering?</h3><details><summary>Show Answer</summary><div class="answer"><p>Creating new features from existing ones to improve model performance. Examples: combining features, creating polynomial terms, binning.</p></div></details></div>
+                    <div class="question"><h3>Q4: If RMSE is ₹50,000 for salary prediction, is the model good?</h3><details><summary>Show Answer</summary><div class="answer"><p>Depends on context. If salaries range from ₹3L to ₹20L, then ₹50K error is reasonable (~3-5% error). For ₹30K-₹50K range, it would be terrible.</p></div></details></div>
+                    <div class="question"><h3>Q5: Why might adding more features NOT improve the model?</h3><details><summary>Show Answer</summary><div class="answer"><p>Irrelevant features add noise. Also, too many features with limited data can cause overfitting. Feature selection is crucial.</p></div></details></div>
+                    <div class="question"><h3>Q6: What does a negative R² score mean?</h3><details><summary>Show Answer</summary><div class="answer"><p>The model is worse than simply predicting the mean. It indicates a very poor model that doesn't fit the data at all.</p></div></details></div>
+                    <div class="question"><h3>Q7: How to check if a feature is useful?</h3><details><summary>Show Answer</summary><div class="answer"><p>Check its correlation with target, compare R² with and without the feature, and check if its coefficient is statistically significant.</p></div></details></div>
+                    <div class="question"><h3>Q8: Write code to compare two models</h3><details><summary>Show Solution</summary><pre><code class="language-python">print(f"Model 1 (All features): R² = {r2_all:.4f}")
+print(f"Model 2 (Selected):     R² = {r2_sel:.4f}")
+better = "Model 1" if r2_all > r2_sel else "Model 2"
+print(f"Winner: {better}")</code></pre></details></div>
+                    <div class="question"><h3>Q9: What is the difference between MSE and RMSE?</h3><details><summary>Show Answer</summary><div class="answer"><p>RMSE = √MSE. RMSE is in the same units as the target variable, making it easier to interpret. MSE exaggerates large errors.</p></div></details></div>
+                    <div class="question"><h3>Q10: How would you handle a categorical feature like "City" in regression?</h3><details><summary>Show Answer</summary><div class="answer"><p>Use One-Hot Encoding (pd.get_dummies()) or Label Encoding to convert categories to numbers that the model can process.</p></div></details></div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day11.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 11</a>
+                <a href="day13.html" class="nav-btn next">Next: Day 13 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

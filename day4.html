@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: Mini Project 1 - Student Marks Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 4 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#features">Project Features</a></li>
+                <li><a href="#code">Complete Code</a></li>
+                <li><a href="#explanation">Code Explanation</a></li>
+                <li><a href="#enhancements">Enhancements</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day3.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 3</a>
+                <a href="day5.html" class="nav-btn next">Day 5 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 4: Mini Project 1</h1>
+                <p class="day-subtitle">Student Marks Management System</p>
+            </header>
+
+            <section id="overview" class="content-section">
+                <h2><i class="fas fa-project-diagram"></i> Project Overview</h2>
+                <div class="topic">
+                    <h3>Student Marks Management System</h3>
+                    <p>Build a complete system that takes student data, calculates marks, assigns grades, and generates reports using everything learned in Days 1-3.</p>
+                    
+                    <div class="info-box">
+                        <h4>Skills Applied:</h4>
+                        <ul>
+                            <li>Variables & Data Types (Day 2)</li>
+                            <li>Input/Output (Day 2)</li>
+                            <li>Operators (Day 3)</li>
+                            <li>Conditional Statements (Day 3)</li>
+                            <li>Loops (Day 3)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="content-section">
+                <h2><i class="fas fa-list-check"></i> Project Features</h2>
+                <div class="topic">
+                    <div class="project-features">
+                        <div class="feature-card">
+                            <i class="fas fa-user-plus"></i>
+                            <h4>Student Data Input</h4>
+                            <p>Accept student name, roll number, and marks for multiple subjects</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-calculator"></i>
+                            <h4>Marks Calculation</h4>
+                            <p>Calculate total marks and average across all subjects</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-percent"></i>
+                            <h4>Percentage Calculation</h4>
+                            <p>Compute overall percentage based on total marks</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-medal"></i>
+                            <h4>Grade Assignment</h4>
+                            <p>Assign grades based on percentage using if-elif-else</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-tv"></i>
+                            <h4>Result Display</h4>
+                            <p>Display formatted result card with all details</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Report Generation</h4>
+                            <p>Generate a basic report for multiple students</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="code" class="content-section">
+                <h2><i class="fas fa-code"></i> Complete Project Code</h2>
+                <div class="topic">
+                    <h3>Student Marks Management System</h3>
+                    <pre><code class="language-python">"""
+==============================================
+  STUDENT MARKS MANAGEMENT SYSTEM
+  Mini Project 1 - Python for Data Science
+==============================================
+"""
+
+print("=" * 50)
+print("   STUDENT MARKS MANAGEMENT SYSTEM")
+print("=" * 50)
+
+# Get number of students
+num_students = int(input("\nHow many students? "))
+
+# Store all student results
+all_results = []
+
+for student in range(1, num_students + 1):
+    print(f"\n{'─' * 40}")
+    print(f"  Enter details for Student {student}")
+    print(f"{'─' * 40}")
+    
+    # Student Data Input
+    name = input("Student Name: ")
+    roll = input("Roll Number: ")
+    
+    # Marks Input (5 subjects)
+    print("\nEnter marks for 5 subjects (out of 100 each):")
+    subjects = ["Mathematics", "Science", "English", "Hindi", "Computer"]
+    marks = []
+    
+    for subject in subjects:
+        while True:
+            mark = float(input(f"  {subject}: "))
+            if 0 <= mark <= 100:
+                marks.append(mark)
+                break
+            else:
+                print("  Invalid! Enter marks between 0-100")
+    
+    # Marks Calculation
+    total = sum(marks)
+    max_marks = len(subjects) * 100
+    percentage = (total / max_marks) * 100
+    average = total / len(subjects)
+    
+    # Grade Assignment
+    if percentage >= 90:
+        grade = "A+"
+        remark = "Outstanding"
+    elif percentage >= 80:
+        grade = "A"
+        remark = "Excellent"
+    elif percentage >= 70:
+        grade = "B"
+        remark = "Very Good"
+    elif percentage >= 60:
+        grade = "C"
+        remark = "Good"
+    elif percentage >= 50:
+        grade = "D"
+        remark = "Average"
+    elif percentage >= 40:
+        grade = "E"
+        remark = "Below Average"
+    else:
+        grade = "F"
+        remark = "FAIL"
+    
+    # Pass/Fail status
+    status = "PASSED" if percentage >= 40 else "FAILED"
+    
+    # Find highest and lowest scoring subjects
+    highest_idx = marks.index(max(marks))
+    lowest_idx = marks.index(min(marks))
+    
+    # Result Display
+    print(f"\n{'═' * 50}")
+    print(f"         RESULT CARD - {name.upper()}")
+    print(f"{'═' * 50}")
+    print(f"  Roll Number  : {roll}")
+    print(f"  Student Name : {name}")
+    print(f"{'─' * 50}")
+    print(f"  {'Subject':<15} {'Marks':<10} {'Status'}")
+    print(f"{'─' * 50}")
+    
+    for i, subject in enumerate(subjects):
+        sub_status = "Pass" if marks[i] >= 40 else "Fail"
+        print(f"  {subject:<15} {marks[i]:<10.1f} {sub_status}")
+    
+    print(f"{'─' * 50}")
+    print(f"  Total Marks  : {total:.1f}/{max_marks}")
+    print(f"  Percentage   : {percentage:.2f}%")
+    print(f"  Average      : {average:.2f}")
+    print(f"  Grade        : {grade}")
+    print(f"  Remark       : {remark}")
+    print(f"  Status       : {status}")
+    print(f"{'─' * 50}")
+    print(f"  Best Subject : {subjects[highest_idx]} ({marks[highest_idx]})")
+    print(f"  Weak Subject : {subjects[lowest_idx]} ({marks[lowest_idx]})")
+    print(f"{'═' * 50}")
+    
+    # Store result for report
+    all_results.append({
+        "name": name,
+        "roll": roll,
+        "total": total,
+        "percentage": percentage,
+        "grade": grade,
+        "status": status
+    })
+
+# Basic Report Generation
+print(f"\n\n{'═' * 60}")
+print(f"          OVERALL CLASS REPORT")
+print(f"{'═' * 60}")
+print(f"  {'Name':<15} {'Roll':<8} {'Total':<8} {'%age':<8} {'Grade':<6} {'Status'}")
+print(f"{'─' * 60}")
+
+passed_count = 0
+for result in all_results:
+    print(f"  {result['name']:<15} {result['roll']:<8} {result['total']:<8.0f} {result['percentage']:<8.1f} {result['grade']:<6} {result['status']}")
+    if result['status'] == "PASSED":
+        passed_count += 1
+
+print(f"{'─' * 60}")
+print(f"  Total Students : {num_students}")
+print(f"  Passed         : {passed_count}")
+print(f"  Failed         : {num_students - passed_count}")
+print(f"  Pass Rate      : {(passed_count/num_students)*100:.1f}%")
+print(f"{'═' * 60}")</code></pre>
+                </div>
+            </section>
+
+            <section id="explanation" class="content-section">
+                <h2><i class="fas fa-lightbulb"></i> Code Explanation</h2>
+                <div class="topic">
+                    <h3>Step-by-Step Breakdown</h3>
+                    
+                    <div class="key-points">
+                        <h4>1. Data Input Phase</h4>
+                        <ul>
+                            <li>Uses <code>input()</code> for student info</li>
+                            <li>Loop with validation ensures marks are 0-100</li>
+                            <li>Stores marks in a list for easy calculation</li>
+                        </ul>
+                    </div>
+
+                    <div class="key-points">
+                        <h4>2. Processing Phase</h4>
+                        <ul>
+                            <li><code>sum()</code> calculates total marks</li>
+                            <li>Percentage = (total/max) × 100</li>
+                            <li>if-elif-else chain assigns grades</li>
+                            <li><code>max()</code> and <code>min()</code> find best/weak subjects</li>
+                        </ul>
+                    </div>
+
+                    <div class="key-points">
+                        <h4>3. Output Phase</h4>
+                        <ul>
+                            <li>Formatted output with f-strings</li>
+                            <li>Table-like display using string formatting</li>
+                            <li>Class report with pass/fail statistics</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="enhancements" class="content-section">
+                <h2><i class="fas fa-rocket"></i> Enhancements (Try These!)</h2>
+                <div class="topic">
+                    <h3>Challenge Yourself</h3>
+                    <div class="exercise">
+                        <h4>Enhancement 1: Add more subjects</h4>
+                        <p>Let the user decide number of subjects dynamically.</p>
+                    </div>
+                    <div class="exercise">
+                        <h4>Enhancement 2: Find class topper</h4>
+                        <p>After all students are entered, display who got the highest percentage.</p>
+                        <details>
+                            <summary>Show Hint</summary>
+                            <pre><code class="language-python"># Find topper
+topper = max(all_results, key=lambda x: x['percentage'])
+print(f"Class Topper: {topper['name']} ({topper['percentage']:.1f}%)")</code></pre>
+                        </details>
+                    </div>
+                    <div class="exercise">
+                        <h4>Enhancement 3: Subject-wise analysis</h4>
+                        <p>Show average marks per subject across all students.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 4 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Q1: What does sum([10, 20, 30]) return?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>60</strong></p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q2: How do you find the maximum value in a list?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Use <code>max(list)</code> function. Example: <code>max([10, 50, 30])</code> returns 50</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q3: What does the ternary operator look like in Python?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><code>result = "Pass" if marks >= 40 else "Fail"</code></p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q4: How do you ensure input is between 0-100?</h3>
+                        <details><summary>Show Answer</summary>
+                            <pre><code class="language-python">while True:
+    mark = float(input("Enter marks: "))
+    if 0 <= mark <= 100:
+        break
+    print("Invalid! Try again.")</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q5: What does f"{name:<15}" do?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Left-aligns the name in a field of 15 characters width. Used for formatted table output.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q6: Modify the project to add a "Distinction" remark for 85%+</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">if percentage >= 90:
+    grade, remark = "A+", "Outstanding"
+elif percentage >= 85:
+    grade, remark = "A", "Distinction"
+elif percentage >= 75:
+    grade, remark = "B+", "Very Good"
+# ... continue</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q7: How would you calculate class average percentage?</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">total_percentage = sum(r['percentage'] for r in all_results)
+class_avg = total_percentage / len(all_results)
+print(f"Class Average: {class_avg:.2f}%")</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q8: What is the purpose of the while True loop for input?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Input validation — keeps asking until valid input is received. Prevents invalid data from entering the system.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q9: How does list.append() work?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><code>list.append(item)</code> adds an item to the end of the list. Example: <code>marks.append(85)</code> adds 85 to marks list.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q10: Write code to find the student who failed</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">failed_students = [r for r in all_results if r['status'] == "FAILED"]
+for s in failed_students:
+    print(f"{s['name']} - {s['percentage']:.1f}%")</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day3.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 3</a>
+                <a href="day5.html" class="nav-btn next">Next: Day 5 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

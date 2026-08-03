@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: Mini Project 2 - Student Performance Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 8 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#code">Complete Code</a></li>
+                <li><a href="#visualization">Visualization</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day7.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 7</a>
+                <a href="day9.html" class="nav-btn next">Day 9 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 8: Mini Project 2</h1>
+                <p class="day-subtitle">Student Performance Analysis Dashboard</p>
+            </header>
+
+            <section id="overview" class="content-section">
+                <h2><i class="fas fa-project-diagram"></i> Project Overview</h2>
+                <div class="topic">
+                    <h3>Student Performance Analysis Dashboard</h3>
+                    <p>Build a data analysis project using Pandas and Matplotlib to analyze student performance data, generate insights, and create visualizations.</p>
+                    <div class="info-box">
+                        <h4>Skills Applied:</h4>
+                        <ul>
+                            <li>NumPy & Pandas (Day 7)</li>
+                            <li>Data Cleaning & Preprocessing</li>
+                            <li>Data Visualization with Matplotlib</li>
+                            <li>Statistical Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="content-section">
+                <h2><i class="fas fa-list-check"></i> Project Features</h2>
+                <div class="topic">
+                    <div class="project-features">
+                        <div class="feature-card"><i class="fas fa-upload"></i><h4>Load Dataset</h4><p>Load student data from CSV/DataFrame</p></div>
+                        <div class="feature-card"><i class="fas fa-broom"></i><h4>Clean Dataset</h4><p>Handle missing values and outliers</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-bar"></i><h4>Data Analysis</h4><p>Statistical analysis using Pandas</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-pie"></i><h4>Visualization</h4><p>Charts and graphs with Matplotlib</p></div>
+                        <div class="feature-card"><i class="fas fa-file-alt"></i><h4>Performance Report</h4><p>Generate insights and summary</p></div>
+                        <div class="feature-card"><i class="fas fa-trophy"></i><h4>Top Performers</h4><p>Identify highest scoring students</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="code" class="content-section">
+                <h2><i class="fas fa-code"></i> Complete Project Code</h2>
+                <div class="topic">
+                    <h3>Step 1: Create & Load Dataset</h3>
+                    <pre><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create sample student dataset
+np.random.seed(42)
+n_students = 50
+
+data = {
+    "Student_ID": [f"STU{str(i).zfill(3)}" for i in range(1, n_students+1)],
+    "Name": [f"Student_{i}" for i in range(1, n_students+1)],
+    "Math": np.random.randint(35, 100, n_students),
+    "Science": np.random.randint(30, 100, n_students),
+    "English": np.random.randint(40, 100, n_students),
+    "Hindi": np.random.randint(35, 100, n_students),
+    "Computer": np.random.randint(45, 100, n_students),
+    "Attendance": np.random.randint(60, 100, n_students)
+}
+
+df = pd.DataFrame(data)
+
+# Add some missing values for realism
+df.loc[5, "Math"] = np.nan
+df.loc[12, "Science"] = np.nan
+df.loc[20, "English"] = np.nan
+
+print("Dataset Shape:", df.shape)
+print("\nFirst 5 rows:")
+print(df.head())
+print("\nDataset Info:")
+print(df.info())</code></pre>
+
+                    <h3>Step 2: Data Cleaning</h3>
+                    <pre><code class="language-python"># Check missing values
+print("Missing Values:")
+print(df.isnull().sum())
+
+# Fill missing values with column mean
+df["Math"].fillna(df["Math"].mean(), inplace=True)
+df["Science"].fillna(df["Science"].mean(), inplace=True)
+df["English"].fillna(df["English"].mean(), inplace=True)
+
+print("\nAfter cleaning - Missing Values:", df.isnull().sum().sum())</code></pre>
+
+                    <h3>Step 3: Data Analysis</h3>
+                    <pre><code class="language-python"># Calculate total and percentage
+subjects = ["Math", "Science", "English", "Hindi", "Computer"]
+df["Total"] = df[subjects].sum(axis=1)
+df["Percentage"] = (df["Total"] / 500) * 100
+
+# Assign grades
+def assign_grade(pct):
+    if pct >= 90: return "A+"
+    elif pct >= 80: return "A"
+    elif pct >= 70: return "B"
+    elif pct >= 60: return "C"
+    elif pct >= 40: return "D"
+    else: return "F"
+
+df["Grade"] = df["Percentage"].apply(assign_grade)
+df["Status"] = df["Percentage"].apply(lambda x: "Pass" if x >= 40 else "Fail")
+
+# Statistical Summary
+print("\n" + "="*50)
+print("       PERFORMANCE ANALYSIS REPORT")
+print("="*50)
+print(f"\nTotal Students: {len(df)}")
+print(f"Passed: {len(df[df['Status']=='Pass'])}")
+print(f"Failed: {len(df[df['Status']=='Fail'])}")
+print(f"\nClass Average: {df['Percentage'].mean():.2f}%")
+print(f"Highest Score: {df['Percentage'].max():.2f}%")
+print(f"Lowest Score: {df['Percentage'].min():.2f}%")
+
+# Subject-wise analysis
+print("\nSubject-wise Average:")
+for subject in subjects:
+    print(f"  {subject}: {df[subject].mean():.2f}")
+
+# Grade distribution
+print("\nGrade Distribution:")
+print(df["Grade"].value_counts())</code></pre>
+
+                    <h3>Step 4: Identify Top Performers</h3>
+                    <pre><code class="language-python"># Top 5 students
+top_5 = df.nlargest(5, "Percentage")[["Name", "Total", "Percentage", "Grade"]]
+print("\nTop 5 Students:")
+print(top_5.to_string(index=False))
+
+# Students who need improvement (below 50%)
+weak = df[df["Percentage"] < 50][["Name", "Percentage", "Grade"]]
+print(f"\nStudents needing improvement: {len(weak)}")
+print(weak.to_string(index=False))</code></pre>
+                </div>
+            </section>
+
+            <section id="visualization" class="content-section">
+                <h2><i class="fas fa-chart-area"></i> Data Visualization</h2>
+                <div class="topic">
+                    <h3>Step 5: Creating Charts</h3>
+                    <pre><code class="language-python">import matplotlib.pyplot as plt
+
+# Create a figure with multiple subplots
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+fig.suptitle("Student Performance Dashboard", fontsize=16, fontweight='bold')
+
+# 1. Grade Distribution (Bar Chart)
+grade_counts = df["Grade"].value_counts().sort_index()
+axes[0, 0].bar(grade_counts.index, grade_counts.values, color=['#ff1b6b', '#ff6b6b', '#ffa726', '#66bb6a', '#42a5f5', '#ab47bc'])
+axes[0, 0].set_title("Grade Distribution")
+axes[0, 0].set_xlabel("Grade")
+axes[0, 0].set_ylabel("Number of Students")
+
+# 2. Subject-wise Average (Bar Chart)
+subject_avg = df[subjects].mean()
+axes[0, 1].barh(subjects, subject_avg, color='#667eea')
+axes[0, 1].set_title("Subject-wise Average Marks")
+axes[0, 1].set_xlabel("Average Marks")
+
+# 3. Percentage Distribution (Histogram)
+axes[1, 0].hist(df["Percentage"], bins=10, color='#f093fb', edgecolor='black')
+axes[1, 0].set_title("Percentage Distribution")
+axes[1, 0].set_xlabel("Percentage")
+axes[1, 0].set_ylabel("Frequency")
+axes[1, 0].axvline(df["Percentage"].mean(), color='red', linestyle='--', label=f'Mean: {df["Percentage"].mean():.1f}%')
+axes[1, 0].legend()
+
+# 4. Attendance vs Percentage (Scatter Plot)
+axes[1, 1].scatter(df["Attendance"], df["Percentage"], c='#ff1b6b', alpha=0.6)
+axes[1, 1].set_title("Attendance vs Performance")
+axes[1, 1].set_xlabel("Attendance (%)")
+axes[1, 1].set_ylabel("Percentage")
+
+plt.tight_layout()
+plt.savefig("performance_dashboard.png", dpi=150, bbox_inches='tight')
+plt.show()
+
+print("\nDashboard saved as 'performance_dashboard.png'")</code></pre>
+
+                    <h3>Step 6: Generate Final Report</h3>
+                    <pre><code class="language-python"># Save results to CSV
+df.to_csv("student_results.csv", index=False)
+
+# Print final summary
+print("\n" + "="*50)
+print("    FINAL ANALYSIS SUMMARY")
+print("="*50)
+print(f"  Total Students Analyzed: {len(df)}")
+print(f"  Pass Rate: {(len(df[df['Status']=='Pass'])/len(df))*100:.1f}%")
+print(f"  Class Average: {df['Percentage'].mean():.2f}%")
+print(f"  Best Subject: {subject_avg.idxmax()} ({subject_avg.max():.1f})")
+print(f"  Weakest Subject: {subject_avg.idxmin()} ({subject_avg.min():.1f})")
+print(f"  Topper: {df.loc[df['Percentage'].idxmax(), 'Name']} ({df['Percentage'].max():.1f}%)")
+print(f"\n  Results saved to 'student_results.csv'")
+print("="*50)</code></pre>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 8 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: What does df.nlargest(5, "Marks") do?</h3><details><summary>Show Answer</summary><div class="answer"><p>Returns the top 5 rows with the highest values in the "Marks" column.</p></div></details></div>
+                    <div class="question"><h3>Q2: How do you calculate column-wise sum in Pandas?</h3><details><summary>Show Answer</summary><div class="answer"><p><code>df[columns].sum(axis=1)</code> for row-wise sum, <code>df[columns].sum(axis=0)</code> for column-wise sum.</p></div></details></div>
+                    <div class="question"><h3>Q3: What does the .apply() method do?</h3><details><summary>Show Answer</summary><div class="answer"><p>Applies a function to each element/row of a Series or DataFrame. Example: <code>df["col"].apply(func)</code></p></div></details></div>
+                    <div class="question"><h3>Q4: How to save a DataFrame to CSV?</h3><details><summary>Show Answer</summary><div class="answer"><p><code>df.to_csv("filename.csv", index=False)</code></p></div></details></div>
+                    <div class="question"><h3>Q5: What does value_counts() return?</h3><details><summary>Show Answer</summary><div class="answer"><p>Returns the count of each unique value in a Series, sorted in descending order.</p></div></details></div>
+                    <div class="question"><h3>Q6: How to create subplots in Matplotlib?</h3><details><summary>Show Solution</summary><pre><code class="language-python">fig, axes = plt.subplots(nrows, ncols, figsize=(w, h))</code></pre></details></div>
+                    <div class="question"><h3>Q7: What chart type is best for distribution?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>Histogram</strong> for continuous data distribution, <strong>Bar chart</strong> for categorical distribution.</p></div></details></div>
+                    <div class="question"><h3>Q8: How to filter rows where Percentage > 90?</h3><details><summary>Show Solution</summary><pre><code class="language-python">toppers = df[df["Percentage"] > 90]</code></pre></details></div>
+                    <div class="question"><h3>Q9: What does fillna(method="ffill") do?</h3><details><summary>Show Answer</summary><div class="answer"><p>Forward fill — fills NaN with the previous non-null value in the column.</p></div></details></div>
+                    <div class="question"><h3>Q10: Add a feature to find correlation between Attendance and Marks</h3><details><summary>Show Solution</summary><pre><code class="language-python">correlation = df["Attendance"].corr(df["Percentage"])
+print(f"Correlation: {correlation:.3f}")
+# Close to 1 = strong positive, close to 0 = no relation</code></pre></details></div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day7.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 7</a>
+                <a href="day9.html" class="nav-btn next">Next: Day 9 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

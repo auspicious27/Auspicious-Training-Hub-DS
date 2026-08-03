@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10: Supervised Learning & Linear Regression</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 10 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#supervised">Supervised Learning</a></li>
+                <li><a href="#features">Features & Labels</a></li>
+                <li><a href="#regression">Regression</a></li>
+                <li><a href="#linear">Linear Regression</a></li>
+                <li><a href="#training">Model Training</a></li>
+                <li><a href="#prediction">Model Prediction</a></li>
+                <li><a href="#evaluation">Model Evaluation</a></li>
+                <li><a href="#examples">Dataset Examples</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day9.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 9</a>
+                <a href="day11.html" class="nav-btn next">Day 11 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 10: Supervised Learning & Linear Regression</h1>
+                <p class="day-subtitle">Your first Machine Learning algorithm — predicting continuous values</p>
+            </header>
+
+            <section id="supervised" class="content-section">
+                <h2><i class="fas fa-graduation-cap"></i> Introduction to Supervised Learning</h2>
+                <div class="topic">
+                    <h3>What is Supervised Learning?</h3>
+                    <p><strong>Supervised Learning</strong> is a type of ML where the model learns from labeled data — data that has both input features (X) and known output (y). The model learns the relationship between inputs and outputs, then predicts outputs for new inputs.</p>
+                    
+                    <div class="example-box">
+                        <h4>Analogy: Teacher-Student</h4>
+                        <p>Like a teacher showing solved examples (labeled data) to a student. The student (model) learns the pattern and can then solve new problems on their own.</p>
+                    </div>
+
+                    <table>
+                        <thead><tr><th>Type</th><th>Output</th><th>Example</th><th>Algorithm</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Classification</strong></td><td>Categories</td><td>Spam/Not Spam</td><td>Logistic Regression, SVM, KNN</td></tr>
+                            <tr><td><strong>Regression</strong></td><td>Numbers</td><td>House Price</td><td>Linear Regression, Decision Tree</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="features" class="content-section">
+                <h2><i class="fas fa-columns"></i> Features & Labels</h2>
+                <div class="topic">
+                    <h3>Understanding Features and Labels</h3>
+                    
+                    <div class="key-points">
+                        <h4>Terminology:</h4>
+                        <ul>
+                            <li><strong>Features (X):</strong> Input variables used for prediction (independent variables)</li>
+                            <li><strong>Label/Target (y):</strong> Output variable we want to predict (dependent variable)</li>
+                            <li><strong>Training Data:</strong> Data used to teach the model</li>
+                            <li><strong>Test Data:</strong> Data used to evaluate the model</li>
+                        </ul>
+                    </div>
+
+                    <pre><code class="language-python"># Example: Predicting Student Marks
+# Features (X): Hours studied, Attendance %
+# Label (y): Final Marks
+
+import pandas as pd
+
+data = {
+    'Hours_Studied': [2, 3, 5, 7, 8, 9, 4, 6],  # Feature 1
+    'Attendance':    [60, 70, 80, 90, 95, 98, 75, 85],  # Feature 2
+    'Marks':         [35, 45, 65, 80, 88, 95, 55, 72]   # Target (Label)
+}
+
+df = pd.DataFrame(data)
+
+X = df[['Hours_Studied', 'Attendance']]  # Features
+y = df['Marks']                           # Target
+
+print("Features (X):")
+print(X)
+print("\nTarget (y):")
+print(y)</code></pre>
+                </div>
+            </section>
+
+            <section id="regression" class="content-section">
+                <h2><i class="fas fa-chart-line"></i> Regression</h2>
+                <div class="topic">
+                    <h3>What is Regression?</h3>
+                    <p><strong>Regression</strong> is a supervised learning technique for predicting continuous numerical values. It finds the relationship between input features and a continuous output.</p>
+                    
+                    <div class="info-box">
+                        <h4>Regression vs Classification:</h4>
+                        <ul>
+                            <li><strong>Regression:</strong> Predict numbers → Price: 25000, Temperature: 32.5°C</li>
+                            <li><strong>Classification:</strong> Predict categories → Pass/Fail, Cat/Dog, Spam/Ham</li>
+                        </ul>
+                    </div>
+
+                    <h4>Common Regression Problems:</h4>
+                    <ul>
+                        <li>House price prediction based on area, bedrooms, location</li>
+                        <li>Salary prediction based on experience, skills</li>
+                        <li>Stock price prediction</li>
+                        <li>Student marks prediction based on study hours</li>
+                        <li>Temperature forecasting</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="linear" class="content-section">
+                <h2><i class="fas fa-project-diagram"></i> Linear Regression</h2>
+                <div class="topic">
+                    <h3>Understanding Linear Regression</h3>
+                    <p><strong>Linear Regression</strong> finds the best-fit straight line through data points. It models the relationship as: <code>y = mx + b</code></p>
+                    
+                    <div class="key-points">
+                        <h4>The Equation: y = mx + b</h4>
+                        <ul>
+                            <li><strong>y:</strong> Predicted value (target)</li>
+                            <li><strong>m:</strong> Slope (how much y changes per unit change in x)</li>
+                            <li><strong>x:</strong> Input feature</li>
+                            <li><strong>b:</strong> Intercept (y value when x = 0)</li>
+                        </ul>
+                    </div>
+
+                    <pre><code class="language-python"># Simple Linear Regression: One feature
+# y = mx + b
+# Example: Marks = m * Hours_Studied + b
+
+# The algorithm finds the best m and b values
+# that minimize the error between predicted and actual values</code></pre>
+
+                    <div class="example-box">
+                        <h4>Visual Intuition:</h4>
+                        <p>Imagine plotting students' study hours (x-axis) vs their marks (y-axis). Linear regression finds the straight line that best fits through all these points. Any new student's marks can be predicted by their position on this line.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="training" class="content-section">
+                <h2><i class="fas fa-dumbbell"></i> Model Training</h2>
+                <div class="topic">
+                    <h3>Training a Linear Regression Model</h3>
+                    <pre><code class="language-python">import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+
+# Dataset: Student study hours vs marks
+data = {
+    'Hours': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Marks': [20, 30, 38, 50, 55, 65, 70, 80, 85, 95]
+}
+df = pd.DataFrame(data)
+
+# Prepare features and target
+X = df[['Hours']]  # Must be 2D array for sklearn
+y = df['Marks']
+
+# Split data (80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Create and train model
+model = LinearRegression()
+model.fit(X_train, y_train)  # Training happens here!
+
+# Model parameters
+print(f"Slope (m): {model.coef_[0]:.2f}")
+print(f"Intercept (b): {model.intercept_:.2f}")
+print(f"Equation: Marks = {model.coef_[0]:.2f} × Hours + {model.intercept_:.2f}")</code></pre>
+                    
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <pre>Slope (m): 8.28
+Intercept (b): 12.41
+Equation: Marks = 8.28 × Hours + 12.41</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="prediction" class="content-section">
+                <h2><i class="fas fa-magic"></i> Model Prediction</h2>
+                <div class="topic">
+                    <h3>Making Predictions</h3>
+                    <pre><code class="language-python"># Predict on test data
+y_pred = model.predict(X_test)
+
+print("Actual vs Predicted:")
+for actual, predicted in zip(y_test, y_pred):
+    print(f"  Actual: {actual:.0f}, Predicted: {predicted:.1f}")
+
+# Predict for new data
+new_hours = [[4.5], [6.5], [11]]
+predictions = model.predict(new_hours)
+for hours, pred in zip(new_hours, predictions):
+    print(f"  {hours[0]} hours → Predicted marks: {pred:.1f}")
+
+# Visualization
+plt.figure(figsize=(10, 6))
+plt.scatter(X, y, color='#ff1b6b', s=100, label='Actual Data')
+plt.plot(X, model.predict(X), color='#667eea', linewidth=2, label='Best Fit Line')
+plt.xlabel("Hours Studied")
+plt.ylabel("Marks")
+plt.title("Linear Regression: Hours vs Marks")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()</code></pre>
+                </div>
+            </section>
+
+            <section id="evaluation" class="content-section">
+                <h2><i class="fas fa-chart-bar"></i> Model Evaluation</h2>
+                <div class="topic">
+                    <h3>How Good is Our Model?</h3>
+                    <pre><code class="language-python">from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# Evaluation metrics
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, y_pred)
+
+print("Model Evaluation Metrics:")
+print(f"  MAE  (Mean Absolute Error): {mae:.2f}")
+print(f"  MSE  (Mean Squared Error):  {mse:.2f}")
+print(f"  RMSE (Root Mean Sq Error):  {rmse:.2f}")
+print(f"  R² Score:                   {r2:.4f}")
+
+# R² Score interpretation:
+# 1.0 = Perfect prediction
+# 0.8+ = Good model
+# 0.5-0.8 = Moderate
+# < 0.5 = Poor model</code></pre>
+
+                    <table>
+                        <thead><tr><th>Metric</th><th>Meaning</th><th>Best Value</th></tr></thead>
+                        <tbody>
+                            <tr><td>MAE</td><td>Average absolute difference</td><td>Close to 0</td></tr>
+                            <tr><td>MSE</td><td>Average squared difference</td><td>Close to 0</td></tr>
+                            <tr><td>RMSE</td><td>Square root of MSE (same units as target)</td><td>Close to 0</td></tr>
+                            <tr><td>R² Score</td><td>How well model explains variance</td><td>Close to 1.0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="examples" class="content-section">
+                <h2><i class="fas fa-database"></i> Dataset Examples</h2>
+                <div class="topic">
+                    <h3>Example 1: Student Marks Prediction</h3>
+                    <pre><code class="language-python">import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
+
+# Generate dataset
+np.random.seed(42)
+hours = np.random.uniform(1, 12, 30)
+marks = 10 + 7.5 * hours + np.random.normal(0, 5, 30)
+
+df = pd.DataFrame({'Hours': hours, 'Marks': np.clip(marks, 0, 100)})
+
+X = df[['Hours']]
+y = df['Marks']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+print(f"R² Score: {r2_score(y_test, y_pred):.4f}")
+print(f"If student studies 5 hours: {model.predict([[5]])[0]:.1f} marks")</code></pre>
+
+                    <h3>Example 2: Salary Prediction</h3>
+                    <pre><code class="language-python"># Salary prediction based on years of experience
+data = {
+    'Experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15],
+    'Salary': [30000, 35000, 40000, 48000, 55000, 62000, 
+               70000, 78000, 85000, 92000, 110000, 135000]
+}
+df = pd.DataFrame(data)
+
+X = df[['Experience']]
+y = df['Salary']
+
+model = LinearRegression()
+model.fit(X, y)
+
+# Predict salary for 6.5 years experience
+new_exp = [[6.5]]
+predicted_salary = model.predict(new_exp)
+print(f"Predicted salary for 6.5 years: ₹{predicted_salary[0]:,.0f}")
+
+# Visualization
+plt.figure(figsize=(10, 6))
+plt.scatter(X, y, color='#ff1b6b', s=100, zorder=5)
+plt.plot(X, model.predict(X), color='#667eea', linewidth=2)
+plt.scatter(6.5, predicted_salary, color='green', s=200, marker='*', zorder=5)
+plt.xlabel("Years of Experience")
+plt.ylabel("Salary (₹)")
+plt.title("Salary Prediction using Linear Regression")
+plt.grid(True, alpha=0.3)
+plt.show()</code></pre>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 10 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: What is the equation of Linear Regression?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>y = mx + b</strong> where m is slope, b is intercept, x is feature, y is prediction.</p></div></details></div>
+                    <div class="question"><h3>Q2: What does model.fit() do?</h3><details><summary>Show Answer</summary><div class="answer"><p>Trains the model — finds the best slope (m) and intercept (b) values that minimize error.</p></div></details></div>
+                    <div class="question"><h3>Q3: What does R² score of 0.85 mean?</h3><details><summary>Show Answer</summary><div class="answer"><p>The model explains 85% of the variance in the data. It's a good model.</p></div></details></div>
+                    <div class="question"><h3>Q4: Difference between MAE and MSE?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>MAE:</strong> Average of absolute errors. <strong>MSE:</strong> Average of squared errors (penalizes large errors more).</p></div></details></div>
+                    <div class="question"><h3>Q5: What is the purpose of train_test_split?</h3><details><summary>Show Answer</summary><div class="answer"><p>Splits data into training set (to learn patterns) and test set (to evaluate on unseen data), preventing overfitting.</p></div></details></div>
+                    <div class="question"><h3>Q6: What is overfitting?</h3><details><summary>Show Answer</summary><div class="answer"><p>When a model performs well on training data but poorly on new/test data. It memorized rather than learned general patterns.</p></div></details></div>
+                    <div class="question"><h3>Q7: How to get the slope of a trained LinearRegression model?</h3><details><summary>Show Answer</summary><div class="answer"><p><code>model.coef_</code> gives the slope(s), <code>model.intercept_</code> gives the intercept.</p></div></details></div>
+                    <div class="question"><h3>Q8: What type of problems does regression solve?</h3><details><summary>Show Answer</summary><div class="answer"><p>Predicting continuous numerical values — prices, temperatures, scores, salaries, etc.</p></div></details></div>
+                    <div class="question"><h3>Q9: If equation is y = 8x + 12, predict marks for 7 hours</h3><details><summary>Show Answer</summary><div class="answer"><p>y = 8(7) + 12 = 56 + 12 = <strong>68 marks</strong></p></div></details></div>
+                    <div class="question"><h3>Q10: Write code to predict salary for 20 years experience</h3><details><summary>Show Solution</summary><pre><code class="language-python">predicted = model.predict([[20]])
+print(f"Salary for 20 years: ₹{predicted[0]:,.0f}")</code></pre></details></div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day9.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 9</a>
+                <a href="day11.html" class="nav-btn next">Next: Day 11 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

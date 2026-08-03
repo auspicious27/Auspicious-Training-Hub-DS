@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 9: Data Visualization & EDA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 9 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#matplotlib">Matplotlib Basics</a></li>
+                <li><a href="#seaborn">Seaborn Basics</a></li>
+                <li><a href="#charts">Chart Types</a></li>
+                <li><a href="#correlation">Correlation Matrix</a></li>
+                <li><a href="#eda">EDA Process</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day8.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 8</a>
+                <a href="day10.html" class="nav-btn next">Day 10 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 9: Data Visualization & Exploratory Data Analysis</h1>
+                <p class="day-subtitle">Creating meaningful visualizations and extracting data insights</p>
+            </header>
+
+            <section id="matplotlib" class="content-section">
+                <h2><i class="fas fa-chart-line"></i> Matplotlib Basics</h2>
+                <div class="topic">
+                    <h3>Introduction to Matplotlib</h3>
+                    <p>Matplotlib is the foundational plotting library in Python. It provides complete control over every aspect of a figure.</p>
+                    
+                    <pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+
+# Basic line plot
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, color='#ff1b6b', linewidth=2, label='sin(x)')
+plt.title("Sine Wave", fontsize=16)
+plt.xlabel("X axis")
+plt.ylabel("Y axis")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+
+# Customizing plots
+plt.figure(figsize=(10, 6))
+plt.plot(x, np.sin(x), 'r-', label='sin(x)')
+plt.plot(x, np.cos(x), 'b--', label='cos(x)')
+plt.title("Trigonometric Functions")
+plt.xlabel("Angle (radians)")
+plt.ylabel("Value")
+plt.legend(loc='upper right')
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("plot.png", dpi=150)
+plt.show()</code></pre>
+                </div>
+            </section>
+
+            <section id="seaborn" class="content-section">
+                <h2><i class="fas fa-palette"></i> Seaborn Basics</h2>
+                <div class="topic">
+                    <h3>Statistical Visualization with Seaborn</h3>
+                    <p>Seaborn is built on top of Matplotlib and provides beautiful statistical graphics with less code.</p>
+                    
+                    <pre><code class="language-python">import seaborn as sns
+import pandas as pd
+
+# Set style
+sns.set_style("darkgrid")
+sns.set_palette("husl")
+
+# Load sample dataset
+tips = sns.load_dataset("tips")
+
+# Distribution plot
+plt.figure(figsize=(8, 5))
+sns.histplot(tips["total_bill"], kde=True, color='#ff1b6b')
+plt.title("Distribution of Total Bill")
+plt.show()
+
+# Count plot (for categorical data)
+plt.figure(figsize=(8, 5))
+sns.countplot(x="day", data=tips, palette="viridis")
+plt.title("Visits by Day")
+plt.show()
+
+# Box plot (shows distribution + outliers)
+plt.figure(figsize=(8, 5))
+sns.boxplot(x="day", y="total_bill", data=tips)
+plt.title("Bill Distribution by Day")
+plt.show()</code></pre>
+                </div>
+            </section>
+
+            <section id="charts" class="content-section">
+                <h2><i class="fas fa-chart-bar"></i> Chart Types</h2>
+                <div class="topic">
+                    <h3>Common Visualization Types</h3>
+                    
+                    <h4>1. Line Chart — Trends over time</h4>
+                    <pre><code class="language-python">months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+sales = [150, 200, 180, 250, 300, 280]
+
+plt.figure(figsize=(10, 5))
+plt.plot(months, sales, marker='o', color='#ff1b6b', linewidth=2)
+plt.fill_between(months, sales, alpha=0.1, color='#ff1b6b')
+plt.title("Monthly Sales Trend")
+plt.ylabel("Sales (units)")
+plt.show()</code></pre>
+
+                    <h4>2. Bar Chart — Comparing categories</h4>
+                    <pre><code class="language-python">subjects = ['Math', 'Science', 'English', 'Hindi', 'CS']
+marks = [85, 92, 78, 88, 95]
+
+plt.figure(figsize=(10, 5))
+bars = plt.bar(subjects, marks, color=['#ff1b6b', '#667eea', '#f093fb', '#4facfe', '#43e97b'])
+plt.title("Subject-wise Marks")
+plt.ylabel("Marks")
+plt.ylim(0, 100)
+
+# Add value labels on bars
+for bar, mark in zip(bars, marks):
+    plt.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1, 
+             str(mark), ha='center', fontweight='bold')
+plt.show()</code></pre>
+
+                    <h4>3. Histogram — Distribution</h4>
+                    <pre><code class="language-python">data = np.random.normal(70, 15, 200)  # Mean=70, Std=15
+
+plt.figure(figsize=(10, 5))
+plt.hist(data, bins=20, color='#667eea', edgecolor='black', alpha=0.7)
+plt.axvline(np.mean(data), color='red', linestyle='--', label=f'Mean: {np.mean(data):.1f}')
+plt.title("Marks Distribution")
+plt.xlabel("Marks")
+plt.ylabel("Frequency")
+plt.legend()
+plt.show()</code></pre>
+
+                    <h4>4. Scatter Plot — Relationships</h4>
+                    <pre><code class="language-python">hours = np.random.uniform(1, 10, 50)
+marks = 20 + 8 * hours + np.random.normal(0, 5, 50)
+
+plt.figure(figsize=(10, 6))
+plt.scatter(hours, marks, c=marks, cmap='RdYlGn', s=80, alpha=0.7)
+plt.colorbar(label='Marks')
+plt.xlabel("Hours Studied")
+plt.ylabel("Marks Obtained")
+plt.title("Study Hours vs Marks")
+plt.show()</code></pre>
+
+                    <h4>5. Pie Chart — Proportions</h4>
+                    <pre><code class="language-python">grades = ['A+', 'A', 'B', 'C', 'D', 'F']
+counts = [5, 12, 15, 10, 6, 2]
+colors = ['#ff1b6b', '#667eea', '#f093fb', '#4facfe', '#ffa726', '#ef5350']
+
+plt.figure(figsize=(8, 8))
+plt.pie(counts, labels=grades, colors=colors, autopct='%1.1f%%', 
+        startangle=90, explode=[0.05]*6)
+plt.title("Grade Distribution")
+plt.show()</code></pre>
+                </div>
+            </section>
+
+            <section id="correlation" class="content-section">
+                <h2><i class="fas fa-link"></i> Correlation Matrix</h2>
+                <div class="topic">
+                    <h3>Understanding Feature Relationships</h3>
+                    <pre><code class="language-python">import seaborn as sns
+import pandas as pd
+
+# Create sample data
+data = pd.DataFrame({
+    'Hours_Studied': np.random.uniform(1, 10, 100),
+    'Attendance': np.random.uniform(50, 100, 100),
+    'Previous_Score': np.random.uniform(40, 95, 100),
+    'Sleep_Hours': np.random.uniform(4, 9, 100),
+})
+data['Final_Score'] = (data['Hours_Studied'] * 5 + 
+                       data['Attendance'] * 0.3 + 
+                       data['Previous_Score'] * 0.4 + 
+                       np.random.normal(0, 5, 100))
+
+# Correlation matrix
+corr = data.corr()
+print("Correlation Matrix:")
+print(corr)
+
+# Heatmap visualization
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr, annot=True, cmap='RdYlBu_r', center=0, 
+            fmt='.2f', square=True)
+plt.title("Feature Correlation Heatmap")
+plt.tight_layout()
+plt.show()
+
+# Interpretation:
+# +1: Perfect positive correlation
+#  0: No correlation
+# -1: Perfect negative correlation</code></pre>
+                    
+                    <div class="info-box">
+                        <h4>Correlation Values:</h4>
+                        <ul>
+                            <li><strong>0.7 to 1.0:</strong> Strong positive correlation</li>
+                            <li><strong>0.3 to 0.7:</strong> Moderate positive correlation</li>
+                            <li><strong>0.0 to 0.3:</strong> Weak/No correlation</li>
+                            <li><strong>-0.3 to -0.7:</strong> Moderate negative correlation</li>
+                            <li><strong>-0.7 to -1.0:</strong> Strong negative correlation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="eda" class="content-section">
+                <h2><i class="fas fa-search"></i> Exploratory Data Analysis (EDA)</h2>
+                <div class="topic">
+                    <h3>Complete EDA Process</h3>
+                    <pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# EDA Workflow
+def perform_eda(df):
+    print("="*50)
+    print("  EXPLORATORY DATA ANALYSIS")
+    print("="*50)
+    
+    # 1. Basic Info
+    print(f"\n1. SHAPE: {df.shape}")
+    print(f"\n2. COLUMNS: {list(df.columns)}")
+    print(f"\n3. DATA TYPES:\n{df.dtypes}")
+    
+    # 4. Missing Values
+    print(f"\n4. MISSING VALUES:\n{df.isnull().sum()}")
+    
+    # 5. Statistical Summary
+    print(f"\n5. STATISTICAL SUMMARY:\n{df.describe()}")
+    
+    # 6. Duplicates
+    print(f"\n6. DUPLICATE ROWS: {df.duplicated().sum()}")
+    
+    # 7. Unique values for categorical columns
+    cat_cols = df.select_dtypes(include='object').columns
+    for col in cat_cols:
+        print(f"\n7. UNIQUE in '{col}': {df[col].nunique()} values")
+    
+    return df
+
+# Call EDA
+# df = pd.read_csv("your_data.csv")
+# perform_eda(df)</code></pre>
+
+                    <div class="key-points">
+                        <h4>EDA Checklist:</h4>
+                        <ul>
+                            <li>Check shape, columns, data types</li>
+                            <li>Identify and handle missing values</li>
+                            <li>Check for duplicates</li>
+                            <li>Statistical summary (mean, median, std)</li>
+                            <li>Distribution of numerical features (histograms)</li>
+                            <li>Distribution of categorical features (bar plots)</li>
+                            <li>Correlation between features (heatmap)</li>
+                            <li>Identify outliers (box plots)</li>
+                            <li>Relationships between features (scatter plots)</li>
+                            <li>Document key insights</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 9 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: Which library is used for statistical plots?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>Seaborn</strong> — Built on Matplotlib, provides beautiful statistical graphics.</p></div></details></div>
+                    <div class="question"><h3>Q2: What chart is best for showing trends over time?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>Line Chart</strong> — Shows how values change over a continuous period.</p></div></details></div>
+                    <div class="question"><h3>Q3: What does a correlation of -0.8 mean?</h3><details><summary>Show Answer</summary><div class="answer"><p>Strong negative correlation — as one variable increases, the other decreases strongly.</p></div></details></div>
+                    <div class="question"><h3>Q4: What chart shows data distribution?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>Histogram</strong> shows the frequency distribution of numerical data.</p></div></details></div>
+                    <div class="question"><h3>Q5: How to save a Matplotlib plot?</h3><details><summary>Show Answer</summary><div class="answer"><p><code>plt.savefig("filename.png", dpi=150)</code> — Call before plt.show()</p></div></details></div>
+                    <div class="question"><h3>Q6: What is EDA?</h3><details><summary>Show Answer</summary><div class="answer"><p>Exploratory Data Analysis — The process of examining data to discover patterns, spot anomalies, and understand relationships before building models.</p></div></details></div>
+                    <div class="question"><h3>Q7: What does sns.heatmap() display?</h3><details><summary>Show Answer</summary><div class="answer"><p>A color-coded matrix showing correlation values between all numerical features. Darker colors = stronger correlations.</p></div></details></div>
+                    <div class="question"><h3>Q8: When to use scatter plot?</h3><details><summary>Show Answer</summary><div class="answer"><p>To visualize the relationship between two continuous numerical variables. Each point represents one observation.</p></div></details></div>
+                    <div class="question"><h3>Q9: Create a bar chart of 5 programming languages and their popularity</h3><details><summary>Show Solution</summary><pre><code class="language-python">languages = ['Python', 'Java', 'JS', 'C++', 'R']
+popularity = [30, 20, 25, 15, 10]
+plt.bar(languages, popularity, color='#ff1b6b')
+plt.title("Programming Language Popularity")
+plt.ylabel("Popularity (%)")
+plt.show()</code></pre></details></div>
+                    <div class="question"><h3>Q10: What's the difference between plt.plot() and plt.scatter()?</h3><details><summary>Show Answer</summary><div class="answer"><p><code>plt.plot()</code> creates a line connecting all points (good for trends). <code>plt.scatter()</code> shows individual data points without connecting them (good for relationships).</p></div></details></div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day8.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 8</a>
+                <a href="day10.html" class="nav-btn next">Next: Day 10 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

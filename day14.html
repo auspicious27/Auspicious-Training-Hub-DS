@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 14: Machine Learning Model Deployment Basics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 14 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#workflow">End-to-End ML Workflow</a></li>
+                <li><a href="#testing">Model Testing</a></li>
+                <li><a href="#comparison">Model Comparison</a></li>
+                <li><a href="#pickle">Saving with Pickle</a></li>
+                <li><a href="#loading">Loading Models</a></li>
+                <li><a href="#opencv-intro">OpenCV Basics</a></li>
+                <li><a href="#applications">Real-world Applications</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day13.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 13</a>
+                <a href="day15.html" class="nav-btn next">Day 15 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 14: Machine Learning Model Deployment Basics</h1>
+                <p class="day-subtitle">Saving, loading, and deploying trained ML models</p>
+            </header>
+
+            <section id="workflow" class="content-section">
+                <h2><i class="fas fa-project-diagram"></i> End-to-End Machine Learning Workflow</h2>
+                <div class="topic">
+                    <h3>Complete ML Pipeline</h3>
+                    <pre><code class="language-python"># Complete End-to-End ML Workflow
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_absolute_error
+import pickle
+
+# Step 1: Data Collection
+print("Step 1: Loading Data...")
+np.random.seed(42)
+n = 200
+df = pd.DataFrame({
+    'Experience': np.random.uniform(0, 15, n),
+    'Skills': np.random.randint(3, 15, n),
+    'Education': np.random.choice([1, 2, 3], n),
+    'Salary': None
+})
+df['Salary'] = (df['Experience'] * 50000 + df['Skills'] * 20000 + 
+                df['Education'] * 80000 + 200000 + 
+                np.random.normal(0, 30000, n)).astype(int)
+
+# Step 2: EDA & Preprocessing
+print("Step 2: Preprocessing...")
+print(f"  Shape: {df.shape}")
+print(f"  Missing: {df.isnull().sum().sum()}")
+
+# Step 3: Feature Selection
+X = df[['Experience', 'Skills', 'Education']]
+y = df['Salary']
+
+# Step 4: Train-Test Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 5: Model Training
+print("Step 3: Training Model...")
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Step 6: Evaluation
+y_pred = model.predict(X_test)
+r2 = r2_score(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+print(f"Step 4: Evaluation → R²: {r2:.4f}, MAE: ₹{mae:,.0f}")
+
+# Step 7: Save Model
+print("Step 5: Saving Model...")
+with open('salary_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+print("  Model saved as 'salary_model.pkl'")
+
+print("\nPipeline Complete!")</code></pre>
+                </div>
+            </section>
+
+            <section id="testing" class="content-section">
+                <h2><i class="fas fa-vial"></i> Model Testing</h2>
+                <div class="topic">
+                    <h3>Testing Model with New Data</h3>
+                    <pre><code class="language-python"># Test with specific examples
+test_cases = [
+    {"Experience": 2, "Skills": 5, "Education": 2, "Expected": "~₹4-5L"},
+    {"Experience": 8, "Skills": 10, "Education": 3, "Expected": "~₹9-11L"},
+    {"Experience": 15, "Skills": 12, "Education": 3, "Expected": "~₹13-15L"},
+]
+
+print("Model Testing:")
+print("-" * 50)
+for tc in test_cases:
+    features = [[tc['Experience'], tc['Skills'], tc['Education']]]
+    prediction = model.predict(features)[0]
+    print(f"  Exp: {tc['Experience']}y, Skills: {tc['Skills']}, Edu: {tc['Education']}")
+    print(f"  Predicted: ₹{prediction:,.0f} (Expected: {tc['Expected']})")
+    print()
+
+# Test on entire test set
+print(f"Test Set Performance:")
+print(f"  Predictions within ₹50K: {sum(abs(y_test - y_pred) < 50000)}/{len(y_test)}")
+print(f"  Predictions within ₹1L:  {sum(abs(y_test - y_pred) < 100000)}/{len(y_test)}")</code></pre>
+                </div>
+            </section>
+
+            <section id="comparison" class="content-section">
+                <h2><i class="fas fa-balance-scale"></i> Model Comparison</h2>
+                <div class="topic">
+                    <h3>Comparing Different Models</h3>
+                    <pre><code class="language-python">from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+# Define models to compare
+models = {
+    'Linear Regression': LinearRegression(),
+    'Ridge Regression': Ridge(alpha=1.0),
+    'Lasso Regression': Lasso(alpha=1.0),
+    'Decision Tree': DecisionTreeRegressor(random_state=42),
+    'Random Forest': RandomForestRegressor(n_estimators=100, random_state=42)
+}
+
+# Compare all models
+print("Model Comparison:")
+print("=" * 50)
+print(f"{'Model':<25} {'R² Score':<12} {'MAE'}")
+print("-" * 50)
+
+best_model = None
+best_r2 = -1
+
+for name, m in models.items():
+    m.fit(X_train, y_train)
+    pred = m.predict(X_test)
+    r2 = r2_score(y_test, pred)
+    mae = mean_absolute_error(y_test, pred)
+    print(f"  {name:<23} {r2:.4f}       ₹{mae:,.0f}")
+    
+    if r2 > best_r2:
+        best_r2 = r2
+        best_model = (name, m)
+
+print("-" * 50)
+print(f"  Best Model: {best_model[0]} (R² = {best_r2:.4f})")
+print("=" * 50)</code></pre>
+                </div>
+            </section>
+
+            <section id="pickle" class="content-section">
+                <h2><i class="fas fa-save"></i> Saving Models using Pickle</h2>
+                <div class="topic">
+                    <h3>Model Serialization</h3>
+                    <pre><code class="language-python">import pickle
+
+# Method 1: Using pickle
+# Save model
+with open('best_model.pkl', 'wb') as file:
+    pickle.dump(best_model[1], file)
+print("Model saved with pickle!")
+
+# Method 2: Using joblib (better for large models)
+import joblib
+
+joblib.dump(best_model[1], 'best_model_joblib.pkl')
+print("Model saved with joblib!")
+
+# Save additional info
+model_info = {
+    'model_name': best_model[0],
+    'features': list(X.columns),
+    'r2_score': best_r2,
+    'training_date': '2024-01-15',
+    'training_samples': len(X_train)
+}
+
+with open('model_info.pkl', 'wb') as f:
+    pickle.dump(model_info, f)
+print("Model info saved!")</code></pre>
+                </div>
+            </section>
+
+            <section id="loading" class="content-section">
+                <h2><i class="fas fa-upload"></i> Loading & Using Saved Models</h2>
+                <div class="topic">
+                    <h3>Prediction using Saved Models</h3>
+                    <pre><code class="language-python">import pickle
+import numpy as np
+
+# Load the saved model
+with open('best_model.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
+
+# Load model info
+with open('model_info.pkl', 'rb') as f:
+    info = pickle.load(f)
+
+print(f"Loaded: {info['model_name']}")
+print(f"Features: {info['features']}")
+print(f"R² Score: {info['r2_score']:.4f}")
+
+# Use loaded model for predictions
+print("\n--- Salary Predictor ---")
+exp = float(input("Years of experience: "))
+skills = int(input("Number of skills: "))
+edu = int(input("Education (1=HSC, 2=Graduate, 3=PG): "))
+
+prediction = loaded_model.predict([[exp, skills, edu]])
+print(f"\nPredicted Salary: ₹{prediction[0]:,.0f}")
+
+# This is essentially "deploying" the model!
+# In production: wrap this in a Flask/FastAPI web server</code></pre>
+                </div>
+            </section>
+
+            <section id="opencv-intro" class="content-section">
+                <h2><i class="fas fa-eye"></i> Introduction to OpenCV</h2>
+                <div class="topic">
+                    <h3>Key OpenCV Operations</h3>
+                    <pre><code class="language-python">import cv2
+import numpy as np
+
+# Basic operations summary
+operations = {
+    'Read': "cv2.imread('file.jpg')",
+    'Display': "cv2.imshow('title', img)",
+    'Write': "cv2.imwrite('out.jpg', img)",
+    'Grayscale': "cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)",
+    'Resize': "cv2.resize(img, (w, h))",
+    'Webcam': "cv2.VideoCapture(0)",
+    'Draw Rect': "cv2.rectangle(img, (x1,y1), (x2,y2), color, thickness)",
+    'Put Text': "cv2.putText(img, text, (x,y), font, size, color, thick)",
+    'Face Detect': "cascade.detectMultiScale(gray, 1.1, 5)",
+}
+
+for op, code in operations.items():
+    print(f"  {op}: {code}")</code></pre>
+                </div>
+            </section>
+
+            <section id="applications" class="content-section">
+                <h2><i class="fas fa-rocket"></i> Real-world ML Applications</h2>
+                <div class="topic">
+                    <h3>Where Deployed ML Models are Used</h3>
+                    <div class="use-cases">
+                        <div class="use-case"><i class="fas fa-mobile-alt"></i><h4>Mobile Apps</h4><p>Face unlock, voice assistant</p></div>
+                        <div class="use-case"><i class="fas fa-globe"></i><h4>Web Apps</h4><p>Recommendation engines, chatbots</p></div>
+                        <div class="use-case"><i class="fas fa-hospital"></i><h4>Healthcare</h4><p>Disease prediction systems</p></div>
+                        <div class="use-case"><i class="fas fa-car"></i><h4>Automotive</h4><p>Self-driving, parking assist</p></div>
+                        <div class="use-case"><i class="fas fa-shield-alt"></i><h4>Security</h4><p>Surveillance, threat detection</p></div>
+                        <div class="use-case"><i class="fas fa-industry"></i><h4>Manufacturing</h4><p>Quality control, predictive maintenance</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 14 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: What is pickle used for?</h3><details><summary>Show Answer</summary><div class="answer"><p>Serializing (saving) Python objects (including ML models) to files, so they can be loaded and reused later without retraining.</p></div></details></div>
+                    <div class="question"><h3>Q2: What is the difference between pickle and joblib?</h3><details><summary>Show Answer</summary><div class="answer"><p>Both save/load models. joblib is more efficient for large numpy arrays (common in ML models). pickle is general-purpose.</p></div></details></div>
+                    <div class="question"><h3>Q3: Why do we save trained models?</h3><details><summary>Show Answer</summary><div class="answer"><p>To avoid retraining every time. Train once, save, then load for predictions in production applications.</p></div></details></div>
+                    <div class="question"><h3>Q4: What does 'wb' and 'rb' mean in file operations?</h3><details><summary>Show Answer</summary><div class="answer"><p><strong>'wb':</strong> Write binary (for saving). <strong>'rb':</strong> Read binary (for loading). Models are saved as binary data.</p></div></details></div>
+                    <div class="question"><h3>Q5: How to compare ML models fairly?</h3><details><summary>Show Answer</summary><div class="answer"><p>Use the same train-test split, same evaluation metrics, and same preprocessing for all models.</p></div></details></div>
+                    <div class="question"><h3>Q6: What is model deployment?</h3><details><summary>Show Answer</summary><div class="answer"><p>Making a trained model available for use in real applications — via API, web app, mobile app, or embedded system.</p></div></details></div>
+                    <div class="question"><h3>Q7: Write code to load and use a saved model</h3><details><summary>Show Solution</summary><pre><code class="language-python">import pickle
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
+prediction = model.predict([[5, 8, 2]])
+print(f"Prediction: {prediction[0]}")</code></pre></details></div>
+                    <div class="question"><h3>Q8: Which model would you choose: R²=0.92, MAE=₹40K or R²=0.89, MAE=₹35K?</h3><details><summary>Show Answer</summary><div class="answer"><p>Depends on priority. R²=0.92 explains more variance. MAE=₹35K has smaller average error. For salary prediction, lower MAE might be more practical.</p></div></details></div>
+                    <div class="question"><h3>Q9: What information should you save along with the model?</h3><details><summary>Show Answer</summary><div class="answer"><p>Feature names, preprocessing steps, training date, performance metrics, model type, version, and any thresholds used.</p></div></details></div>
+                    <div class="question"><h3>Q10: What is the ML workflow in order?</h3><details><summary>Show Answer</summary><div class="answer"><p>1) Data Collection 2) EDA 3) Preprocessing 4) Feature Selection 5) Train-Test Split 6) Model Training 7) Evaluation 8) Save Model 9) Deploy</p></div></details></div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day13.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 13</a>
+                <a href="day15.html" class="nav-btn next">Next: Day 15 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7: Data Preprocessing, NumPy & Pandas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 7 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#dataset">What is a Dataset?</a></li>
+                <li><a href="#numpy">Introduction to NumPy</a></li>
+                <li><a href="#arrays">Creating Arrays</a></li>
+                <li><a href="#operations">Array Operations</a></li>
+                <li><a href="#pandas">Introduction to Pandas</a></li>
+                <li><a href="#dataframes">Series & DataFrames</a></li>
+                <li><a href="#csv">Loading CSV Files</a></li>
+                <li><a href="#missing">Handling Missing Values</a></li>
+                <li><a href="#cleaning">Data Cleaning</a></li>
+                <li><a href="#split">Train-Test Split</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day6.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 6</a>
+                <a href="day8.html" class="nav-btn next">Day 8 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 7: Data Preprocessing, NumPy & Pandas</h1>
+                <p class="day-subtitle">Essential tools for data manipulation in Python</p>
+            </header>
+
+            <section id="dataset" class="content-section">
+                <h2><i class="fas fa-table"></i> What is a Dataset?</h2>
+                <div class="topic">
+                    <h3>Understanding Datasets</h3>
+                    <p>A <strong>dataset</strong> is a collection of data organized in rows and columns (like a spreadsheet). Each row represents a record/sample and each column represents a feature/attribute.</p>
+                    
+                    <table>
+                        <thead><tr><th>Name</th><th>Age</th><th>Marks</th><th>Grade</th></tr></thead>
+                        <tbody>
+                            <tr><td>Ali</td><td>20</td><td>85</td><td>A</td></tr>
+                            <tr><td>Sara</td><td>22</td><td>92</td><td>A+</td></tr>
+                            <tr><td>Ravi</td><td>21</td><td>67</td><td>B</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="info-box">
+                        <h4>Dataset Terminology:</h4>
+                        <ul>
+                            <li><strong>Row:</strong> One record/observation/sample</li>
+                            <li><strong>Column:</strong> One feature/attribute/variable</li>
+                            <li><strong>Features (X):</strong> Input columns used for prediction</li>
+                            <li><strong>Target (y):</strong> Output column we want to predict</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="numpy" class="content-section">
+                <h2><i class="fas fa-th"></i> Introduction to NumPy</h2>
+                <div class="topic">
+                    <h3>NumPy — Numerical Python</h3>
+                    <p>NumPy is the fundamental library for numerical computing in Python. It provides powerful N-dimensional arrays and mathematical functions.</p>
+                    
+                    <pre><code class="language-python">import numpy as np
+
+# Why NumPy over Python lists?
+# 1. Much faster (50x faster for large arrays)
+# 2. Less memory usage
+# 3. Built-in mathematical functions
+# 4. Broadcasting support</code></pre>
+                </div>
+            </section>
+
+            <section id="arrays" class="content-section">
+                <h2><i class="fas fa-layer-group"></i> Creating Arrays</h2>
+                <div class="topic">
+                    <h3>NumPy Array Creation</h3>
+                    <pre><code class="language-python">import numpy as np
+
+# From list
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)          # [1 2 3 4 5]
+print(type(arr))    # &lt;class 'numpy.ndarray'&gt;
+
+# 2D Array (Matrix)
+matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(matrix)
+# [[1 2 3]
+#  [4 5 6]
+#  [7 8 9]]
+
+# Special arrays
+zeros = np.zeros((3, 4))     # 3x4 matrix of zeros
+ones = np.ones((2, 3))       # 2x3 matrix of ones
+eye = np.eye(3)              # 3x3 identity matrix
+rand = np.random.rand(3, 3)  # Random values 0-1
+
+# Range arrays
+arr1 = np.arange(0, 10, 2)     # [0, 2, 4, 6, 8]
+arr2 = np.linspace(0, 1, 5)    # [0. 0.25 0.5 0.75 1.]
+
+# Array properties
+print(matrix.shape)    # (3, 3)
+print(matrix.dtype)    # int64
+print(matrix.ndim)     # 2
+print(matrix.size)     # 9</code></pre>
+                </div>
+            </section>
+
+            <section id="operations" class="content-section">
+                <h2><i class="fas fa-calculator"></i> Array Operations</h2>
+                <div class="topic">
+                    <h3>Mathematical Operations with NumPy</h3>
+                    <pre><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+b = np.array([10, 20, 30, 40, 50])
+
+# Element-wise operations
+print(a + b)    # [11 22 33 44 55]
+print(a * b)    # [10 40 90 160 250]
+print(a ** 2)   # [1 4 9 16 25]
+
+# Statistical functions
+data = np.array([85, 92, 78, 95, 88, 76, 90])
+print(np.mean(data))    # 86.28 (average)
+print(np.median(data))  # 88.0
+print(np.std(data))     # 6.72 (standard deviation)
+print(np.min(data))     # 76
+print(np.max(data))     # 95
+print(np.sum(data))     # 604
+
+# Indexing and Slicing
+matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(matrix[0, 0])     # 1
+print(matrix[1, :])     # [4 5 6] (entire row)
+print(matrix[:, 2])     # [3 6 9] (entire column)
+print(matrix[0:2, 1:3]) # [[2 3] [5 6]]
+
+# Boolean indexing
+marks = np.array([45, 82, 37, 91, 55, 73])
+passed = marks[marks >= 40]
+print(passed)  # [45 82 91 55 73]
+
+# Reshaping
+arr = np.arange(12)
+reshaped = arr.reshape(3, 4)
+print(reshaped)
+# [[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]</code></pre>
+                </div>
+            </section>
+
+            <section id="pandas" class="content-section">
+                <h2><i class="fas fa-database"></i> Introduction to Pandas</h2>
+                <div class="topic">
+                    <h3>Pandas — Data Analysis Library</h3>
+                    <p>Pandas is the most popular library for data manipulation and analysis. It provides two main data structures: <strong>Series</strong> (1D) and <strong>DataFrame</strong> (2D).</p>
+                    
+                    <pre><code class="language-python">import pandas as pd
+
+# Pandas is built on top of NumPy
+# Perfect for tabular data (spreadsheet-like)</code></pre>
+                </div>
+            </section>
+
+            <section id="dataframes" class="content-section">
+                <h2><i class="fas fa-table"></i> Series & DataFrames</h2>
+                <div class="topic">
+                    <h3>Pandas Data Structures</h3>
+                    <pre><code class="language-python">import pandas as pd
+
+# Series (1D labeled array)
+marks = pd.Series([85, 92, 78, 90], index=["Math", "Science", "English", "CS"])
+print(marks)
+print(marks["Math"])  # 85
+print(marks.mean())   # 86.25
+
+# DataFrame (2D table)
+data = {
+    "Name": ["Ali", "Sara", "Ravi", "Priya"],
+    "Age": [20, 22, 21, 23],
+    "Marks": [85, 92, 67, 88],
+    "City": ["Hyderabad", "Mumbai", "Delhi", "Pune"]
+}
+df = pd.DataFrame(data)
+print(df)
+
+# DataFrame properties
+print(df.shape)      # (4, 4) - 4 rows, 4 columns
+print(df.columns)    # Index(['Name', 'Age', 'Marks', 'City'])
+print(df.dtypes)     # Data types of each column
+print(df.info())     # Summary info
+print(df.describe()) # Statistical summary
+
+# Accessing data
+print(df["Name"])          # Single column
+print(df[["Name", "Marks"]])  # Multiple columns
+print(df.iloc[0])          # First row by index
+print(df.loc[0:2])         # Rows 0 to 2
+
+# Filtering
+high_marks = df[df["Marks"] > 80]
+print(high_marks)
+
+# Adding new column
+df["Grade"] = ["A", "A+", "C", "A"]
+print(df)</code></pre>
+                </div>
+            </section>
+
+            <section id="csv" class="content-section">
+                <h2><i class="fas fa-file-csv"></i> Loading CSV Files</h2>
+                <div class="topic">
+                    <h3>Reading and Writing Data</h3>
+                    <pre><code class="language-python">import pandas as pd
+
+# Reading CSV file
+df = pd.read_csv("students.csv")
+
+# First/Last rows
+print(df.head())     # First 5 rows
+print(df.tail(3))    # Last 3 rows
+
+# Basic info
+print(df.shape)
+print(df.columns)
+print(df.info())
+print(df.describe())
+
+# Saving to CSV
+df.to_csv("output.csv", index=False)
+
+# Reading from Excel
+# df = pd.read_excel("data.xlsx")
+
+# Reading from URL
+# df = pd.read_csv("https://example.com/data.csv")</code></pre>
+                </div>
+            </section>
+
+            <section id="missing" class="content-section">
+                <h2><i class="fas fa-exclamation-triangle"></i> Handling Missing Values</h2>
+                <div class="topic">
+                    <h3>Dealing with NaN (Null) Values</h3>
+                    <pre><code class="language-python">import pandas as pd
+import numpy as np
+
+# Create data with missing values
+data = {
+    "Name": ["Ali", "Sara", None, "Ravi"],
+    "Age": [20, np.nan, 21, 23],
+    "Marks": [85, 92, np.nan, 88]
+}
+df = pd.DataFrame(data)
+
+# Check for missing values
+print(df.isnull())         # Boolean mask
+print(df.isnull().sum())   # Count per column
+
+# Remove missing values
+df_dropped = df.dropna()         # Drop rows with any NaN
+df_dropped_col = df.dropna(axis=1)  # Drop columns with NaN
+
+# Fill missing values
+df_filled = df.fillna(0)                   # Fill with 0
+df_filled = df["Age"].fillna(df["Age"].mean())  # Fill with mean
+df_filled = df["Marks"].fillna(df["Marks"].median())  # Fill with median
+
+# Forward fill / Backward fill
+df_ffill = df.fillna(method="ffill")  # Use previous value
+df_bfill = df.fillna(method="bfill")  # Use next value</code></pre>
+                </div>
+            </section>
+
+            <section id="cleaning" class="content-section">
+                <h2><i class="fas fa-broom"></i> Data Cleaning & Feature Selection</h2>
+                <div class="topic">
+                    <h3>Preparing Data for ML</h3>
+                    <pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv("dataset.csv")
+
+# Remove duplicates
+df = df.drop_duplicates()
+
+# Rename columns
+df = df.rename(columns={"old_name": "new_name"})
+
+# Change data types
+df["Age"] = df["Age"].astype(int)
+
+# Remove unnecessary columns
+df = df.drop(columns=["id", "timestamp"])
+
+# Handle outliers (using IQR method)
+Q1 = df["Marks"].quantile(0.25)
+Q3 = df["Marks"].quantile(0.75)
+IQR = Q3 - Q1
+df = df[(df["Marks"] >= Q1 - 1.5*IQR) & (df["Marks"] <= Q3 + 1.5*IQR)]
+
+# Feature Selection - selecting relevant columns
+features = df[["Age", "Hours_Studied", "Attendance"]]
+target = df["Marks"]</code></pre>
+                </div>
+            </section>
+
+            <section id="split" class="content-section">
+                <h2><i class="fas fa-cut"></i> Train-Test Split</h2>
+                <div class="topic">
+                    <h3>Splitting Data for Training and Testing</h3>
+                    <pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+# Features and Target
+X = df[["Age", "Hours_Studied"]]  # Features
+y = df["Marks"]                    # Target
+
+# Split: 80% training, 20% testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print(f"Training samples: {len(X_train)}")
+print(f"Testing samples: {len(X_test)}")
+
+# Why split?
+# - Train on training data (model learns patterns)
+# - Test on unseen test data (check if model generalizes)
+# - Prevents overfitting!</code></pre>
+                    
+                    <div class="warning-box">
+                        <p><strong>Important:</strong> Never train and test on the same data! The model will memorize instead of learning patterns.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 7 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Q1: What does np.mean([10, 20, 30]) return?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>20.0</strong> — Average of 10+20+30 = 60 / 3 = 20</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q2: What is the difference between Series and DataFrame?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Series</strong> is 1D (like a single column). <strong>DataFrame</strong> is 2D (like a table with rows and columns).</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q3: How do you check for missing values in a DataFrame?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Use <code>df.isnull().sum()</code> to count missing values per column.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q4: What does df.describe() show?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Statistical summary: count, mean, std, min, 25%, 50%, 75%, max for all numeric columns.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q5: Why do we split data into train and test?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>To evaluate model performance on unseen data. Training on all data and testing on same data would give biased results (overfitting).</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q6: What is the typical train-test split ratio?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>80% training, 20% testing (or 70-30). The training set should always be larger.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q7: How do you fill missing values with column mean?</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">df["column"].fillna(df["column"].mean(), inplace=True)</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q8: What does np.array([1,2,3]).reshape(3,1) do?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Converts a 1D array of 3 elements into a 3x1 column vector (3 rows, 1 column).</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q9: How to select rows where Marks > 80?</h3>
+                        <details><summary>Show Solution</summary>
+                            <pre><code class="language-python">high_scorers = df[df["Marks"] > 80]</code></pre>
+                        </details>
+                    </div>
+                    <div class="question">
+                        <h3>Q10: What is the purpose of random_state in train_test_split?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Ensures reproducibility — same split every time you run the code. Without it, random splits would be different each run.</p></div></details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day6.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 6</a>
+                <a href="day8.html" class="nav-btn next">Next: Day 8 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

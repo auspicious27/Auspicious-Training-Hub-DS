@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 15: Capstone Project - Smart Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 15 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#architecture">System Architecture</a></li>
+                <li><a href="#capture">Face Capture Module</a></li>
+                <li><a href="#train">Training Module</a></li>
+                <li><a href="#recognition">Recognition Module</a></li>
+                <li><a href="#attendance">Attendance System</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#complete">Complete Code</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day14.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 14</a>
+                <a href="index.html" class="nav-btn next">Home <i class="fas fa-home"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 15: Capstone Project</h1>
+                <p class="day-subtitle">Smart Face Recognition Attendance System — End-to-End ML Project</p>
+            </header>
+
+            <section id="overview" class="content-section">
+                <h2><i class="fas fa-trophy"></i> Project Overview</h2>
+                <div class="topic">
+                    <h3>Smart Face Recognition Attendance System</h3>
+                    <p>A complete end-to-end Machine Learning project that captures student face data, trains a recognition model, identifies students in real-time, and manages attendance records — all using Python, OpenCV, and Scikit-learn.</p>
+                    
+                    <div class="project-features">
+                        <div class="feature-card"><i class="fas fa-camera"></i><h4>Face Capture</h4><p>Capture & store student face data</p></div>
+                        <div class="feature-card"><i class="fas fa-user-check"></i><h4>Face Recognition</h4><p>Real-time face identification</p></div>
+                        <div class="feature-card"><i class="fas fa-calendar-check"></i><h4>Attendance</h4><p>Auto-mark attendance on recognition</p></div>
+                        <div class="feature-card"><i class="fas fa-users"></i><h4>Student Management</h4><p>Add/remove students from system</p></div>
+                        <div class="feature-card"><i class="fas fa-chart-bar"></i><h4>Dashboard</h4><p>Visualize attendance data</p></div>
+                        <div class="feature-card"><i class="fas fa-file-csv"></i><h4>Reports</h4><p>Generate attendance reports</p></div>
+                        <div class="feature-card"><i class="fas fa-save"></i><h4>Save Model</h4><p>Pickle model serialization</p></div>
+                        <div class="feature-card"><i class="fas fa-sync"></i><h4>End-to-End</h4><p>Complete ML workflow</p></div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Technologies Used:</h4>
+                        <ul>
+                            <li><strong>OpenCV:</strong> Face detection & recognition</li>
+                            <li><strong>NumPy:</strong> Array operations</li>
+                            <li><strong>Pandas:</strong> Data management & reports</li>
+                            <li><strong>Matplotlib:</strong> Attendance visualization</li>
+                            <li><strong>Pickle:</strong> Model saving/loading</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="architecture" class="content-section">
+                <h2><i class="fas fa-sitemap"></i> System Architecture</h2>
+                <div class="topic">
+                    <h3>How the System Works</h3>
+                    <div class="ipo-diagram">
+                        <div class="ipo-box input">
+                            <h4>INPUT</h4>
+                            <ul>
+                                <li>Webcam feed</li>
+                                <li>Student data</li>
+                                <li>Face images</li>
+                            </ul>
+                        </div>
+                        <div class="ipo-arrow">→</div>
+                        <div class="ipo-box process">
+                            <h4>PROCESS</h4>
+                            <ul>
+                                <li>Face Detection</li>
+                                <li>Face Recognition</li>
+                                <li>ML Model</li>
+                            </ul>
+                        </div>
+                        <div class="ipo-arrow">→</div>
+                        <div class="ipo-box output">
+                            <h4>OUTPUT</h4>
+                            <ul>
+                                <li>Attendance record</li>
+                                <li>Reports (CSV)</li>
+                                <li>Dashboard</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="capture" class="content-section">
+                <h2><i class="fas fa-camera"></i> Module 1: Face Capture</h2>
+                <div class="topic">
+                    <h3>Student Face Data Collection</h3>
+                    <pre><code class="language-python">import cv2
+import os
+import csv
+from datetime import datetime
+
+class FaceCapture:
+    def __init__(self):
+        self.face_cascade = cv2.CascadeClassifier(
+            cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+        )
+        self.data_dir = "student_faces"
+        os.makedirs(self.data_dir, exist_ok=True)
+        
+        # Student database
+        self.db_file = "students.csv"
+        if not os.path.exists(self.db_file):
+            with open(self.db_file, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['ID', 'Name', 'Roll_No', 'Registration_Date'])
+    
+    def register_student(self, name, roll_no, num_images=50):
+        """Capture face images for a new student"""
+        student_id = f"STU_{roll_no}"
+        student_dir = os.path.join(self.data_dir, student_id)
+        os.makedirs(student_dir, exist_ok=True)
+        
+        # Save to database
+        with open(self.db_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([student_id, name, roll_no, 
+                           datetime.now().strftime("%Y-%m-%d")])
+        
+        # Capture faces
+        cap = cv2.VideoCapture(0)
+        count = 0
+        
+        print(f"\nRegistering: {name} (Roll: {roll_no})")
+        print(f"Capturing {num_images} face images...")
+        print("Look at the camera. Press 'q' to stop early.")
+        
+        while count < num_images:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = self.face_cascade.detectMultiScale(gray, 1.3, 5)
+            
+            for (x, y, w, h) in faces:
+                count += 1
+                face = gray[y:y+h, x:x+w]
+                face = cv2.resize(face, (200, 200))
+                cv2.imwrite(f"{student_dir}/{count}.jpg", face)
+                
+                # Visual feedback
+                cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                progress = f"Capturing: {count}/{num_images}"
+                cv2.putText(frame, progress, (10, 30), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+            
+            cv2.imshow("Face Registration", frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        
+        cap.release()
+        cv2.destroyAllWindows()
+        print(f"Registration complete! {count} images captured.")
+        return student_id</code></pre>
+                </div>
+            </section>
+
+            <section id="train" class="content-section">
+                <h2><i class="fas fa-brain"></i> Module 2: Model Training</h2>
+                <div class="topic">
+                    <h3>Train Face Recognition Model</h3>
+                    <pre><code class="language-python">import cv2
+import numpy as np
+import os
+import pickle
+
+class FaceTrainer:
+    def __init__(self):
+        self.recognizer = cv2.face.LBPHFaceRecognizer_create()
+        self.data_dir = "student_faces"
+        self.model_file = "attendance_model.yml"
+        self.labels_file = "label_map.pkl"
+    
+    def train(self):
+        """Train the face recognition model"""
+        faces = []
+        labels = []
+        label_map = {}
+        label_id = 0
+        
+        print("Training face recognition model...")
+        
+        for student_id in sorted(os.listdir(self.data_dir)):
+            student_path = os.path.join(self.data_dir, student_id)
+            if not os.path.isdir(student_path):
+                continue
+            
+            label_map[label_id] = student_id
+            img_count = 0
+            
+            for img_name in os.listdir(student_path):
+                img_path = os.path.join(student_path, img_name)
+                img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+                if img is not None:
+                    img = cv2.resize(img, (200, 200))
+                    faces.append(img)
+                    labels.append(label_id)
+                    img_count += 1
+            
+            print(f"  {student_id}: {img_count} images loaded")
+            label_id += 1
+        
+        # Train LBPH recognizer
+        self.recognizer.train(faces, np.array(labels))
+        
+        # Save model
+        self.recognizer.save(self.model_file)
+        with open(self.labels_file, 'wb') as f:
+            pickle.dump(label_map, f)
+        
+        print(f"\nModel trained with {len(faces)} total images")
+        print(f"Registered students: {len(label_map)}")
+        print(f"Model saved: {self.model_file}")
+        
+        return label_map</code></pre>
+                </div>
+            </section>
+
+            <section id="recognition" class="content-section">
+                <h2><i class="fas fa-user-check"></i> Module 3: Face Recognition</h2>
+                <div class="topic">
+                    <h3>Real-time Recognition & Attendance Marking</h3>
+                    <pre><code class="language-python">import cv2
+import pickle
+import csv
+from datetime import datetime, date
+
+class AttendanceSystem:
+    def __init__(self):
+        self.recognizer = cv2.face.LBPHFaceRecognizer_create()
+        self.recognizer.read("attendance_model.yml")
+        
+        with open("label_map.pkl", 'rb') as f:
+            self.label_map = pickle.load(f)
+        
+        self.face_cascade = cv2.CascadeClassifier(
+            cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+        )
+        
+        self.today_attendance = {}
+        self.attendance_file = f"attendance_{date.today().strftime('%Y_%m_%d')}.csv"
+        self.confidence_threshold = 65
+    
+    def mark_attendance(self, student_id, name):
+        """Mark attendance for recognized student"""
+        if student_id not in self.today_attendance:
+            time_now = datetime.now().strftime("%H:%M:%S")
+            self.today_attendance[student_id] = {
+                'name': name,
+                'time': time_now,
+                'date': date.today().strftime("%Y-%m-%d")
+            }
+            
+            # Save to CSV
+            with open(self.attendance_file, 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow([student_id, name, 
+                               date.today().strftime("%Y-%m-%d"), time_now])
+            
+            print(f"  ✓ Attendance marked: {name} at {time_now}")
+            return True
+        return False
+    
+    def run(self):
+        """Start real-time face recognition attendance"""
+        cap = cv2.VideoCapture(0)
+        
+        print("\n" + "="*50)
+        print("  SMART ATTENDANCE SYSTEM - ACTIVE")
+        print("="*50)
+        print("Press 'q' to quit | 'r' to view report\n")
+        
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = self.face_cascade.detectMultiScale(gray, 1.3, 5)
+            
+            for (x, y, w, h) in faces:
+                face_roi = gray[y:y+h, x:x+w]
+                face_roi = cv2.resize(face_roi, (200, 200))
+                
+                label, confidence = self.recognizer.predict(face_roi)
+                
+                if confidence < self.confidence_threshold:
+                    student_id = self.label_map[label]
+                    # Load name from students.csv
+                    name = student_id  # Simplified
+                    
+                    color = (0, 255, 0)
+                    self.mark_attendance(student_id, name)
+                    text = f"{name} ({100-confidence:.0f}%)"
+                else:
+                    color = (0, 0, 255)
+                    text = "Unknown"
+                
+                cv2.rectangle(frame, (x, y), (x+w, y+h), color, 2)
+                cv2.putText(frame, text, (x, y-10),
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+            
+            # Show attendance count
+            count_text = f"Present Today: {len(self.today_attendance)}"
+            cv2.putText(frame, count_text, (10, 30),
+                       cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+            
+            cv2.imshow("Attendance System", frame)
+            
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord('q'):
+                break
+            elif key == ord('r'):
+                self.print_report()
+        
+        cap.release()
+        cv2.destroyAllWindows()
+        self.print_report()
+    
+    def print_report(self):
+        """Print today's attendance report"""
+        print("\n" + "="*50)
+        print(f"  ATTENDANCE REPORT - {date.today()}")
+        print("="*50)
+        if self.today_attendance:
+            for sid, info in self.today_attendance.items():
+                print(f"  {info['name']:<20} {info['time']}")
+            print(f"\n  Total Present: {len(self.today_attendance)}")
+        else:
+            print("  No attendance recorded yet.")
+        print("="*50)</code></pre>
+                </div>
+            </section>
+
+            <section id="attendance" class="content-section">
+                <h2><i class="fas fa-calendar-check"></i> Module 4: Attendance Management</h2>
+                <div class="topic">
+                    <h3>Attendance Records & Data Storage</h3>
+                    <pre><code class="language-python">import pandas as pd
+from datetime import date, timedelta
+
+class AttendanceManager:
+    def __init__(self):
+        self.records_dir = "attendance_records"
+        os.makedirs(self.records_dir, exist_ok=True)
+    
+    def get_attendance_report(self, start_date=None, end_date=None):
+        """Generate attendance report for date range"""
+        all_records = []
+        
+        for file in os.listdir(self.records_dir):
+            if file.endswith('.csv'):
+                df = pd.read_csv(os.path.join(self.records_dir, file))
+                all_records.append(df)
+        
+        if all_records:
+            report = pd.concat(all_records, ignore_index=True)
+            report.columns = ['Student_ID', 'Name', 'Date', 'Time']
+            
+            if start_date and end_date:
+                report = report[(report['Date'] >= start_date) & 
+                               (report['Date'] <= end_date)]
+            
+            return report
+        return pd.DataFrame()
+    
+    def get_student_attendance(self, student_id):
+        """Get attendance record for specific student"""
+        report = self.get_attendance_report()
+        if not report.empty:
+            return report[report['Student_ID'] == student_id]
+        return pd.DataFrame()
+    
+    def calculate_percentage(self, student_id, total_days):
+        """Calculate attendance percentage"""
+        student_records = self.get_student_attendance(student_id)
+        present_days = len(student_records['Date'].unique())
+        percentage = (present_days / total_days) * 100
+        return percentage</code></pre>
+                </div>
+            </section>
+
+            <section id="dashboard" class="content-section">
+                <h2><i class="fas fa-chart-bar"></i> Module 5: Data Visualization Dashboard</h2>
+                <div class="topic">
+                    <h3>Attendance Analytics</h3>
+                    <pre><code class="language-python">import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+def create_attendance_dashboard(attendance_data):
+    """Generate visual attendance dashboard"""
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle("Smart Attendance System - Dashboard", 
+                fontsize=16, fontweight='bold')
+    
+    # 1. Daily attendance trend
+    daily = attendance_data.groupby('Date').size()
+    axes[0, 0].plot(daily.index, daily.values, 'o-', color='#ff1b6b')
+    axes[0, 0].set_title("Daily Attendance Trend")
+    axes[0, 0].set_xlabel("Date")
+    axes[0, 0].set_ylabel("Students Present")
+    axes[0, 0].tick_params(axis='x', rotation=45)
+    
+    # 2. Student-wise attendance
+    student_count = attendance_data.groupby('Name')['Date'].nunique()
+    axes[0, 1].barh(student_count.index, student_count.values, color='#667eea')
+    axes[0, 1].set_title("Student-wise Attendance")
+    axes[0, 1].set_xlabel("Days Present")
+    
+    # 3. Time distribution
+    attendance_data['Hour'] = pd.to_datetime(attendance_data['Time']).dt.hour
+    axes[1, 0].hist(attendance_data['Hour'], bins=12, color='#f093fb', edgecolor='black')
+    axes[1, 0].set_title("Check-in Time Distribution")
+    axes[1, 0].set_xlabel("Hour of Day")
+    axes[1, 0].set_ylabel("Frequency")
+    
+    # 4. Attendance percentage pie
+    total_students = attendance_data['Name'].nunique()
+    total_days = attendance_data['Date'].nunique()
+    avg_attendance = daily.mean()
+    absent_avg = total_students - avg_attendance
+    
+    axes[1, 1].pie([avg_attendance, absent_avg], 
+                   labels=['Present', 'Absent'],
+                   colors=['#4caf50', '#f44336'],
+                   autopct='%1.1f%%', startangle=90)
+    axes[1, 1].set_title("Average Attendance Rate")
+    
+    plt.tight_layout()
+    plt.savefig("attendance_dashboard.png", dpi=150, bbox_inches='tight')
+    plt.show()
+    print("Dashboard saved as 'attendance_dashboard.png'")</code></pre>
+                </div>
+            </section>
+
+            <section id="complete" class="content-section">
+                <h2><i class="fas fa-terminal"></i> Complete Main Program</h2>
+                <div class="topic">
+                    <h3>Putting It All Together</h3>
+                    <pre><code class="language-python">"""
+=============================================
+  SMART FACE RECOGNITION ATTENDANCE SYSTEM
+  Capstone Project - Python for Data Science
+=============================================
+"""
+
+def main():
+    print("=" * 50)
+    print("  SMART ATTENDANCE SYSTEM")
+    print("  Face Recognition + Machine Learning")
+    print("=" * 50)
+    
+    while True:
+        print("\nMenu:")
+        print("  1. Register New Student")
+        print("  2. Train Recognition Model")
+        print("  3. Start Attendance (Face Recognition)")
+        print("  4. View Attendance Report")
+        print("  5. Generate Dashboard")
+        print("  6. Exit")
+        
+        choice = input("\nEnter choice (1-6): ")
+        
+        if choice == '1':
+            name = input("Student Name: ")
+            roll = input("Roll Number: ")
+            fc = FaceCapture()
+            fc.register_student(name, roll)
+            
+        elif choice == '2':
+            trainer = FaceTrainer()
+            trainer.train()
+            print("Model trained successfully!")
+            
+        elif choice == '3':
+            system = AttendanceSystem()
+            system.run()
+            
+        elif choice == '4':
+            manager = AttendanceManager()
+            report = manager.get_attendance_report()
+            if not report.empty:
+                print(report)
+            else:
+                print("No records found.")
+            
+        elif choice == '5':
+            manager = AttendanceManager()
+            report = manager.get_attendance_report()
+            if not report.empty:
+                create_attendance_dashboard(report)
+            else:
+                print("No data for dashboard.")
+            
+        elif choice == '6':
+            print("\nGoodbye! System shutting down.")
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()</code></pre>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 15 - Final Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question"><h3>Q1: What are the main modules of this attendance system?</h3><details><summary>Show Answer</summary><div class="answer"><p>1) Face Capture 2) Model Training 3) Face Recognition 4) Attendance Management 5) Dashboard/Visualization</p></div></details></div>
+                    <div class="question"><h3>Q2: Why use LBPH for face recognition?</h3><details><summary>Show Answer</summary><div class="answer"><p>LBPH (Local Binary Patterns Histograms) works well with small datasets, handles lighting variations, doesn't require massive computing power, and is included in OpenCV.</p></div></details></div>
+                    <div class="question"><h3>Q3: How does the system prevent duplicate attendance?</h3><details><summary>Show Answer</summary><div class="answer"><p>By checking if student_id already exists in today_attendance dictionary before marking. Each student can only be marked once per day.</p></div></details></div>
+                    <div class="question"><h3>Q4: What is the confidence threshold and why is it important?</h3><details><summary>Show Answer</summary><div class="answer"><p>It's the maximum acceptable distance between predicted and actual face. Lower = stricter matching. Prevents wrong identifications.</p></div></details></div>
+                    <div class="question"><h3>Q5: How would you improve this system for production?</h3><details><summary>Show Answer</summary><div class="answer"><p>Add anti-spoofing, use deep learning (FaceNet), database storage, web interface, notification system, backup, security measures.</p></div></details></div>
+                    <div class="question"><h3>Q6: What ML concepts from this course are used in this project?</h3><details><summary>Show Answer</summary><div class="answer"><p>Data collection, preprocessing, model training (LBPH), prediction, evaluation (confidence scores), model saving (pickle/yml), and data visualization.</p></div></details></div>
+                    <div class="question"><h3>Q7: How would you add email notifications?</h3><details><summary>Show Solution</summary><pre><code class="language-python">import smtplib
+from email.mime.text import MIMEText
+
+def send_notification(student_name, time):
+    msg = MIMEText(f"{student_name} marked present at {time}")
+    msg['Subject'] = 'Attendance Notification'
+    # Configure SMTP and send</code></pre></details></div>
+                    <div class="question"><h3>Q8: What Python libraries were used throughout this course?</h3><details><summary>Show Answer</summary><div class="answer"><p>NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, OpenCV, Pickle — covering data science, ML, and computer vision.</p></div></details></div>
+                    <div class="question"><h3>Q9: How to handle the case when camera doesn't detect any face?</h3><details><summary>Show Answer</summary><div class="answer"><p>Add timeout logic, display "No face detected" message, suggest adjusting camera/lighting, and continue the loop without crashing.</p></div></details></div>
+                    <div class="question"><h3>Q10: Present your project — what problem does it solve?</h3><details><summary>Show Answer</summary><div class="answer"><p>It automates attendance marking using face recognition, eliminating manual roll calls, preventing proxy attendance, saving time, and providing analytics. It demonstrates a complete ML pipeline from data collection to deployment.</p></div></details></div>
+                </div>
+            </section>
+
+            <section class="content-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 10px; margin-top: 2rem;">
+                <h2 style="color: white; margin-top: 0;"><i class="fas fa-graduation-cap"></i> Congratulations!</h2>
+                <p style="color: white; font-size: 1.1rem;">You've completed the 15-Day Python for Data Science & Machine Learning program! You've learned:</p>
+                <ul style="color: white; line-height: 2; font-size: 1rem;">
+                    <li>Python Programming Fundamentals (Days 1-5)</li>
+                    <li>Data Science with NumPy, Pandas & Visualization (Days 6-9)</li>
+                    <li>Machine Learning with Scikit-learn (Days 10-12)</li>
+                    <li>Computer Vision with OpenCV (Days 13-15)</li>
+                    <li>4 Mini Projects + 1 Capstone Project</li>
+                </ul>
+                <p style="color: white; font-size: 1.1rem; margin-top: 1rem;"><strong>Keep building, keep learning!</strong></p>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day14.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 14</a>
+                <a href="index.html" class="nav-btn next">Back to Home <i class="fas fa-home"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

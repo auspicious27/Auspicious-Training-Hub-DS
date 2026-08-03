@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6: Introduction to Data Science & Machine Learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="day-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-brain"></i><span>Auspicious</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#curriculum">Curriculum</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-container">
+        <aside class="sidebar">
+            <h3>Day 6 Contents</h3>
+            <ul class="topic-list">
+                <li><a href="#data-science">What is Data Science?</a></li>
+                <li><a href="#ai">Artificial Intelligence</a></li>
+                <li><a href="#ml">Machine Learning</a></li>
+                <li><a href="#dl">Deep Learning</a></li>
+                <li><a href="#applications">Applications of ML</a></li>
+                <li><a href="#workflow">ML Workflow</a></li>
+                <li><a href="#types">Types of ML</a></li>
+                <li><a href="#usecases">Real-world Use Cases</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+            <div class="navigation-buttons">
+                <a href="day5.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 5</a>
+                <a href="day7.html" class="nav-btn next">Day 7 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="day-header">
+                <h1>Day 6: Introduction to Data Science & Machine Learning</h1>
+                <p class="day-subtitle">Understanding AI, ML, DL and the Data Science ecosystem</p>
+            </header>
+
+            <section id="data-science" class="content-section">
+                <h2><i class="fas fa-chart-pie"></i> What is Data Science?</h2>
+                <div class="topic">
+                    <h3>Understanding Data Science</h3>
+                    <p><strong>Data Science</strong> is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract meaningful insights and knowledge from structured and unstructured data.</p>
+                    
+                    <div class="key-points">
+                        <h4>Data Science = Statistics + Programming + Domain Knowledge</h4>
+                        <ul>
+                            <li><strong>Statistics:</strong> Understanding data patterns, probability, distributions</li>
+                            <li><strong>Programming:</strong> Python/R for data manipulation and modeling</li>
+                            <li><strong>Domain Knowledge:</strong> Understanding the business problem</li>
+                        </ul>
+                    </div>
+
+                    <h4>Data Science Process</h4>
+                    <div class="ipo-diagram">
+                        <div class="ipo-box input">
+                            <h4>COLLECT</h4>
+                            <p>Gather raw data</p>
+                        </div>
+                        <div class="ipo-arrow">→</div>
+                        <div class="ipo-box process">
+                            <h4>PROCESS</h4>
+                            <p>Clean & analyze</p>
+                        </div>
+                        <div class="ipo-arrow">→</div>
+                        <div class="ipo-box output">
+                            <h4>INSIGHTS</h4>
+                            <p>Predictions & decisions</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Real-World Example: Netflix</h4>
+                        <p>Netflix collects viewing data from millions of users → Processes it to find patterns → Recommends movies you'll likely enjoy. That's data science in action!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ai" class="content-section">
+                <h2><i class="fas fa-robot"></i> Artificial Intelligence (AI)</h2>
+                <div class="topic">
+                    <h3>What is AI?</h3>
+                    <p><strong>Artificial Intelligence</strong> is the broader concept of machines being able to carry out tasks in a way that we would consider "smart" — mimicking human intelligence.</p>
+                    
+                    <div class="key-points">
+                        <h4>Types of AI:</h4>
+                        <ul>
+                            <li><strong>Narrow AI (Weak AI):</strong> Designed for specific tasks — Siri, Google Maps, Chess AI</li>
+                            <li><strong>General AI (Strong AI):</strong> Human-like intelligence across all tasks — doesn't exist yet</li>
+                            <li><strong>Super AI:</strong> Surpasses human intelligence — theoretical/futuristic</li>
+                        </ul>
+                    </div>
+
+                    <h4>AI vs ML vs DL — The Hierarchy</h4>
+                    <div class="info-box">
+                        <p><strong>AI</strong> (Largest circle) → <strong>Machine Learning</strong> (Subset of AI) → <strong>Deep Learning</strong> (Subset of ML)</p>
+                        <ul>
+                            <li>AI: Any technique enabling machines to mimic human behavior</li>
+                            <li>ML: AI that learns from data without explicit programming</li>
+                            <li>DL: ML using neural networks with many layers</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ml" class="content-section">
+                <h2><i class="fas fa-cogs"></i> Machine Learning (ML)</h2>
+                <div class="topic">
+                    <h3>What is Machine Learning?</h3>
+                    <p><strong>Machine Learning</strong> is a subset of AI that enables systems to learn and improve from experience (data) without being explicitly programmed. Instead of writing rules, we feed data and let the algorithm find patterns.</p>
+                    
+                    <div class="example-box">
+                        <h4>Traditional Programming vs Machine Learning:</h4>
+                        <p><strong>Traditional:</strong> Input + Rules → Output</p>
+                        <p><strong>Machine Learning:</strong> Input + Output → Rules (Model)</p>
+                    </div>
+
+                    <pre><code class="language-python"># Traditional approach - Manual rules
+def is_spam(email):
+    if "lottery" in email or "free money" in email:
+        return True
+    return False
+
+# Machine Learning approach - Learn from data
+# Feed thousands of spam/not-spam emails
+# Algorithm learns the patterns automatically
+# model.predict(new_email) → spam/not_spam</code></pre>
+
+                    <div class="key-points">
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li><strong>Training:</strong> Teaching the model using historical data</li>
+                            <li><strong>Features:</strong> Input variables (attributes) used for prediction</li>
+                            <li><strong>Labels:</strong> Output variable (what we want to predict)</li>
+                            <li><strong>Model:</strong> The learned pattern/function</li>
+                            <li><strong>Prediction:</strong> Using the model on new, unseen data</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dl" class="content-section">
+                <h2><i class="fas fa-network-wired"></i> Deep Learning (DL)</h2>
+                <div class="topic">
+                    <h3>What is Deep Learning?</h3>
+                    <p><strong>Deep Learning</strong> is a subset of ML that uses artificial neural networks with multiple layers (hence "deep") to learn complex patterns from large amounts of data.</p>
+                    
+                    <table>
+                        <thead>
+                            <tr><th>Aspect</th><th>Machine Learning</th><th>Deep Learning</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Data Needed</td><td>Works with small data</td><td>Needs large datasets</td></tr>
+                            <tr><td>Feature Engineering</td><td>Manual features needed</td><td>Learns features automatically</td></tr>
+                            <tr><td>Hardware</td><td>CPU sufficient</td><td>GPU required</td></tr>
+                            <tr><td>Training Time</td><td>Minutes to hours</td><td>Hours to days</td></tr>
+                            <tr><td>Use Cases</td><td>Structured data, predictions</td><td>Images, speech, NLP</td></tr>
+                            <tr><td>Libraries</td><td>Scikit-learn</td><td>TensorFlow, PyTorch</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="applications" class="content-section">
+                <h2><i class="fas fa-globe"></i> Applications of Machine Learning</h2>
+                <div class="topic">
+                    <h3>ML is Everywhere!</h3>
+                    <div class="use-cases">
+                        <div class="use-case">
+                            <i class="fas fa-stethoscope"></i>
+                            <h4>Healthcare</h4>
+                            <p>Disease diagnosis, drug discovery, medical imaging</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h4>Finance</h4>
+                            <p>Fraud detection, stock prediction, credit scoring</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h4>E-Commerce</h4>
+                            <p>Product recommendations, price optimization</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-car"></i>
+                            <h4>Self-Driving Cars</h4>
+                            <p>Object detection, lane detection, decision making</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-comments"></i>
+                            <h4>NLP & Chatbots</h4>
+                            <p>Language translation, sentiment analysis, ChatGPT</p>
+                        </div>
+                        <div class="use-case">
+                            <i class="fas fa-camera"></i>
+                            <h4>Computer Vision</h4>
+                            <p>Face recognition, image classification, OCR</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="workflow" class="content-section">
+                <h2><i class="fas fa-project-diagram"></i> Machine Learning Workflow</h2>
+                <div class="topic">
+                    <h3>End-to-End ML Pipeline</h3>
+                    <ol>
+                        <li><strong>Problem Definition:</strong> What are we trying to predict/solve?</li>
+                        <li><strong>Data Collection:</strong> Gather relevant data (CSV, APIs, databases)</li>
+                        <li><strong>Data Preprocessing:</strong> Clean data, handle missing values, encode categories</li>
+                        <li><strong>Exploratory Data Analysis (EDA):</strong> Visualize and understand data patterns</li>
+                        <li><strong>Feature Engineering:</strong> Create/select relevant features</li>
+                        <li><strong>Model Selection:</strong> Choose appropriate algorithm</li>
+                        <li><strong>Model Training:</strong> Feed data to the algorithm</li>
+                        <li><strong>Model Evaluation:</strong> Test accuracy using metrics (MAE, R², accuracy)</li>
+                        <li><strong>Model Tuning:</strong> Optimize hyperparameters</li>
+                        <li><strong>Deployment:</strong> Put model into production</li>
+                    </ol>
+
+                    <pre><code class="language-python"># Simplified ML workflow in Python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
+
+# 1. Load Data
+data = pd.read_csv("dataset.csv")
+
+# 2. Prepare Features (X) and Target (y)
+X = data[["feature1", "feature2"]]
+y = data["target"]
+
+# 3. Split into Train and Test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 4. Train Model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# 5. Predict & Evaluate
+predictions = model.predict(X_test)
+error = mean_absolute_error(y_test, predictions)
+print(f"Mean Absolute Error: {error}")</code></pre>
+                </div>
+            </section>
+
+            <section id="types" class="content-section">
+                <h2><i class="fas fa-sitemap"></i> Types of Machine Learning</h2>
+                <div class="topic">
+                    <h3>Three Main Categories</h3>
+                    
+                    <div class="detailed-example">
+                        <h4>1. Supervised Learning</h4>
+                        <p>Learning from labeled data (input-output pairs). The model learns the mapping from input to output.</p>
+                        <ul>
+                            <li><strong>Classification:</strong> Predict categories (Spam/Not Spam, Cat/Dog)</li>
+                            <li><strong>Regression:</strong> Predict numbers (House Price, Salary, Temperature)</li>
+                        </ul>
+                        <p><strong>Algorithms:</strong> Linear Regression, Decision Trees, Random Forest, SVM, KNN</p>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>2. Unsupervised Learning</h4>
+                        <p>Learning from unlabeled data. The model finds hidden patterns or groupings.</p>
+                        <ul>
+                            <li><strong>Clustering:</strong> Group similar items (Customer Segments)</li>
+                            <li><strong>Dimensionality Reduction:</strong> Reduce features (PCA)</li>
+                        </ul>
+                        <p><strong>Algorithms:</strong> K-Means, DBSCAN, Hierarchical Clustering, PCA</p>
+                    </div>
+
+                    <div class="detailed-example">
+                        <h4>3. Reinforcement Learning</h4>
+                        <p>Learning through trial and error. Agent takes actions and receives rewards/penalties.</p>
+                        <ul>
+                            <li><strong>Examples:</strong> Game AI (AlphaGo), Robotics, Self-driving cars</li>
+                        </ul>
+                        <p><strong>Concepts:</strong> Agent, Environment, State, Action, Reward</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr><th>Type</th><th>Data</th><th>Goal</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Supervised</td><td>Labeled</td><td>Predict output</td><td>Email spam detection</td></tr>
+                            <tr><td>Unsupervised</td><td>Unlabeled</td><td>Find patterns</td><td>Customer segmentation</td></tr>
+                            <tr><td>Reinforcement</td><td>Feedback</td><td>Maximize reward</td><td>Game playing AI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="usecases" class="content-section">
+                <h2><i class="fas fa-briefcase"></i> Real-world ML Use Cases</h2>
+                <div class="topic">
+                    <h3>Industry Applications</h3>
+                    <table>
+                        <thead><tr><th>Industry</th><th>Problem</th><th>ML Solution</th><th>Type</th></tr></thead>
+                        <tbody>
+                            <tr><td>Banking</td><td>Fraud transactions</td><td>Anomaly detection</td><td>Classification</td></tr>
+                            <tr><td>Healthcare</td><td>Disease prediction</td><td>Patient data analysis</td><td>Classification</td></tr>
+                            <tr><td>Real Estate</td><td>Price estimation</td><td>Linear Regression</td><td>Regression</td></tr>
+                            <tr><td>HR</td><td>Salary prediction</td><td>Multiple Regression</td><td>Regression</td></tr>
+                            <tr><td>Marketing</td><td>Customer groups</td><td>K-Means Clustering</td><td>Unsupervised</td></tr>
+                            <tr><td>Security</td><td>Face identification</td><td>Face Recognition</td><td>Classification</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-box">
+                        <h4>What We'll Build in This Course:</h4>
+                        <ul>
+                            <li>Student Performance Analysis (Day 8)</li>
+                            <li>House Price Prediction using Linear Regression (Day 11)</li>
+                            <li>Face Recognition System using OpenCV (Day 13)</li>
+                            <li>Smart Attendance System — Capstone Project (Day 15)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="assessment" class="content-section assessment-section">
+                <h2><i class="fas fa-clipboard-check"></i> Day 6 Assessment</h2>
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>Q1: What is the relationship between AI, ML, and DL?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>AI is the broadest concept. ML is a subset of AI. DL is a subset of ML. DL ⊂ ML ⊂ AI</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q2: What type of ML is email spam detection?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Supervised Learning (Classification)</strong> — We have labeled data (spam/not spam) and predict categories.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q3: What is the difference between Classification and Regression?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Classification:</strong> Predicts categories (Yes/No, Cat/Dog). <strong>Regression:</strong> Predicts continuous numbers (Price, Temperature, Age).</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q4: Name 3 real-world applications of Machine Learning</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>1) Netflix recommendations 2) Gmail spam filter 3) Self-driving cars 4) Voice assistants (Siri/Alexa) 5) Face unlock on phones</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q5: What is the main difference between Traditional Programming and ML?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Traditional:</strong> We write explicit rules. <strong>ML:</strong> The algorithm learns rules from data automatically.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q6: What are Features and Labels in ML?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Features (X):</strong> Input variables used for prediction (e.g., area, rooms). <strong>Labels (y):</strong> Output variable we want to predict (e.g., price).</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q7: What is Unsupervised Learning? Give an example.</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Learning from unlabeled data to find hidden patterns. Example: Customer segmentation — grouping customers by buying behavior without predefined categories.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q8: List the steps in ML Workflow</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>1) Problem Definition 2) Data Collection 3) Data Preprocessing 4) EDA 5) Feature Engineering 6) Model Selection 7) Training 8) Evaluation 9) Tuning 10) Deployment</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q9: When would you use Deep Learning over regular ML?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p>Use DL when: Large dataset available, complex patterns (images, speech, text), GPU available, and automatic feature extraction is needed.</p></div></details>
+                    </div>
+                    <div class="question">
+                        <h3>Q10: What Python libraries are used for ML?</h3>
+                        <details><summary>Show Answer</summary><div class="answer"><p><strong>Data:</strong> NumPy, Pandas. <strong>Visualization:</strong> Matplotlib, Seaborn. <strong>ML:</strong> Scikit-learn. <strong>DL:</strong> TensorFlow, PyTorch. <strong>CV:</strong> OpenCV.</p></div></details>
+                    </div>
+                </div>
+            </section>
+
+            <div class="day-navigation">
+                <a href="day5.html" class="nav-btn prev"><i class="fas fa-arrow-left"></i> Day 5</a>
+                <a href="day7.html" class="nav-btn next">Next: Day 7 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
